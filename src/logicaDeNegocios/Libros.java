@@ -6,8 +6,9 @@ public class Libros {
 	private String autor;
 	private String editorial;
 	private String edicion;
-    private String imangen; // url - foto de portada
-    private String calificacion; //calificación en *. ***** = bueno, * = muy malo 
+    private String imagen; // url - foto de portada
+    private String calificacion; //calificación en *. ***** = muy bueno, * = muy malo 
+  //private int contLibros = 0; //id de libro
 	
 	public Libros() {
 	}
@@ -19,7 +20,7 @@ public class Libros {
 		this.autor = autor;
 		this.editorial = editorial;
 		this.edicion = edicion;
-		this.imangen = imangen;
+		this.imagen = imangen;
 		this.calificacion = calificacion;
 	}
 
@@ -36,7 +37,7 @@ public class Libros {
 	}
 
 	public void setAutor(String autor) {
-		autor = autor;
+		this.autor = autor; //
 	}
 
 	public String getEditorial() {
@@ -55,12 +56,12 @@ public class Libros {
 		this.edicion = edicion;
 	}
 
-	public String getImangen() {
-		return imangen;
+	public String getImagen() {
+		return imagen;
 	}
 
 	public void setImangen(String imangen) {
-		this.imangen = imangen;
+		this.imagen = imangen;
 	}
 
 	public String getCalificacion() {
