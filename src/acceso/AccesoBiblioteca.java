@@ -151,17 +151,25 @@ public class AccesoBiblioteca extends JFrame {
 				internalFrame.getContentPane().add(lblAgregarPersona);
 				
 				JButton btnNewButton = new JButton("Agregar");
+				btnNewButton.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\add2.png"));
 				btnNewButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 					}
 				});
-				btnNewButton.setBounds(479, 324, 117, 49);
+				btnNewButton.setBounds(606, 253, 117, 49);
 				internalFrame.getContentPane().add(btnNewButton);
 				
 				JButton btnCancelar = new JButton("Cancelar");
-				btnCancelar.setBounds(633, 324, 117, 49);
+				btnCancelar.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409916363_Cancel.png"));
+				btnCancelar.setBounds(606, 323, 117, 49);
 				internalFrame.getContentPane().add(btnCancelar);
+				
+				JLabel label = DefaultComponentFactory.getInstance().createLabel("");
+				label.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409916608_icon-person-add-128.png"));
+				label.setBounds(591, 72, 141, 154);
+				internalFrame.getContentPane().add(label);
 				internalFrame.setVisible(true);
+
 				
 			}
 		});
@@ -239,18 +247,25 @@ public class AccesoBiblioteca extends JFrame {
 				internalFrame.getContentPane().add(lblAgregarLibro);
 				
 				JButton btnNewButton = new JButton("Agregar");
+				btnNewButton.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\add2.png"));
 				btnNewButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 					}
 				});
-				btnNewButton.setBounds(479, 324, 117, 49);
+				btnNewButton.setBounds(591, 253, 117, 49);
 				internalFrame.getContentPane().add(btnNewButton);
 				
 				JButton btnCancelar = new JButton("Cancelar");
-				btnCancelar.setBounds(633, 324, 117, 49);
+				btnCancelar.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409916363_Cancel.png"));
+				btnCancelar.setBounds(591, 324, 117, 49);
 				internalFrame.getContentPane().add(btnCancelar);
-				internalFrame.setVisible(true);
 				
+				JLabel label = DefaultComponentFactory.getInstance().createLabel("");
+				label.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409916995_book_sans_add-128.png"));
+				label.setBounds(591, 72, 141, 154);
+				internalFrame.getContentPane().add(label);
+				internalFrame.setVisible(true);
+	
 				
 				}
 			});
@@ -276,6 +291,7 @@ public class AccesoBiblioteca extends JFrame {
 		contentPane.setLayout(null);
 		
 
+				
 		
 		
 		
