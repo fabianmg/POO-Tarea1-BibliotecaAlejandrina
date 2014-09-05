@@ -1,5 +1,14 @@
 package logicaDeNegocios;
 
+import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+ 
+import javax.swing.JOptionPane;
  
 public class Personas {
  
@@ -12,14 +21,13 @@ public class Personas {
     private String email;
     private String telefono;
     private String tipo; // estudiante, colega, familiar
-    private int contPersonas = 0;
  
     public Personas() {
            
     }
                
     public Personas(String nombre, String apellidoUno, String apellidoDos, 
-    		String email, String telefono, String tipo, int contPersonas )
+    		String email, String telefono, String tipo )
     {
             this.nombre = nombre;
             this.apellidoUno = apellidoUno;
@@ -27,20 +35,11 @@ public class Personas {
             this.email = email;
             this.telefono = telefono;
             this.setTipo(tipo);
-            this.contPersonas = contPersonas;
     }
                
  
  
-    public int getContPersonas() {
-		return contPersonas;
-	}
-
-	public void setContPersonas(int contPersonas) {
-		this.contPersonas = contPersonas;
-	}
-
-	public String getNombre() {
+    public String getNombre() {
             return nombre;
     }
  

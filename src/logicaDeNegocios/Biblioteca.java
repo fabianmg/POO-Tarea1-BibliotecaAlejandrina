@@ -9,7 +9,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
-import javax.swing.JComponent; import javax.swing.JFrame;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
@@ -18,9 +19,6 @@ public class Biblioteca {
     private static String rutaLibros = "./libros.poo";
     private static String rutaLPrestados = "./l_Prestados.poo";
     private static String rutaPersonas = "./personas.poo";
-    private int contPersonas;
-    private int contLibros;
-    
    
     private ArrayList<Personas> arrayPersonas = new ArrayList<Personas>(1);
     private ArrayList<Libros> arrayLibros = new ArrayList<Libros>(1);
@@ -43,9 +41,7 @@ public class Biblioteca {
 		File archivo = new File (rutaPersonas);
     	try
     	{
-    		//arrayPersonas = null;
-    		arrayPersonas.clear();
-    		contPersonas = 0 ;
+    		arrayPersonas = null;    		
     		if (archivo.exists())
     		{			
 	    		lectura = new FileReader (archivo);
@@ -53,9 +49,7 @@ public class Biblioteca {
 	    		
 	    		while((bufferLectura.readLine())!=null)    			
 	    		{
-	    			Personas obj = new Personas();
-	    			obj.setContPersonas(Integer.parseInt(bufferLectura.readLine()));
-	    			contPersonas++;
+	    			Personas obj = new Personas();    			
 	    			obj.setNombre(bufferLectura.readLine());
 	    			obj.setApellidoUno(bufferLectura.readLine());
 	    			obj.setApellidoDos(bufferLectura.readLine());
@@ -66,7 +60,7 @@ public class Biblioteca {
 	    		}
 
     		}else
-        		JOptionPane.showMessageDialog(frame, "No existen datos. O cambio el archivo de ruta. (personas)");                		
+        		JOptionPane.showMessageDialog(frame, "No existen datos. O cambio el archivo de ruta.");                		
     	}catch(Exception e){
     		e.printStackTrace();  
     	}finally
@@ -86,31 +80,29 @@ public class Biblioteca {
     
     public void  leerLibro()
     {
-		File archivo = new File (rutaLibros);
+		File archivo = new File (rutaPersonas);
     	try
     	{
-    		arrayLibros.clear();    
-    		contLibros = 0;
+    		arrayLibros = null;    		
     		if (archivo.exists())
     		{			
 	    		lectura = new FileReader (archivo);
 	    		bufferLectura = new BufferedReader(lectura);
+	    		
 	    		while((bufferLectura.readLine())!=null)    			
-	    		{ 
-	    			Libros obj = new Libros();   
-	    			obj.setContLibros(Integer.parseInt(bufferLectura.readLine()));
-	    			contLibros ++;
-	    			obj.setTitulo(bufferLectura.readLine());
-	    			obj.setAutor(bufferLectura.readLine());
-	    			obj.setEditorial(bufferLectura.readLine());
-	    			obj.setCalificacion(bufferLectura.readLine());
-	    			obj.setImagen(bufferLectura.readLine());
-	    			obj.setDiasPrestado(Integer.parseInt(bufferLectura.readLine()));
-	    			arrayLibros.add(obj);				
+	    		{
+	    			Personas obj = new Personas();    			
+	    			obj.setNombre(bufferLectura.readLine());
+	    			obj.setApellidoUno(bufferLectura.readLine());
+	    			obj.setApellidoDos(bufferLectura.readLine());
+	    			obj.setEmail(bufferLectura.readLine());
+	    			obj.setTelefono(bufferLectura.readLine());
+	    			obj.setTipo(bufferLectura.readLine());
+	    			arrayPersonas.add(obj);				
 	    		}
 
     		}else
-        		JOptionPane.showMessageDialog(frame, "No existen datos. O cambio el archivo de ruta. (libros)");                		
+        		JOptionPane.showMessageDialog(frame, "No existen datos. O cambio el archivo de ruta.");                		
     	}catch(Exception e){
     		e.printStackTrace();  
     	}finally
@@ -138,8 +130,7 @@ public class Biblioteca {
     
     public void AgregarPersona(String nombre, String apellido1, String apellido2, String telefono, String email,String  tipo ) throws IOException
     {
-    	   Personas obj = new Personas(); 
-    	   obj.setContPersonas(contPersonas++);
+    	   Personas obj = new Personas();              
            obj.setNombre(nombre);
            obj.setApellidoUno(apellido1);
            obj.setApellidoDos(apellido2);
@@ -152,18 +143,12 @@ public class Biblioteca {
     
     public void AgregarLibro(String titulo, String autor, String editorial, String imagen, String calificacion) throws IOException
     {
-    	
     	Libros obj = new Libros();
-    	obj.setContLibros(contLibros);
     	obj.setTitulo(titulo);
     	obj.setAutor(autor);
     	obj.setEditorial(editorial);
     	obj.setImangen(imagen);
     	obj.setCalificacion(calificacion);
-    	obj.setImagen("./fotosLibro/"+contLibros+".jpg");
-    	//obj.setDiasPrestado();
-    	
-    	contLibros++;
     	arrayLibros.add(obj);    	
     	GuardarLibro(arrayLibros);
     }
@@ -179,8 +164,7 @@ public class Biblioteca {
     		
     		for(Personas obj :  arrayPersonas1)
     		{
-    			pw.println("===>nueva persona<===");
-    			pw.println(obj.getContPersonas());
+	    		pw.println("==>Nueva_persona<==");
 	    		pw.println(obj.getNombre());
 	    		pw.println(obj.getApellidoUno());
 	    		pw.println(obj.getApellidoDos());
@@ -211,14 +195,12 @@ public class Biblioteca {
     		
     		for(Libros obj: arrayLibros1)
     		{	
-    			pw.println("===>nuevo libro<===");
-    			pw.println(obj.getContLibros());
+				pw.println("Nuevo_libro:");
 				pw.println(obj.getTitulo());
 				pw.println(obj.getAutor());
 				pw.println(obj.getEditorial());
-				pw.println(obj.getCalificacion());
 				pw.println(obj.getImagen());
-				pw.println(obj.getDiasPrestado());
+				pw.println(obj.getCalificacion());
 			}
     	} catch (Exception e) {
     		e.printStackTrace();
@@ -266,70 +248,7 @@ public class Biblioteca {
 		return false;
     }*/
     
-    public void EditarPersonas(String nombre, String apellido1, String apellido2, String telefono, String email,String  tipo, int id)
-    { 
-    	try
-    	{		    			
-    		leerPersona();
-    		// algo feo :/
-    		ArrayList<Personas> arrayTempPersonas = new ArrayList<Personas>(1);
-    		for(Personas obj: arrayPersonas)
-    		{	
-    			if(obj.getContPersonas() == id)
-    			{
-    				obj.setNombre(nombre);
-    				obj.setApellidoUno(apellido1);
-    				obj.setApellidoDos(apellido2);
-    				obj.setTelefono(telefono);
-    				obj.setEmail(email);
-    				obj.setTipo(tipo);
-    				
-    		    	
-    				arrayTempPersonas.add(obj);
-    			}else
-    				arrayTempPersonas.add(obj);		
-			}
-    		arrayPersonas = arrayTempPersonas;
-    		GuardarPersona(arrayPersonas);
-    	} catch (Exception e) {
-    		e.printStackTrace();
-    	}
-    }
-    
-    public void EditarLibros(String titulo, String autor, String editorial, String imagen, String calificacion,int dias, int id) throws IOException
-    {
-    	try
-    	{		    			
-    		leerLibro();
-    		ArrayList<Libros> arrayTempLibros = new ArrayList<Libros>(1);
-    		for(Libros obj: arrayLibros)
-    		{	
-    			if(obj.getContLibros() == id)
-    			{
-    				obj.setTitulo(titulo);
-    		    	obj.setAutor(autor);
-    		    	obj.setEditorial(editorial);
-    		    	obj.setCalificacion(calificacion);
-    		    	obj.setImangen(imagen);
-    		    	obj.setDiasPrestado(dias);
-    		    	arrayTempLibros.add(obj);
-    			}else
-    				arrayTempLibros.add(obj);		
-			}
-    		arrayLibros = arrayTempLibros;
-    		GuardarLibro(arrayLibros);
-    		// Editar el txt de libros prestados!! 
-    		
-    	} catch (Exception e) {
-    		e.printStackTrace();
-    	}
-    	
-	}
+   
 
-    public void librosMasPrestados(int veces, int meses)
-    {
-    	// 
-    }
-     
 }
 	
