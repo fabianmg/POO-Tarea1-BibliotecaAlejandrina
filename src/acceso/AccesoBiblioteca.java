@@ -21,6 +21,8 @@ import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class AccesoBiblioteca extends JFrame {
 
@@ -67,6 +69,7 @@ public class AccesoBiblioteca extends JFrame {
 	 * Create the frame.
 	 */
 	public AccesoBiblioteca() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Book.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 810, 482);
 		
@@ -74,9 +77,11 @@ public class AccesoBiblioteca extends JFrame {
 		setJMenuBar(menuPrincipal);
 		
 		JMenu menuAgregar = new JMenu("Agregar");
+		menuAgregar.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\add2.png"));
 		menuPrincipal.add(menuAgregar);
 		
 		JMenuItem agregarPersona = new JMenuItem("Persona");
+		agregarPersona.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Persona2.png"));
 		agregarPersona.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JInternalFrame ventanaAgregarNombres = new JInternalFrame("Agregar Nombres");
@@ -163,6 +168,7 @@ public class AccesoBiblioteca extends JFrame {
 		menuAgregar.add(agregarPersona);
 		
 		JMenuItem agregarLibro = new JMenuItem("Libro");
+		agregarLibro.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\newbook.png"));
 		menuAgregar.add(agregarLibro);
 		agregarLibro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -250,15 +256,19 @@ public class AccesoBiblioteca extends JFrame {
 			});
 		
 		JMenu menuConsultar = new JMenu("Consultar");
+		menuConsultar.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913748_question_mark-32.png"));
 		menuPrincipal.add(menuConsultar);
 		
 		JMenuItem mntmPorPersona = new JMenuItem("Por Persona");
+		mntmPorPersona.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913839_icon-person-32.png"));
 		menuConsultar.add(mntmPorPersona);
 		
 		JMenuItem mntmPorLibro = new JMenuItem("Por Libro");
+		mntmPorLibro.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913899_book-32.png"));
 		menuConsultar.add(mntmPorLibro);
 		
 		JMenu menuParametros = new JMenu("Parametros");
+		menuParametros.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913507_params-32.png"));
 		menuPrincipal.add(menuParametros);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
