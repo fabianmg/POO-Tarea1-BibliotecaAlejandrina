@@ -42,17 +42,21 @@ public class AccesoBiblioteca extends JFrame {
 		///code temnp////////////
 			//  public void GuardarPersona(String nombre, String apellido1, String apellido2, String telefono, String email,String  tipo ) throws IOException
 
-		Biblioteca personas = new Biblioteca();
-	
-		//personas.AgregarPersona("Fabian","Monge","Garcia","2222-2222","fmonge@fabian.com","familia");
-		//personas.AgregarLibro ("titulo", "autor", "editorial","3d", "imagen", "***");
-		//personas.AgregarLibro ("1titulo1", "1autor1", "1editorial1","13d1", "1imagen1", "1***1");
-		//personas.AgregarPersona("Naibaf","Gamon","Garge","8888-8888","otro@email.es","estudiante");
-		//personas.leerPersona();
-		//personas.getEditoriales();
+		Biblioteca biblio = new Biblioteca();
+		
+		
+		
+		biblio.AgregarPersona("Fabian","Monge","Garcia","2222-2222","fmonge@fabian.com","familia");
+		//biblio.AgregarLibro ("titulo", "autor", "editorial","3d", "imagen", "***");
+		//biblio.AgregarLibro ("1titulo1", "1autor1", "1editorial1","13d1", "1imagen1", "1***1");
+		//biblio.AgregarPersona("Naibaf","Gamon","Garge","8888-8888","otro@email.es","estudiante");
+		biblio.AgregarPersona("hFabiahn","hMonge","Garcia","2222-2222","fmonge@fabian.com","familia");
+		//biblio.leerPersona();
+		//biblio.getEditoriales();
+		 biblio.EditarLibros(0,3 , 4);
 		
 		////////////////////////
-		/*EventQueue.invokeLater(new Runnable() 
+	/*	EventQueue.invokeLater(new Runnable() 
 		{
 			public void run() {
 				try {

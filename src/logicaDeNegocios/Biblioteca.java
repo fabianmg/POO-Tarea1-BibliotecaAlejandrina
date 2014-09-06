@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class Biblioteca {
 
     private static String rutaLibros = "./libros.poo";
-    private static String rutaLPrestados = "./l-Prestados.poo";
+    private static String rutaLPrestados = "./Prestados.poo";
     private static String rutaPersonas = "./personas.poo";
     private static String rutaImagenLibro = "./fotosLibro/";
     private int contPersonas = 1; // inicia en 1. Si en libros hay un 0, no esta prestado
@@ -58,7 +58,7 @@ public class Biblioteca {
     	{
     		//arrayPersonas = null;
     		arrayPersonas.clear();
-    		contPersonas = 0 ;
+    		contPersonas = 1 ;
     		if (archivo.exists())
     		{			
 	    		lectura = new FileReader (archivo);
@@ -120,6 +120,7 @@ public class Biblioteca {
 	    			obj.setCalificacion(bufferLectura.readLine());
 	    			obj.setImagen(bufferLectura.readLine());
 	    			obj.setDiasPrestado(Integer.parseInt(bufferLectura.readLine()));
+	    			obj.setDisponibilidad(Integer.parseInt(bufferLectura.readLine()));
 	    			arrayLibros.add(obj);				
 	    		}
 
@@ -142,16 +143,10 @@ public class Biblioteca {
     	}
     }
 
-    /*
-     * Mae, Ariel
-     * Para esta tarea (biblioteca alejandrina) no hace falta modificar el txt.
-     * cuando hay modificaciones de personas y/o libros solo modificaremos el 
-     * arreglo de obj.... 
-     * Tampoco ocupamos poner los 3 packetes
-     */
-    
+        
     public void AgregarPersona(String nombre, String apellido1, String apellido2, String telefono, String email,String  tipo ) throws IOException
     {
+    	   leerPersona();
     	   Personas obj = new Personas(); 
     	   obj.setContPersonas(contPersonas++);
            obj.setNombre(nombre);
@@ -166,7 +161,7 @@ public class Biblioteca {
     
     public void AgregarLibro(String titulo, String autor, String editorial, String edicion, String imagen, String calificacion) throws IOException
     {
-    	
+    	leerLibro();
     	Libros obj = new Libros();
     	obj.setContLibros(contLibros);
     	obj.setTitulo(titulo);
@@ -176,11 +171,28 @@ public class Biblioteca {
     	obj.setImangen(imagen);
     	obj.setCalificacion(calificacion);
     	obj.setImagen(rutaImagenLibro+contLibros+".jpg");
-    	//obj.setDiasPrestado();
+    	obj.setDiasPrestado(0);
+    	obj.setDisponibilidad(0);
     	
     	contLibros++;
     	arrayLibros.add(obj);    	
     	GuardarLibro(arrayLibros);
+    }
+    
+    public void AgregarLibroPretado(int idLibro, int idPrsona)
+    {
+ 	   try
+ 	   {
+ 		   leerLibro();
+	 	   leerPersona();
+	 	   
+	 	   
+	 	   
+ 	   } catch (Exception e) {
+   		e.printStackTrace();
+	   }
+	   	
+ 	   
     }
     
     private void GuardarPersona(ArrayList<Personas> arrayPersonas1) throws IOException
@@ -235,6 +247,7 @@ public class Biblioteca {
 				pw.println(obj.getCalificacion());
 				pw.println(obj.getImagen());
 				pw.println(obj.getDiasPrestado());
+				pw.println(obj.getDisponibilidad());
 			}
     	} catch (Exception e) {
     		e.printStackTrace();
@@ -312,9 +325,8 @@ public class Biblioteca {
     	}
     }
     
-    public void EditarLibros(String titulo, String autor, String editorial, String imagen, String calificacion,int dias, int id, int idPersona) throws IOException
+    public void EditarLibros(String titulo, String autor, String editorial, String imagen, String calificacion,int dias, int id) throws IOException
     {
-    	// Para aparta o prestar un libro editar idPersona.
     	try
     	{		    			
     		leerLibro();
@@ -334,6 +346,31 @@ public class Biblioteca {
     				arrayTempLibros.add(obj);		
 			}
     		arrayLibros = arrayTempLibros;
+    		GuardarLibro(arrayLibros); 
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+	}
+    
+    public void EditarLibros(int dias, int idLibro, int idPersona) throws IOException
+    {
+    	// Para aparta o prestar un libro editar idPersona. Si no dejarlo en 0
+    	try
+    	{		    			
+    		leerLibro();
+    		ArrayList<Libros> arrayTempLibros = new ArrayList<Libros>(1);
+    		for(Libros obj: arrayLibros)
+    		{	
+    			if(obj.getContLibros() == idLibro)
+    			{
+    		    	obj.setDiasPrestado(dias);
+    		    	obj.setDisponibilidad(idPersona);
+    		    	arrayTempLibros.add(obj);
+    			}else
+    				arrayTempLibros.add(obj);		
+			}
+    		arrayLibros = arrayTempLibros;
     		GuardarLibro(arrayLibros);
     		// Editar el txt de libros prestados!! 
     		
@@ -343,11 +380,13 @@ public class Biblioteca {
     	
 	}
 
+
     public ArrayList<Personas> getPersonas()
     {
 		return arrayPersonas;
     }
-    public ArrayList<Libros> getLibros()
+  
+   public ArrayList<Libros> getLibros()
     {
 		return arrayLibros;
     }
@@ -402,7 +441,22 @@ public class Biblioteca {
     		return autor;	
     }
 
-  
+    public ArrayList<Personas> getTIpo(String tipo)   
+    {
+    	/*Retorna arrayList de personas del tipo elegido, (colega, familiar o estudiante*/
+    	ArrayList<Personas> lista =  new ArrayList<Personas>();
+    	String palabra ="";    	    		
+    		leerPersona();   
+    		for(Personas str: arrayPersonas)
+    		{	
+    			palabra = str.getTipo();
+    			if(palabra == tipo)
+    				lista.add(str);
+			} 
+    		return lista;	
+    }
+
+
     
     
      
