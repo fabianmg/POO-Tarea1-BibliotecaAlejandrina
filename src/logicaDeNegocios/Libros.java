@@ -7,21 +7,73 @@ public class Libros {
 	private String editorial;
 	private String edicion;
     private String imagen; // url - foto de portada
-    private String calificacion; //calificación en *. ***** = muy bueno, * = muy malo 
-  //private int contLibros = 0; //id de libro
+    private String calificacion; //calificación en *. // ***** = muy bueno,  * = muy malo 
+    private int contLibros = 0; //id de libro // contador del total libros
+    private int diasPrestado = 0;
+    private int cantVecesPrestado = 0;// Numero de veces que ha sido prestado
+    private int disponibilidad = 0; // Si es =  0, no esta prestado
+	// si es != de 0, el numero correspode al id de la persona que lo tenga
+    
 	
+
+
 	public Libros() {
 	}
 
+
 	public Libros(String titulo, String autor, String editorial,
-			String edicion, String imangen, String calificacion)
-	{	
+			String edicion, String imagen, String calificacion, int contLibros,
+			int diasPrestado, int cantVecesPrestado, int disponibilidad) {
+		super();
 		this.titulo = titulo;
 		this.autor = autor;
 		this.editorial = editorial;
 		this.edicion = edicion;
-		this.imagen = imangen;
+		this.imagen = imagen;
 		this.calificacion = calificacion;
+		this.contLibros = contLibros;
+		this.diasPrestado = diasPrestado;
+		this.cantVecesPrestado = cantVecesPrestado;
+		this.disponibilidad = disponibilidad;
+	}
+
+
+	public int getDisponibilidad() {
+		return disponibilidad;
+	}
+
+
+	public void setDisponibilidad(int disponibilidad) {
+		this.disponibilidad = disponibilidad;
+	}
+
+
+	public int getCantVecesPrestado() {
+		return cantVecesPrestado;
+	}
+
+	public void setCantVecesPrestado(int cantVecesPrestado) {
+		this.cantVecesPrestado = cantVecesPrestado;
+	}
+	
+	public int getDiasPrestado() {
+		return diasPrestado;
+	}
+
+	public void setDiasPrestado(int diasPrestado) {
+		this.diasPrestado = diasPrestado;
+	}
+
+	public int getContLibros() {
+		return contLibros;
+	}
+
+	public void setContLibros(int contLibros) {
+		this.contLibros = contLibros;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 	public String getTitulo() {
@@ -74,4 +126,3 @@ public class Libros {
 	
 	
 }
-

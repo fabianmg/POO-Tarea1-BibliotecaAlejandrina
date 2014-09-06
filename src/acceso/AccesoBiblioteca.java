@@ -43,16 +43,16 @@ public class AccesoBiblioteca extends JFrame {
 			//  public void GuardarPersona(String nombre, String apellido1, String apellido2, String telefono, String email,String  tipo ) throws IOException
 
 		Biblioteca personas = new Biblioteca();
-		
-		
+	
 		//personas.AgregarPersona("Fabian","Monge","Garcia","2222-2222","fmonge@fabian.com","familia");
-		//personas.AgregarLibro ("titulo", "autor", "editorial", "imagen", "***");
-		
+		//personas.AgregarLibro ("titulo", "autor", "editorial","3d", "imagen", "***");
+		//personas.AgregarLibro ("1titulo1", "1autor1", "1editorial1","13d1", "1imagen1", "1***1");
 		//personas.AgregarPersona("Naibaf","Gamon","Garge","8888-8888","otro@email.es","estudiante");
 		//personas.leerPersona();
+		//personas.getEditoriales();
 		
 		////////////////////////
-		EventQueue.invokeLater(new Runnable() 
+		/*EventQueue.invokeLater(new Runnable() 
 		{
 			public void run() {
 				try {
@@ -62,14 +62,14 @@ public class AccesoBiblioteca extends JFrame {
 					e.printStackTrace();
 				}
 			}
-		});
+		});*/
 	} 
 
 	/**
 	 * Create the frame.
 	 */
 	public AccesoBiblioteca() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Book.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Book.png"));// -.-
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 810, 482);
 		
@@ -77,7 +77,7 @@ public class AccesoBiblioteca extends JFrame {
 		setJMenuBar(menuPrincipal);
 		
 		JMenu menuAgregar = new JMenu("Agregar");
-		menuAgregar.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\add2.png"));
+		menuAgregar.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\add2.png"));//O.o'
 		menuPrincipal.add(menuAgregar);
 		
 		JMenuItem agregarPersona = new JMenuItem("Persona");
