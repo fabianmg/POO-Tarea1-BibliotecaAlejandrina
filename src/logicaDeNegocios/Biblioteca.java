@@ -7,18 +7,22 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
+ 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
 
 
 public class Biblioteca {
 
     private static String rutaLibros = "./libros.poo";
-    private static String rutaLPrestados = "./l_Prestados.poo";
+    private static String rutaLPrestados = "./Prestados.poo";
     private static String rutaPersonas = "./personas.poo";
+    private static String rutaImagenLibro = "./fotosLibro/";
+    private int contPersonas = 1; // inicia en 1. Si en libros hay un 0, no esta prestado
+    								// si es != de 0, en numero que tenga correspode a la persona que lo tenga
+    private int contLibros;
+    
    
     private ArrayList<Personas> arrayPersonas = new ArrayList<Personas>(1);
     private ArrayList<Libros> arrayLibros = new ArrayList<Libros>(1);
@@ -27,6 +31,7 @@ public class Biblioteca {
     
     
 	public Biblioteca() {
+		crearCarpetaImagenes();
 	}
 	
 
@@ -36,20 +41,34 @@ public class Biblioteca {
     JFrame frame = new JFrame();
   
     
-    public void  leerPersona()
+    private void crearCarpetaImagenes()
+    {
+		File archivo = new File (rutaImagenLibro);
+
+    	if(!archivo.exists())
+    	{
+    		archivo.mkdir();
+    	}
+    }
+    
+     public void  leerPersona()
     {
 		File archivo = new File (rutaPersonas);
     	try
     	{
-    		arrayPersonas = null;    		
+    		//arrayPersonas = null;
+    		arrayPersonas.clear();
+    		contPersonas = 1 ;
     		if (archivo.exists())
     		{			
 	    		lectura = new FileReader (archivo);
 	    		bufferLectura = new BufferedReader(lectura);
 	    		
 	    		while((bufferLectura.readLine())!=null)    			
-	    		{
-	    			Personas obj = new Personas();    			
+	    		{	
+	    			Personas obj = new Personas();
+	    			obj.setContPersonas(Integer.parseInt(bufferLectura.readLine()));
+	    			contPersonas++;
 	    			obj.setNombre(bufferLectura.readLine());
 	    			obj.setApellidoUno(bufferLectura.readLine());
 	    			obj.setApellidoDos(bufferLectura.readLine());
@@ -60,7 +79,7 @@ public class Biblioteca {
 	    		}
 
     		}else
-        		JOptionPane.showMessageDialog(frame, "No existen datos. O cambio el archivo de ruta.");                		
+        		JOptionPane.showMessageDialog(frame, "No existen datos. O cambio el archivo de ruta. (personas)");                		
     	}catch(Exception e){
     		e.printStackTrace();  
     	}finally
@@ -80,29 +99,33 @@ public class Biblioteca {
     
     public void  leerLibro()
     {
-		File archivo = new File (rutaPersonas);
+		File archivo = new File (rutaLibros);
     	try
     	{
-    		arrayLibros = null;    		
+    		arrayLibros.clear();    
+    		contLibros = 0;
     		if (archivo.exists())
     		{			
 	    		lectura = new FileReader (archivo);
 	    		bufferLectura = new BufferedReader(lectura);
-	    		
 	    		while((bufferLectura.readLine())!=null)    			
-	    		{
-	    			Personas obj = new Personas();    			
-	    			obj.setNombre(bufferLectura.readLine());
-	    			obj.setApellidoUno(bufferLectura.readLine());
-	    			obj.setApellidoDos(bufferLectura.readLine());
-	    			obj.setEmail(bufferLectura.readLine());
-	    			obj.setTelefono(bufferLectura.readLine());
-	    			obj.setTipo(bufferLectura.readLine());
-	    			arrayPersonas.add(obj);				
+	    		{ 
+	    			Libros obj = new Libros();   
+	    			obj.setContLibros(Integer.parseInt(bufferLectura.readLine()));
+	    			contLibros ++;
+	    			obj.setTitulo(bufferLectura.readLine());
+	    			obj.setAutor(bufferLectura.readLine());
+	    			obj.setEditorial(bufferLectura.readLine());
+	    			obj.setEdicion(bufferLectura.readLine());
+	    			obj.setCalificacion(bufferLectura.readLine());
+	    			obj.setImagen(bufferLectura.readLine());
+	    			obj.setDiasPrestado(Integer.parseInt(bufferLectura.readLine()));
+	    			obj.setDisponibilidad(Integer.parseInt(bufferLectura.readLine()));
+	    			arrayLibros.add(obj);				
 	    		}
 
     		}else
-        		JOptionPane.showMessageDialog(frame, "No existen datos. O cambio el archivo de ruta.");                		
+        		JOptionPane.showMessageDialog(frame, "No existen datos. O cambio el archivo de ruta. (libros)");                		
     	}catch(Exception e){
     		e.printStackTrace();  
     	}finally
@@ -120,17 +143,12 @@ public class Biblioteca {
     	}
     }
 
-    /*
-     * Mae, Ariel
-     * Para esta tarea (biblioteca alejandrina) no hace falta modificar el txt.
-     * cuando hay modificaciones de personas y/o libros solo modificaremos el 
-     * arreglo de obj.... 
-     * Tampoco ocupamos poner los 3 packetes
-     */
-    
+        
     public void AgregarPersona(String nombre, String apellido1, String apellido2, String telefono, String email,String  tipo ) throws IOException
     {
-    	   Personas obj = new Personas();              
+    	   leerPersona();
+    	   Personas obj = new Personas(); 
+    	   obj.setContPersonas(contPersonas++);
            obj.setNombre(nombre);
            obj.setApellidoUno(apellido1);
            obj.setApellidoDos(apellido2);
@@ -141,19 +159,43 @@ public class Biblioteca {
            GuardarPersona(arrayPersonas); // no hace falta pasarle arrayPersonas. Es global!
     }
     
-    public void AgregarLibro(String titulo, String autor, String editorial, String imagen, String calificacion) throws IOException
+    public void AgregarLibro(String titulo, String autor, String editorial, String edicion, String imagen, String calificacion) throws IOException
     {
+    	leerLibro();
     	Libros obj = new Libros();
+    	obj.setContLibros(contLibros);
     	obj.setTitulo(titulo);
     	obj.setAutor(autor);
+    	obj.setEdicion(edicion);
     	obj.setEditorial(editorial);
     	obj.setImangen(imagen);
     	obj.setCalificacion(calificacion);
+    	obj.setImagen(rutaImagenLibro+contLibros+".jpg");
+    	obj.setDiasPrestado(0);
+    	obj.setDisponibilidad(0);
+    	
+    	contLibros++;
     	arrayLibros.add(obj);    	
     	GuardarLibro(arrayLibros);
     }
     
-    public void GuardarPersona(ArrayList<Personas> arrayPersonas1) throws IOException
+    public void AgregarLibroPretado(int idLibro, int idPrsona)
+    {
+ 	   try
+ 	   {
+ 		   leerLibro();
+	 	   leerPersona();
+	 	   
+	 	   
+	 	   
+ 	   } catch (Exception e) {
+   		e.printStackTrace();
+	   }
+	   	
+ 	   
+    }
+    
+    private void GuardarPersona(ArrayList<Personas> arrayPersonas1) throws IOException
     {
     	FileWriter escribir = null;
     	PrintWriter pw = null;
@@ -164,7 +206,8 @@ public class Biblioteca {
     		
     		for(Personas obj :  arrayPersonas1)
     		{
-	    		pw.println("==>Nueva_persona<==");
+    			pw.println("===>nueva persona<===");
+    			pw.println(obj.getContPersonas());
 	    		pw.println(obj.getNombre());
 	    		pw.println(obj.getApellidoUno());
 	    		pw.println(obj.getApellidoDos());
@@ -184,7 +227,7 @@ public class Biblioteca {
     	}
     }
 
-    public void GuardarLibro(ArrayList<Libros> arrayLibros1) throws IOException
+    private void GuardarLibro(ArrayList<Libros> arrayLibros1) throws IOException
     {
     	FileWriter escribir = null;
     	PrintWriter pw = null;
@@ -195,12 +238,16 @@ public class Biblioteca {
     		
     		for(Libros obj: arrayLibros1)
     		{	
-				pw.println("Nuevo_libro:");
+    			pw.println("===>nuevo libro<===");
+    			pw.println(obj.getContLibros());
 				pw.println(obj.getTitulo());
 				pw.println(obj.getAutor());
 				pw.println(obj.getEditorial());
-				pw.println(obj.getImagen());
+				pw.println(obj.getEdicion());
 				pw.println(obj.getCalificacion());
+				pw.println(obj.getImagen());
+				pw.println(obj.getDiasPrestado());
+				pw.println(obj.getDisponibilidad());
 			}
     	} catch (Exception e) {
     		e.printStackTrace();
@@ -248,7 +295,169 @@ public class Biblioteca {
 		return false;
     }*/
     
-   
+    public void EditarPersonas(String nombre, String apellido1, String apellido2, String telefono, String email,String  tipo, int id)
+    { 
+    	try
+    	{		    			
+    		leerPersona();
+    		// algo feo :/
+    		ArrayList<Personas> arrayTempPersonas = new ArrayList<Personas>(1);
+    		for(Personas obj: arrayPersonas)
+    		{	
+    			if(obj.getContPersonas() == id)
+    			{
+    				obj.setNombre(nombre);
+    				obj.setApellidoUno(apellido1);
+    				obj.setApellidoDos(apellido2);
+    				obj.setTelefono(telefono);
+    				obj.setEmail(email);
+    				obj.setTipo(tipo);
+    				
+    		    	
+    				arrayTempPersonas.add(obj);
+    			}else
+    				arrayTempPersonas.add(obj);		
+			}
+    		arrayPersonas = arrayTempPersonas;
+    		GuardarPersona(arrayPersonas);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    public void EditarLibros(String titulo, String autor, String editorial, String imagen, String calificacion,int dias, int id) throws IOException
+    {
+    	try
+    	{		    			
+    		leerLibro();
+    		ArrayList<Libros> arrayTempLibros = new ArrayList<Libros>(1);
+    		for(Libros obj: arrayLibros)
+    		{	
+    			if(obj.getContLibros() == id)
+    			{
+    				obj.setTitulo(titulo);
+    		    	obj.setAutor(autor);
+    		    	obj.setEditorial(editorial);
+    		    	obj.setCalificacion(calificacion);
+    		    	obj.setImangen(imagen);
+    		    	obj.setDiasPrestado(dias);
+    		    	arrayTempLibros.add(obj);
+    			}else
+    				arrayTempLibros.add(obj);		
+			}
+    		arrayLibros = arrayTempLibros;
+    		GuardarLibro(arrayLibros); 
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+	}
+    
+    public void EditarLibros(int dias, int idLibro, int idPersona) throws IOException
+    {
+    	// Para aparta o prestar un libro editar idPersona. Si no dejarlo en 0
+    	try
+    	{		    			
+    		leerLibro();
+    		ArrayList<Libros> arrayTempLibros = new ArrayList<Libros>(1);
+    		for(Libros obj: arrayLibros)
+    		{	
+    			if(obj.getContLibros() == idLibro)
+    			{
+    		    	obj.setDiasPrestado(dias);
+    		    	obj.setDisponibilidad(idPersona);
+    		    	arrayTempLibros.add(obj);
+    			}else
+    				arrayTempLibros.add(obj);		
+			}
+    		arrayLibros = arrayTempLibros;
+    		GuardarLibro(arrayLibros);
+    		// Editar el txt de libros prestados!! 
+    		
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+	}
 
-}
+
+    public ArrayList<Personas> getPersonas()
+    {
+		return arrayPersonas;
+    }
+  
+   public ArrayList<Libros> getLibros()
+    {
+		return arrayLibros;
+    }
+ 
+    private boolean EstaEnLista(String palabra, ArrayList<String> lista)
+    {
+    	if(lista!=null)
+    	{
+    		for(String dato: lista)
+    	
+	    	{
+	    		if(dato == palabra)
+	    		{
+	    			return true;
+	    		}
+	    	}
+    	}	
+		return false;
+    }
+    
+    public ArrayList<String> getEditoriales()  
+    { 
+    	ArrayList<String> editorial = new ArrayList<String>(1);///////////!
+    	String palabra ="";    	    		
+    		leerLibro();   
+    		for(Libros str: arrayLibros)
+    		{	
+    			palabra = str.getEditorial();
+    			if(!EstaEnLista(palabra, editorial))
+    				editorial.add(palabra);
+    			//else
+    				//editorial.add("no hay datos");
+			} 
+    		return editorial;	
+    }
 	
+    public ArrayList<String> getAutores()  
+    {
+    	ArrayList<String> autor =  new ArrayList<String>(1);				///////////!
+    	String palabra ="";    	    		
+    		leerLibro();   
+    		
+    		for(Libros str: arrayLibros)
+    		{	
+    			palabra = str.getAutor();
+    			if(!EstaEnLista(palabra, autor))
+    				autor.add(palabra);
+    			//else
+    				//autor.add("no hay datos");
+			} 
+    		
+    		return autor;	
+    }
+
+    public ArrayList<Personas> getTIpo(String tipo)   
+    {
+    	/*Retorna arrayList de personas del tipo elegido, (colega, familiar o estudiante*/
+    	ArrayList<Personas> lista =  new ArrayList<Personas>();
+    	String palabra ="";    	    		
+    		leerPersona();   
+    		for(Personas str: arrayPersonas)
+    		{	
+    			palabra = str.getTipo();
+    			if(palabra == tipo)
+    				lista.add(str);
+			} 
+    		return lista;	
+    }
+
+
+    
+    
+     
+}
