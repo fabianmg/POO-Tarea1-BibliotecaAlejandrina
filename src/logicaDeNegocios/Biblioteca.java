@@ -27,7 +27,7 @@ public class Biblioteca {
     private static String rutaLPrestados = "./Prestados.poo";
     private static String rutaPersonas = "./personas.poo";
     private static String rutaImagenLibro = "./fotosLibro/";
-    private int contPersonas = 1; // inicia en 1. Si en libros hay un 0, no esta prestado
+    private int contPersonas = 1; // inicia en 1. 
     								// si es != de 0, en numero que tenga correspode a la persona que lo tenga
     private int contLibros;
     
@@ -59,12 +59,11 @@ public class Biblioteca {
     	}
     }
     
-     public void  leerPersona()
+    public void  leerPersona()
     {
 		File archivo = new File (rutaPersonas);
     	try
     	{
-    		//arrayPersonas = null;
     		arrayPersonas.clear();
     		contPersonas = 1 ;
     		if (archivo.exists())
@@ -96,7 +95,6 @@ public class Biblioteca {
     		// que se cierra tanto si todo va bien como si salta  una excepcion.
     		try
     		{
-    			//if( null!= lectura )
         		if (archivo.exists())
     				lectura.close();
  
@@ -321,7 +319,6 @@ public class Biblioteca {
     				obj.setEmail(email);
     				obj.setTipo(tipo);
     				
-    		    	
     				arrayTempPersonas.add(obj);
     			}else
     				arrayTempPersonas.add(obj);		
@@ -431,9 +428,10 @@ public class Biblioteca {
         		ArrayList<Libros> librosArrayTemp = arrayLibros;
         		String nombre = "";
         		int idPersona = 0;
+        		
         		for(Libros obj: librosArrayTemp)
         		{	
-        			if(obj.getDisponibilidad().equals(0))
+        			if(!obj.getDisponibilidad().equals(0))
         			{
         				idPersona = Integer.parseInt(obj.getDisponibilidad());
         				nombre = getNombrePersona(idPersona);
@@ -470,17 +468,17 @@ public class Biblioteca {
     	ArrayList<String> editorial = new ArrayList<String>(1);///////////!
     	String palabra ="";    	    		
     		leerLibro();   
+    		
     		for(Libros str: arrayLibros)
     		{	
     			palabra = str.getEditorial();
+    			
     			if(!EstaEnLista(palabra, editorial))
     				editorial.add(palabra);
-    			//else
-    				//editorial.add("no hay datos");
 			} 
     		return editorial;	
     }
-	
+    
     public ArrayList<String> getAutores()  
     {
     	ArrayList<String> autor =  new ArrayList<String>(1);				///////////!
@@ -499,6 +497,8 @@ public class Biblioteca {
     		return autor;	
     }
 
+    
+    
     public ArrayList<Personas> getTIpo(String tipo)   
     {
     	/*Retorna arrayList de personas del tipo elegido, (colega, familiar o estudiante*/
@@ -514,6 +514,35 @@ public class Biblioteca {
     		return lista;	
     }
 
+
+    public ArrayList<Libros> getLibros4Editoriales(String editorial)  
+    { 
+    	ArrayList<Libros> libros4editorial = new ArrayList<Libros>(1);
+    	String palabra ="";    	    		
+    		leerLibro();   
+    		
+    		for(Libros obj: arrayLibros)
+    		{	
+    			palabra = obj.getEditorial();
+    			if(palabra.equals(editorial))
+    				libros4editorial.add(obj);
+			} 
+    		return libros4editorial;	
+    }
+    
+    public ArrayList<Libros> getPrsonas4Autor(String autor)  
+    { 
+    	ArrayList<Libros> libros4Autor = new ArrayList<Libros>(1);
+    	String palabra ="";    	    		
+    		leerLibro();   
+    		for(Libros obj: arrayLibros)
+    		{	
+    			palabra = obj.getAutor();
+    			if(palabra.equals(autor))
+    				libros4Autor.add(obj);
+			} 
+    		return libros4Autor;	
+    }
 
     
     
