@@ -133,11 +133,21 @@ public class AccesoBiblioteca extends JFrame {
 		agregarPersona.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
 				
-				JInternalFrame ventanaAgregarNombres = new JInternalFrame("Agregar Nombres");
+				
+				VentanaAgregarPersonas VAP = new VentanaAgregarPersonas(); //Crea la ventana de agregar personas dentro del escritorio
+				escritorio.add(VAP);
+				VAP.setVisible(true);
+				try {
+					VAP.setMaximum(true);
+				} catch (PropertyVetoException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			/*	JInternalFrame ventanaAgregarNombres = new JInternalFrame("Agregar Nombres");
 				ventanaAgregarNombres.setBounds(10, 11, 774, 398);
 				escritorio.add(ventanaAgregarNombres);
 				ventanaAgregarNombres.setVisible(true);;
-				ventanaAgregarNombres.getContentPane().setLayout(null);
+				ventanaAgregarNombres.getContentPane().setLayout(null);// Agregar el contenido al Internal Frame (JLabel,text,etc)
 				try {
 					ventanaAgregarNombres.setMaximum(true);
 				} catch (PropertyVetoException e1) {
@@ -239,13 +249,7 @@ public class AccesoBiblioteca extends JFrame {
 				textNumeroDeTelefono.setBounds(164, 317, 223, 15);
 				ventanaAgregarNombres.getContentPane().add(textNumeroDeTelefono);
 				textNumeroDeTelefono.setColumns(10);
-				
-
-					/*Prueba.getContentPane().add(btnNewButton,*/
-				
-				
-
-								
+				*/	
 				
 			}
 		});
@@ -257,7 +261,17 @@ public class AccesoBiblioteca extends JFrame {
 		agregarLibro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				JInternalFrame ventanaAgregarLibros = new JInternalFrame("Agregar Libros");
+				VentanaAgregarLibro VAL = new VentanaAgregarLibro();
+				escritorio.add(VAL);
+				VAL.setVisible(true);
+				try {
+					VAL.setMaximum(true);
+				} catch (PropertyVetoException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				/*JInternalFrame ventanaAgregarLibros = new JInternalFrame("Agregar Libros");
 				ventanaAgregarLibros.setBounds(0, 0, 774, 398);
 				escritorio.add(ventanaAgregarLibros);
 				ventanaAgregarLibros.getContentPane().setLayout(null);
@@ -344,7 +358,7 @@ public class AccesoBiblioteca extends JFrame {
 				ventanaAgregarLibros.setVisible(true);
 
 
-								
+								*/
 	
 				
 				}
