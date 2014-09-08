@@ -56,12 +56,12 @@ public class VentanaAgregarLibro extends JInternalFrame {
 		lblEditorial.setBounds(53, 224, 92, 14);
 		getContentPane().add(lblEditorial);
 		
-		JLabel lblCalificacion = DefaultComponentFactory.getInstance().createLabel("Calificacion(*):");
+		JLabel lblCalificacion = DefaultComponentFactory.getInstance().createLabel("Calificacion: (1-5)");
 		lblCalificacion.setBounds(53, 271, 92, 14);
 		getContentPane().add(lblCalificacion);
 		
 		textField = new JTextField();
-		textField.setBounds(155, 87, 200, 14);
+		textField.setBounds(155, 81, 175, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
@@ -99,7 +99,7 @@ public class VentanaAgregarLibro extends JInternalFrame {
 		
 		JLabel lblAgregarLibro = DefaultComponentFactory.getInstance().createTitle("Agregar Libro");
 		lblAgregarLibro.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblAgregarLibro.setBounds(300, 30, 164, 27);
+		lblAgregarLibro.setBounds(131, 35, 164, 27);
 		getContentPane().add(lblAgregarLibro);
 
 	}
