@@ -8,8 +8,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
  
+
+
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.xml.bind.ParseConversionEvent;
+
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
+
+import sun.dc.path.PathError;
 
 
 
@@ -120,7 +128,7 @@ public class Biblioteca {
 	    			obj.setCalificacion(bufferLectura.readLine());
 	    			obj.setImagen(bufferLectura.readLine());
 	    			obj.setDiasPrestado(Integer.parseInt(bufferLectura.readLine()));
-	    			obj.setDisponibilidad(Integer.parseInt(bufferLectura.readLine()));
+	    			obj.setDisponibilidad(bufferLectura.readLine());
 	    			arrayLibros.add(obj);				
 	    		}
 
@@ -172,7 +180,7 @@ public class Biblioteca {
     	obj.setCalificacion(calificacion);
     	obj.setImagen(rutaImagenLibro+contLibros+".jpg");
     	obj.setDiasPrestado(0);
-    	obj.setDisponibilidad(0);
+    	obj.setDisponibilidad("0");
     	
     	contLibros++;
     	arrayLibros.add(obj);    	
@@ -365,7 +373,7 @@ public class Biblioteca {
     			if(obj.getContLibros() == idLibro)
     			{
     		    	obj.setDiasPrestado(dias);
-    		    	obj.setDisponibilidad(idPersona);
+    		    	obj.setDisponibilidad(Integer.toString(idPersona));
     		    	arrayTempLibros.add(obj);
     			}else
     				arrayTempLibros.add(obj);		
@@ -380,17 +388,67 @@ public class Biblioteca {
     	
 	}
 
-
     public ArrayList<Personas> getPersonas()
     {
 		return arrayPersonas;
     }
   
-   public ArrayList<Libros> getLibros()
+    public ArrayList<Libros> getLibros()
     {
 		return arrayLibros;
     }
- 
+    
+    
+    private String getNombrePersona(int idPersona)
+    {
+		String nombre = "";
+
+      	try
+    	{		    			
+      		leerPersona();
+    		for(Personas obj: arrayPersonas)
+    		{	
+    			if(obj.getContPersonas() == idPersona)
+    			{	
+    				nombre = obj.getNombre();
+    				return nombre;
+    			}			
+			}
+    		
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+		return nombre;
+    	
+    }
+  
+    public ArrayList<Libros> getLibrosPrestado()
+    {
+        	try
+        	{		    			
+        		leerLibro();
+        		ArrayList<Libros> librosPrestados = new ArrayList<Libros>(1);
+        		ArrayList<Libros> librosArrayTemp = arrayLibros;
+        		String nombre = "";
+        		int idPersona = 0;
+        		for(Libros obj: librosArrayTemp)
+        		{	
+        			if(obj.getDisponibilidad().equals(0))
+        			{
+        				idPersona = Integer.parseInt(obj.getDisponibilidad());
+        				nombre = getNombrePersona(idPersona);
+        				obj.setDisponibilidad(nombre);
+        				librosPrestados.add(obj);
+        			}			
+    			}
+        		librosArrayTemp.clear();
+        		return librosPrestados;
+        	} catch (Exception e) {
+        		e.printStackTrace();
+        	}
+			return arrayLibros;
+    }
+    
     private boolean EstaEnLista(String palabra, ArrayList<String> lista)
     {
     	if(lista!=null)

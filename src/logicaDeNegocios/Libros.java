@@ -11,7 +11,7 @@ public class Libros {
     private int contLibros = 0; //id de libro // contador del total libros
     private int diasPrestado = 0;
     private int cantVecesPrestado = 0;// Numero de veces que ha sido prestado
-    private int disponibilidad = 0; // Si es =  0, no esta prestado
+    private String disponibilidad = "0"; // Si es =  0, no esta prestado
 	// si es != de 0, el numero correspode al id de la persona que lo tenga
     
 	
@@ -23,7 +23,7 @@ public class Libros {
 
 	public Libros(String titulo, String autor, String editorial,
 			String edicion, String imagen, String calificacion, int contLibros,
-			int diasPrestado, int cantVecesPrestado, int disponibilidad) {
+			int diasPrestado, int cantVecesPrestado, String disponibilidad) {
 		super();
 		this.titulo = titulo;
 		this.autor = autor;
@@ -38,12 +38,12 @@ public class Libros {
 	}
 
 
-	public int getDisponibilidad() {
+	public String getDisponibilidad() {
 		return disponibilidad;
 	}
 
 
-	public void setDisponibilidad(int disponibilidad) {
+	public void setDisponibilidad(String disponibilidad) {
 		this.disponibilidad = disponibilidad;
 	}
 
