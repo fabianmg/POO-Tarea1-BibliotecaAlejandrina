@@ -47,11 +47,11 @@ public class AccesoBiblioteca extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 
-	DefaultTableModel modelo;
-	String [] Datos = new String[50];
+	DefaultTableModel modelo = new DefaultTableModel();;
+
 	JDesktopPane escritorio;
+	String [] Datos ;
 	
-	JInternalFrame ventanaEdicionPersona ;
 	private JTextField textTitulo;
 	private JTextField textAutor;
 	private JTextField textEditorial;
@@ -65,11 +65,11 @@ public class AccesoBiblioteca extends JFrame {
 	private JTextField textColumna;
 	private JTextField textAgregarDatoNuevo;
 	private JTextField textFila;
-	
+
 	
 	
 	public static void main(String[] args) throws IOException {
-		
+		/*
 		///code temnp////////////
 			//  public void GuardarPersona(String nombre, String apellido1, String apellido2, String telefono, String email,String  tipo ) throws IOException
 
@@ -85,9 +85,9 @@ public class AccesoBiblioteca extends JFrame {
 		//biblio.leerPersona();
 		//biblio.getEditoriales();
 		 biblio.EditarLibros(0,3 , 4);
-		
+		*/
 		////////////////////////
-	/*	EventQueue.invokeLater(new Runnable() 
+		EventQueue.invokeLater(new Runnable() 
 		{
 			public void run() {
 				try {
@@ -97,22 +97,18 @@ public class AccesoBiblioteca extends JFrame {
 					e.printStackTrace();
 				}
 			}
-		});*/
+		});
 	} 
 
 	/**
 	 * Create the frame.
 	 */
 	public AccesoBiblioteca() {
-<<<<<<< HEAD
-		
-		
 
 /**/
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Book.png"));
-=======
+
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Book.png"));// -.-
->>>>>>> origin/master
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 810, 482);
 		
@@ -145,7 +141,7 @@ public class AccesoBiblioteca extends JFrame {
 				try {
 					ventanaAgregarNombres.setMaximum(true);
 				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
+					
 					e1.printStackTrace();
 				}
 
@@ -185,21 +181,22 @@ public class AccesoBiblioteca extends JFrame {
 				btnAgregar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						
-					    
+						Datos= new String[5];
+						
 						Datos[0] = txtNombre.getText();
-						txtNombre.setText(null);
+						
 						Datos[1] = textPrimerApellido.getText();
-						textPrimerApellido.setText(null);
+						
 						Datos[2] = textSegundoApellido.getText();
-						textSegundoApellido.setText(null);
+						
 						Datos[3] = textCorreoElectronico.getText();
-						textCorreoElectronico.setText(null);
 						Datos[4] = textNumeroDeTelefono.getText();
+						txtNombre.setText(null);
+						textPrimerApellido.setText(null);
+						textSegundoApellido.setText(null);
+						textCorreoElectronico.setText(null);
 						textNumeroDeTelefono.setText(null);
-						
-						
-						
-						
+
 						
 						
 					}
@@ -266,8 +263,7 @@ public class AccesoBiblioteca extends JFrame {
 				ventanaAgregarLibros.getContentPane().setLayout(null);
 				try {
 					ventanaAgregarLibros.setMaximum(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
+				} catch (PropertyVetoException e1) {				
 					e1.printStackTrace();
 				}
 				
@@ -362,7 +358,126 @@ public class AccesoBiblioteca extends JFrame {
 		edicionPersona.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+
+				
+
+				JInternalFrame ventanaEdicionPersona = new JInternalFrame("Editar Personas");
+				ventanaEdicionPersona.setBorder(null);
+				ventanaEdicionPersona.setBounds(-11, -12, 785, 410);
+				ventanaEdicionPersona.setVisible(true);
+				escritorio.add(ventanaEdicionPersona);
+				ventanaEdicionPersona.getContentPane().setLayout(null);
+				try {
+					ventanaEdicionPersona.setMaximum(true);
+				} catch (PropertyVetoException e1) {
+					e1.printStackTrace();
+				}
+
+				
+				
+				modelo.addColumn("Nombre");
+				modelo.addColumn("Primer Apellido");
+				modelo.addColumn("Segundo Apellido");
+				modelo.addColumn("Correo Electronico");
+				modelo.addColumn("Numero de Telefono");
+				
+				table = new JTable();
+				table.setColumnSelectionAllowed(true);
+				table.setCellSelectionEnabled(true);
+				table.setBounds(26, 80, 425, 132);
+				table.setModel(modelo);
+				modelo.addRow(Datos);
+				
+				
+				/**/				
+				ventanaEdicionPersona.getContentPane().add(table);
+				
+				JButton btnEditar = new JButton("Editar");
+				btnEditar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						int fila = Integer.parseInt(textFila.getText());
+						int columna = Integer.parseInt(textColumna.getText());
+						modelo.setValueAt(textAgregarDatoNuevo.getText(), fila, columna);
+						textColumna.setText(null);
+						textAgregarDatoNuevo.setText(null);
+						textFila.setText(null);
+					
+					}
+				});
+				btnEditar.setBounds(572, 120, 142, 23);
+				ventanaEdicionPersona.getContentPane().add(btnEditar);
+				
+				JButton btnEliminarSeleccionado = new JButton("Eliminar Seleccionado");
+				btnEliminarSeleccionado.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						int filaseleccionada = table.getSelectedRow();
+						if (filaseleccionada >=0) {
+							modelo.removeRow(filaseleccionada);
+						}
+						JOptionPane.showMessageDialog(null, "No selecciono ningun elemento");
+					}
+				});
+				btnEliminarSeleccionado.setBounds(572, 229, 142, 23);
+				ventanaEdicionPersona.getContentPane().add(btnEliminarSeleccionado);
+				
+				JButton btnEliminarTodo = new JButton("Eliminar Todo");
+				btnEliminarTodo.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						
+						int cantidadFilas = table.getRowCount();
+						
+						for(cantidadFilas-- ; cantidadFilas>=0 ; cantidadFilas--){
+							modelo.removeRow(cantidadFilas);
+							
+							
+						}
+					}
+				});
+				btnEliminarTodo.setBounds(572, 275, 142, 23);
+				ventanaEdicionPersona.getContentPane().add(btnEliminarTodo);
+				
+				JLabel lblFila = DefaultComponentFactory.getInstance().createTitle("Fila:");
+				lblFila.setBounds(572, 30, 32, 14);
+				ventanaEdicionPersona.getContentPane().add(lblFila);
+				
+				JLabel lblColumna = DefaultComponentFactory.getInstance().createLabel("Columna:");
+				lblColumna.setBounds(572, 55, 45, 14);
+				ventanaEdicionPersona.getContentPane().add(lblColumna);
+				
+				JLabel lblNuevo = DefaultComponentFactory.getInstance().createLabel("Nuevo:");
+				lblNuevo.setBounds(572, 80, 88, 14);
+				ventanaEdicionPersona.getContentPane().add(lblNuevo);
+				
+				textColumna = new JTextField();
+				textColumna.setBounds(628, 55, 32, 14);
+				ventanaEdicionPersona.getContentPane().add(textColumna);
+				textColumna.setColumns(10);
+				
+				
+				textAgregarDatoNuevo = new JTextField();
+				textAgregarDatoNuevo.setBounds(628, 80, 88, 14);
+				ventanaEdicionPersona.getContentPane().add(textAgregarDatoNuevo);
+				textAgregarDatoNuevo.setColumns(10);
+				
+				
+				textFila = new JTextField();
+				textFila.setBounds(627, 30, 32, 14);
+				ventanaEdicionPersona.getContentPane().add(textFila);
+				textFila.setColumns(10);
+				
+				JLabel lblEditar = DefaultComponentFactory.getInstance().createTitle("Editar");
+				lblEditar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				lblEditar.setBounds(260, 11, 62, 48);
+				ventanaEdicionPersona.getContentPane().add(lblEditar);
 								
+
+
+
+								
+
+
+				
+					
 			}
 		});
 		
@@ -377,105 +492,6 @@ public class AccesoBiblioteca extends JFrame {
 		menuParametros.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913507_params-32.png"));
 		menuPrincipal.add(menuParametros);
 		/***/
-		JInternalFrame ventanaEdicionPersona = new JInternalFrame("Editar Personas");
-		ventanaEdicionPersona.setBorder(null);
-		ventanaEdicionPersona.setBounds(-11, -12, 785, 410);
-		ventanaEdicionPersona.setVisible(true);
-		escritorio.add(ventanaEdicionPersona);
-		ventanaEdicionPersona.getContentPane().setLayout(null);
-		try {
-			ventanaEdicionPersona.setMaximum(true);
-		} catch (PropertyVetoException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		/**/
-		
-		modelo = new DefaultTableModel();
-		modelo.addColumn("Nombre");
-		modelo.addColumn("Primer Apellido");
-		modelo.addColumn("Segundo Apellido");
-		modelo.addColumn("Correo Electronico");
-		modelo.addColumn("Numero de Telefono");
-		
-		table = new JTable();
-		table.setBounds(10, 97, 460, 267);
-		table.setModel(modelo);
-		modelo.addRow(Datos);
-		
-		
-		/**/				
-		ventanaEdicionPersona.getContentPane().add(table);
-		
-		JButton btnEditar = new JButton("Editar");
-		btnEditar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-		
-			}
-		});
-		btnEditar.setBounds(572, 154, 142, 23);
-		ventanaEdicionPersona.getContentPane().add(btnEditar);
-		
-		JButton btnEliminarSeleccionado = new JButton("Eliminar Seleccionado");
-		btnEliminarSeleccionado.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int filaseleccionada = table.getSelectedRow();
-				if (filaseleccionada >=0) {
-					modelo.removeRow(filaseleccionada);
-				}
-				JOptionPane.showMessageDialog(null, "No selecciono ningun elemento");
-			}
-		});
-		btnEliminarSeleccionado.setBounds(572, 229, 142, 23);
-		ventanaEdicionPersona.getContentPane().add(btnEliminarSeleccionado);
-		
-		JButton btnEliminarTodo = new JButton("Eliminar Todo");
-		btnEliminarTodo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				int cantidadFilas = table.getRowCount();
-				
-				for(cantidadFilas-- ; cantidadFilas>=0 ; cantidadFilas--){
-					modelo.removeRow(cantidadFilas);
-					
-					
-				}
-			}
-		});
-		btnEliminarTodo.setBounds(572, 275, 142, 23);
-		ventanaEdicionPersona.getContentPane().add(btnEliminarTodo);
-		
-		JLabel lblFila = DefaultComponentFactory.getInstance().createTitle("Fila:");
-		lblFila.setBounds(572, 30, 32, 14);
-		ventanaEdicionPersona.getContentPane().add(lblFila);
-		
-		JLabel lblColumna = DefaultComponentFactory.getInstance().createLabel("Columna:");
-		lblColumna.setBounds(572, 55, 45, 14);
-		ventanaEdicionPersona.getContentPane().add(lblColumna);
-		
-		JLabel lblNuevo = DefaultComponentFactory.getInstance().createLabel("Nuevo:");
-		lblNuevo.setBounds(572, 80, 88, 14);
-		ventanaEdicionPersona.getContentPane().add(lblNuevo);
-		
-		textColumna = new JTextField();
-		textColumna.setBounds(628, 55, 32, 14);
-		ventanaEdicionPersona.getContentPane().add(textColumna);
-		textColumna.setColumns(10);
-		
-		textAgregarDatoNuevo = new JTextField();
-		textAgregarDatoNuevo.setBounds(628, 80, 88, 14);
-		ventanaEdicionPersona.getContentPane().add(textAgregarDatoNuevo);
-		textAgregarDatoNuevo.setColumns(10);
-		
-		textFila = new JTextField();
-		textFila.setBounds(627, 30, 32, 14);
-		ventanaEdicionPersona.getContentPane().add(textFila);
-		textFila.setColumns(10);
-
-
-	
-	
-		
 			
 		
 
