@@ -32,9 +32,9 @@ public class Biblioteca {
     private int contLibros;
     
    
-    private ArrayList<Personas> arrayPersonas = new ArrayList<Personas>(1);
-    private ArrayList<Libros> arrayLibros = new ArrayList<Libros>(1);
-    private ArrayList<Libros> arrayLibrosPrestados = new ArrayList<Libros>(1);
+    private static ArrayList<Personas> arrayPersonas = new ArrayList<Personas>(1);
+    private static ArrayList<Libros> arrayLibros = new ArrayList<Libros>(1);
+    private static ArrayList<Libros> arrayLibrosPrestados = new ArrayList<Libros>(1);
     
     
     
@@ -64,7 +64,7 @@ public class Biblioteca {
 		File archivo = new File (rutaPersonas);
     	try
     	{
-    		arrayPersonas.clear();
+    		getArrayPersonas().clear();
     		contPersonas = 1 ;
     		if (archivo.exists())
     		{			
@@ -82,7 +82,7 @@ public class Biblioteca {
 	    			obj.setEmail(bufferLectura.readLine());
 	    			obj.setTelefono(bufferLectura.readLine());
 	    			obj.setTipo(bufferLectura.readLine());
-	    			arrayPersonas.add(obj);				
+	    			getArrayPersonas().add(obj);				
 	    		}
 
     		}else
@@ -161,8 +161,8 @@ public class Biblioteca {
            obj.setEmail(email);
            obj.setTelefono(telefono);
            obj.setTipo(tipo);
-           arrayPersonas.add(obj); 
-           GuardarPersona(arrayPersonas); // no hace falta pasarle arrayPersonas. Es global!
+           getArrayPersonas().add(obj); 
+           GuardarPersona(getArrayPersonas()); // no hace falta pasarle arrayPersonas. Es global!
     }
     
     public void AgregarLibro(String titulo, String autor, String editorial, String edicion, String imagen, String calificacion) throws IOException
@@ -308,7 +308,7 @@ public class Biblioteca {
     		leerPersona();
     		// algo feo :/
     		ArrayList<Personas> arrayTempPersonas = new ArrayList<Personas>(1);
-    		for(Personas obj: arrayPersonas)
+    		for(Personas obj: getArrayPersonas())
     		{	
     			if(obj.getContPersonas() == id)
     			{
@@ -323,8 +323,8 @@ public class Biblioteca {
     			}else
     				arrayTempPersonas.add(obj);		
 			}
-    		arrayPersonas = arrayTempPersonas;
-    		GuardarPersona(arrayPersonas);
+    		setArrayPersonas(arrayTempPersonas);
+    		GuardarPersona(getArrayPersonas());
     	} catch (Exception e) {
     		e.printStackTrace();
     	}
@@ -387,7 +387,7 @@ public class Biblioteca {
 
     public ArrayList<Personas> getPersonas()
     {
-		return arrayPersonas;
+		return getArrayPersonas();
     }
   
     public ArrayList<Libros> getLibros()
@@ -403,7 +403,7 @@ public class Biblioteca {
       	try
     	{		    			
       		leerPersona();
-    		for(Personas obj: arrayPersonas)
+    		for(Personas obj: getArrayPersonas())
     		{	
     			if(obj.getContPersonas() == idPersona)
     			{	
@@ -505,7 +505,7 @@ public class Biblioteca {
     	ArrayList<Personas> lista =  new ArrayList<Personas>();
     	String palabra ="";    	    		
     		leerPersona();   
-    		for(Personas str: arrayPersonas)
+    		for(Personas str: getArrayPersonas())
     		{	
     			palabra = str.getTipo();
     			if(palabra == tipo)
@@ -544,7 +544,21 @@ public class Biblioteca {
     		return libros4Autor;	
     }
 
-    
+	public ArrayList<Personas> getArrayPersonas() {
+		return arrayPersonas;
+	}
+
+	public void setArrayPersonas(ArrayList<Personas> arrayPersonas) {
+		this.arrayPersonas = arrayPersonas;
+	}
+	
+	public ArrayList<Libros> getArrayLibros(){
+		return arrayLibros;
+	}
+
+    public void setArrayLibros(ArrayList<Libros> arrayLibros){
+    	this.arrayLibros =arrayLibros;
+    }
     
      
 }

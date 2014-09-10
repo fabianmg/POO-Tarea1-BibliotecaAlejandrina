@@ -22,6 +22,8 @@ import java.io.IOException;
 
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class VentanaAgregarLibro extends JInternalFrame {
 	private JTextField textTitulo;
@@ -167,6 +169,7 @@ public class VentanaAgregarLibro extends JInternalFrame {
 		btnAgregarPortada.setBounds(447, 165, 40, 44);
 		getContentPane().add(btnAgregarPortada);
 		btnAgregarPortada.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1410339029_icon-image-32.png"));
+		getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblTitulo, textTitulo, lblAutor, textAutor, lblEdicion, textEdicion, lblEditorial, textEditorial, lblCalificacion, textCalificacion, btnAgregarPortada, btnAgregar, btnCancelar, panelImagen, lblAgregarLibro}));
 		btnAgregarPortada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fc = new JFileChooser();
