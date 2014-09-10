@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
+
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 
@@ -109,9 +110,11 @@ public class VentanaAgregarLibro extends JInternalFrame {
 		
 		JButton btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
+			
+			Biblioteca biblio = new Biblioteca();
 			public void actionPerformed(ActionEvent arg0){
 				
-				/*
+				
 				try{
 					if (true){
 						
@@ -121,13 +124,14 @@ public class VentanaAgregarLibro extends JInternalFrame {
 						Editorial= textEditorial.getText();
 						Calificacion = textCalificacion.getText();
 						
-						AgregarLibro(Titulo, Autor, Editorial, Edicion, DireccionImagen, Calificacion);
+						biblio.AgregarLibro(Titulo, Autor, Editorial, Edicion, DireccionImagen, Calificacion);
 						
 						textTitulo.setText("");
 						textAutor.setText("");
 						textEdicion.setText("");
 						textEditorial.setText("");
 						textCalificacion.setText("");
+						panelImagen.removeAll();
 						
 						
 					}else
@@ -137,7 +141,7 @@ public class VentanaAgregarLibro extends JInternalFrame {
 				{
 					e.printStackTrace();
 				}
-				*/
+				
 			}
 		});
 		
