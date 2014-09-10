@@ -2,20 +2,40 @@ package acceso;
 
 import java.awt.EventQueue;
 
+import logicaDeNegocios.*;
+
+import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
+import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 
 public class VentanaAgregarLibro extends JInternalFrame {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-
+	private JTextField textTitulo;
+	private JTextField textAutor;
+	private JTextField textCalificacion;
+	private JTextField textEditorial;
+	private JTextField textEdicion;
+	private JPanel panelImagen;
+	
+	private String Titulo = "";
+	private String Autor = "";
+	private String Edicion = "";
+	private String Editorial = "";
+	private String Calificacion= "";
+	private String DireccionImagen = "";
 	/**
 	 * Launch the application.
 	 */
@@ -32,9 +52,7 @@ public class VentanaAgregarLibro extends JInternalFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public VentanaAgregarLibro() {
 		setTitle("Nuevo Libro");
 		setBounds(10, 11, 774, 398);
@@ -60,32 +78,71 @@ public class VentanaAgregarLibro extends JInternalFrame {
 		lblCalificacion.setBounds(53, 271, 92, 14);
 		getContentPane().add(lblCalificacion);
 		
-		textField = new JTextField();
-		textField.setBounds(155, 81, 175, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		textTitulo = new JTextField();
+		textTitulo.setBounds(155, 84, 159, 20);
+		getContentPane().add(textTitulo);
+		textTitulo.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(155, 130, 200, 14);
-		getContentPane().add(textField_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(155, 179, 200, 14);
-		getContentPane().add(textField_2);
+		textAutor = new JTextField();
+		textAutor.setColumns(10);
+		textAutor.setBounds(155, 127, 159, 20);
+		getContentPane().add(textAutor);
+		 
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(155, 224, 200, 14);
-		getContentPane().add(textField_3);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(155, 271, 200, 14);
-		getContentPane().add(textField_4);
+		
+		textCalificacion = new JTextField();
+		textCalificacion.setColumns(10);
+		textCalificacion.setBounds(155, 268, 159, 20);
+		getContentPane().add(textCalificacion);
+		
+		textEditorial = new JTextField();
+		textEditorial.setColumns(10);
+		textEditorial.setBounds(155, 221, 159, 20);
+		getContentPane().add(textEditorial);
+		
+		textEdicion = new JTextField();
+		textEdicion.setColumns(10);
+		textEdicion.setBounds(155, 173, 159, 20);
+		getContentPane().add(textEdicion);
 		
 		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0){
+				
+				/*
+				try{
+					if (true){
+						
+						Titulo = textTitulo.getText(); 
+						Autor = textAutor.getText();
+						Edicion = textEdicion.getText();
+						Editorial= textEditorial.getText();
+						Calificacion = textCalificacion.getText();
+						
+						AgregarLibro(Titulo, Autor, Editorial, Edicion, DireccionImagen, Calificacion);
+						
+						textTitulo.setText("");
+						textAutor.setText("");
+						textEdicion.setText("");
+						textEditorial.setText("");
+						textCalificacion.setText("");
+						
+						
+					}else
+						JOptionPane.showConfirmDialog(null,"");
+						
+				} catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
+				*/
+			}
+		});
+		
+		
+			
 		btnAgregar.setBounds(506, 220, 200, 50);
 		getContentPane().add(btnAgregar);
 		
@@ -93,14 +150,45 @@ public class VentanaAgregarLibro extends JInternalFrame {
 		btnCancelar.setBounds(506, 286, 200, 50);
 		getContentPane().add(btnCancelar);
 		
-		JButton btnAgregarPortada = new JButton("Agregar Portada");
-		btnAgregarPortada.setBounds(506, 79, 200, 50);
-		getContentPane().add(btnAgregarPortada);
-		
 		JLabel lblAgregarLibro = DefaultComponentFactory.getInstance().createTitle("Agregar Libro");
 		lblAgregarLibro.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblAgregarLibro.setBounds(131, 35, 164, 27);
 		getContentPane().add(lblAgregarLibro);
+		
+		panelImagen = new JPanel();
+		panelImagen.setBounds(506, 12, 200, 197);
+		getContentPane().add(panelImagen);
+		
+		JButton btnAgregarPortada = new JButton("");
+		btnAgregarPortada.setBounds(447, 165, 40, 44);
+		getContentPane().add(btnAgregarPortada);
+		btnAgregarPortada.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1410339029_icon-image-32.png"));
+		btnAgregarPortada.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser fc = new JFileChooser();
+				int resultado = fc.showOpenDialog(null);
+				
+				if(resultado ==JFileChooser.APPROVE_OPTION){
+					File file =fc.getSelectedFile();
+					cargarImagen(DireccionImagen);
+					DireccionImagen = file.getPath();
+				}
+			}
+		});}
 
+		
+
+		public void cargarImagen (String f){
+			
+			panelImagen.removeAll();
+			ImageIcon imagen = new ImageIcon(f);
+			JLabel etiqueta= new JLabel(imagen);
+			panelImagen.add(etiqueta);
+			etiqueta.setBounds(0,0,200,200);
+			
+		}
+		
+	
+		
 	}
-}
+
