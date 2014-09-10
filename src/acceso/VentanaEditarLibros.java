@@ -1,6 +1,8 @@
 package acceso;
 
 import java.awt.EventQueue;
+import java.util.ArrayList;
+
 import logicaDeNegocios.*;
 
 import javax.swing.JInternalFrame;
@@ -9,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import logicaDeNegocios.Biblioteca;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
@@ -68,18 +71,20 @@ public class VentanaEditarLibros extends JInternalFrame {
 		//LE PASO AL ARRAY LOS DATOS DEL ARRAYLIST 
 
 		Biblioteca biblio = new Biblioteca();
+		
+		ArrayList<Libros> Libros = new ArrayList<Libros>();
+		
+		Libros = biblio.getLibros();
+		
 		for (int i = 0; i < biblio.getLibros().size(); i++) {
-
-
-
-		datosLibro[0] = Integer.toString(biblio.getArrayLibros().get(i).getContLibros());
-		datosLibro[1] = biblio.getArrayLibros().get(i).getTitulo();
-		datosLibro[2] = biblio.getArrayLibros().get(i).getAutor();
-		datosLibro[3] = biblio.getArrayLibros().get(i).getEditorial();
-		datosLibro[4] = biblio.getArrayLibros().get(i).getEdicion();
-		datosLibro[5] = biblio.getArrayLibros().get(i).getCalificacion();
-		datosLibro[6] = Integer.toString(biblio.getArrayLibros().get(i).getCantVecesPrestado());
-		datosLibro[7] = biblio.getArrayLibros().get(i).getDisponibilidad();
+		datosLibro[0] = Integer.toString(Libros.get(i).getContLibros());
+		datosLibro[1] = Libros.get(i).getTitulo();
+		datosLibro[2] = Libros.get(i).getAutor();
+		datosLibro[3] = Libros.get(i).getEditorial();
+		datosLibro[4] = Libros.get(i).getEdicion();
+		datosLibro[5] = Libros.get(i).getCalificacion();
+		datosLibro[6] = Integer.toString(Libros.get(i).getCantVecesPrestado());
+		datosLibro[7] = Libros.get(i).getDisponibilidad();
 		tableModel.addRow(datosLibro);
 		
 

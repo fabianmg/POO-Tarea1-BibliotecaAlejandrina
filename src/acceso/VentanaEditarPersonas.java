@@ -77,22 +77,26 @@ public class VentanaEditarPersonas extends JInternalFrame {
 		
 		//JTable table = new JTable(tableModel);
 
-		String datos[] = new String[6];//ARRAY DE 6
+		String datos[] = new String[7];//ARRAY DE 6
 
 		//LE PASO AL ARRAY LOS DATOS DEL ARRAYLIST 
 
 		Biblioteca biblio = new Biblioteca();
+		
+		ArrayList<Personas> Personas= new ArrayList<Personas>(1);
+		Personas = biblio.getPersonas();
+		
 		for (int i = 0; i < biblio.getPersonas().size(); i++) {
 
 
 
 		datos[0] = Integer.toString(biblio.getPersonas().get(i).getContPersonas());
-		datos[1] = biblio.getArrayPersonas().get(i).getNombre();
-		datos[2] = biblio.getArrayPersonas().get(i).getApellidoUno();
-		datos[3] = biblio.getArrayPersonas().get(i).getApellidoDos();
-		datos[4] = biblio.getArrayPersonas().get(i).getEmail();
-		datos[5] = biblio.getArrayPersonas().get(i).getTelefono();
-		//datos[6] = biblio.getArrayPersonas().get(i).getTipo();
+		datos[1] = Personas.get(i).getNombre();
+		datos[2] = Personas.get(i).getApellidoUno();
+		datos[3] = Personas.get(i).getApellidoDos();
+		datos[4] = Personas.get(i).getEmail();
+		datos[5] = Personas.get(i).getTelefono();
+		datos[6] = Personas.get(i).getTipo();
 		tableModel.addRow(datos);
 		}
 		}
