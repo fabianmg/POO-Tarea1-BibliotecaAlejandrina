@@ -9,14 +9,18 @@ import javax.swing.JTable;
 import javax.swing.JScrollBar;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+
 import java.awt.ScrollPane;
+
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.ImageIcon;
 
-public class VentanaEditarPersonas extends JInternalFrame {
+public class VentanaConsultaPersonas extends JInternalFrame {
 	private JTable table;
 
 	/**
@@ -26,7 +30,7 @@ public class VentanaEditarPersonas extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaEditarPersonas frame = new VentanaEditarPersonas();
+					VentanaConsultaPersonas frame = new VentanaConsultaPersonas();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,13 +42,14 @@ public class VentanaEditarPersonas extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaEditarPersonas() {
+	public VentanaConsultaPersonas() {
+		setToolTipText("");
 		
 		
 		String col[] = {"ID","Nombre","Primer Apellido", "Segundo Apellido", "Email", "Telefono", "Tipo"};
 		DefaultTableModel tableModel = new DefaultTableModel(col, 0);
         														// El Argumento 0 es el numero de filas.
-		setTitle("Editar Personas");
+		setTitle("Consultar Personas");
 		setBounds(10, 11, 774, 398);
 		getContentPane().setLayout(null);
 		
@@ -66,10 +71,18 @@ public class VentanaEditarPersonas extends JInternalFrame {
 		btnEliminarSeleccionado.setBounds(578, 238, 170, 41);
 		getContentPane().add(btnEliminarSeleccionado);
 		
-		JButton btnEliminarTodo = new JButton("Eliminar Todo");
-		btnEliminarTodo.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409916363_Cancel.png"));
-		btnEliminarTodo.setBounds(578, 290, 170, 41);
-		getContentPane().add(btnEliminarTodo);
+		JButton btnEditar = new JButton("Editar");
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int row=table.getSelectedRow();
+				String idPersona = "";
+					   idPersona = (String) table.getValueAt(row,0);
+					   System.out.println(idPersona);
+				
+			}
+		});
+		btnEditar.setBounds(578, 45, 170, 41);
+		getContentPane().add(btnEditar);
 	
 		//*DefaultTableModel modelo = (DefaultTableModel)table.getModel();
 

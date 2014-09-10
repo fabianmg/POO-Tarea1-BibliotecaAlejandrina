@@ -15,7 +15,7 @@ import logicaDeNegocios.Biblioteca;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
-public class VentanaEditarLibros extends JInternalFrame {
+public class VentanaConsultaLibros extends JInternalFrame {
 	private JTable table1;
 	
 	
@@ -23,7 +23,7 @@ public class VentanaEditarLibros extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaEditarLibros frame = new VentanaEditarLibros();
+					VentanaConsultaLibros frame = new VentanaConsultaLibros();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,12 +35,12 @@ public class VentanaEditarLibros extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaEditarLibros() {
+	public VentanaConsultaLibros() {
 		
 		String col[] = {"ID","Titulo","Autor", "Editorial", "Edicion", "Calificacion", "Veces Prestado", "Disponibilidad" };
 		DefaultTableModel tableModel = new DefaultTableModel(col, 0);
 
-		setTitle("Editar Libros");
+		setTitle("Consultar Libros");
 		setBounds(10, 11, 774, 398);
 		getContentPane().setLayout(null);
 		

@@ -104,6 +104,8 @@ public class AccesoBiblioteca extends JFrame {
 	 * Create the frame.
 	 */
 	public AccesoBiblioteca() {
+		setResizable(false);
+		setTitle("Biblioteca Alejandrina");
 
 /**/
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Book.png"));
@@ -170,7 +172,7 @@ public class AccesoBiblioteca extends JFrame {
 				}
 			});
 		
-		JMenu menuEdicion = new JMenu("Edicion");
+		JMenu menuEdicion = new JMenu("Consulta");
 		menuEdicion.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Edicion.png"));
 		menuPrincipal.add(menuEdicion);
 		
@@ -178,7 +180,7 @@ public class AccesoBiblioteca extends JFrame {
 		edicionPersona.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				VentanaEditarPersonas VEP = new VentanaEditarPersonas();
+				VentanaConsultaPersonas VEP = new VentanaConsultaPersonas();
 				escritorio.add(VEP);
 				VEP.setVisible(true);
 				try {
@@ -198,7 +200,7 @@ public class AccesoBiblioteca extends JFrame {
 		JMenuItem edicionLibro = new JMenuItem(" Libro");
 		edicionLibro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaEditarLibros VEL= new VentanaEditarLibros();
+				VentanaConsultaLibros VEL= new VentanaConsultaLibros();
 				escritorio.add(VEL);
 				VEL.setVisible(true);
 				try {
