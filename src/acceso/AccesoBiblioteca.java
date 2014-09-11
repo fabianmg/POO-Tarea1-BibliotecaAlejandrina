@@ -193,12 +193,17 @@ public class AccesoBiblioteca extends JFrame {
 				}
 		});
 		
-		edicionPersona.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913839_icon-person-32.png"));
-		menuEdicion.add(edicionPersona);
+		JMenu mnLibro = new JMenu("Libro");
+		mnLibro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		mnLibro.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913899_book-32.png"));
+		menuEdicion.add(mnLibro);
 		
-		
-		JMenuItem edicionLibro = new JMenuItem(" Libro");
-		edicionLibro.addActionListener(new ActionListener() {
+		JMenuItem mntmTodosLosLibros = new JMenuItem("Todos Los Libros");
+		mntmTodosLosLibros.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaConsultaLibros VEL= new VentanaConsultaLibros();
 				escritorio.add(VEL);
@@ -211,8 +216,68 @@ public class AccesoBiblioteca extends JFrame {
 				}
 			}
 		});
-		edicionLibro.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913899_book-32.png"));
-		menuEdicion.add(edicionLibro);
+		mnLibro.add(mntmTodosLosLibros);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Libros Prestados");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				VentanaConsultarLibrosPrestados VCLP = new VentanaConsultarLibrosPrestados();
+				escritorio.add(VCLP);
+				VCLP.setVisible(true);
+				try {
+					VCLP.setMaximum(true);
+				} catch (PropertyVetoException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		mnLibro.add(mntmNewMenuItem);
+		
+		JMenuItem mntmLibrosDisponibles = new JMenuItem("Libros Disponibles");
+		mntmLibrosDisponibles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaConsultarLibrosDisponibles VCLD = new VentanaConsultarLibrosDisponibles();
+				escritorio.add(VCLD);
+				VCLD.setVisible(true);
+				try {
+					VCLD.setMaximum(true);
+				} catch (PropertyVetoException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		mnLibro.add(mntmLibrosDisponibles);
+		
+		JMenuItem mntmTopMasPrestados = new JMenuItem("Top Mas Prestados");
+		mnLibro.add(mntmTopMasPrestados);
+		
+		edicionPersona.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913839_icon-person-32.png"));
+		menuEdicion.add(edicionPersona);
+		
+		JMenu mnControl = new JMenu("Control");
+		mnControl.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Control.png"));
+		menuPrincipal.add(mnControl);
+		
+		JMenuItem mntmDeLibrosPrestados = new JMenuItem("De Libros Prestados");
+		mntmDeLibrosPrestados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaPrestarLibro VPL = new VentanaPrestarLibro();
+				escritorio.add(VPL);
+				VPL.setVisible(true);
+				try {
+					VPL.setMaximum(true);
+				} catch (PropertyVetoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		});
+		mntmDeLibrosPrestados.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\LibrosPrestados.png"));
+		mnControl.add(mntmDeLibrosPrestados);
 		
 		JMenu menuParametros = new JMenu("Parametros");
 		menuParametros.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913507_params-32.png"));

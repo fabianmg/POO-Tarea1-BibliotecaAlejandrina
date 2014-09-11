@@ -140,7 +140,8 @@ public class VentanaAgregarPersonas extends JInternalFrame {
 							textApellido2.setText("");
 							textCorreoElectronico.setText("");
 							textTelefono.setText("");
-							// txtNombre. focus						
+							// txtNombre. focus					
+						JOptionPane.showMessageDialog(null, "Persona Agregada Correctamente");
 					}else
 						JOptionPane.showConfirmDialog(null,"");
 					
@@ -154,6 +155,15 @@ public class VentanaAgregarPersonas extends JInternalFrame {
 		getContentPane().add(btnAgregar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				textApellido1.setText("");
+				textApellido2.setText("");
+				txtNombre.setText("");
+				textCorreoElectronico.setText("");
+				textTelefono.setText("");
+			}
+		});
 		btnCancelar.setBounds(20, 324, 148, 31);
 		getContentPane().add(btnCancelar);
 		

@@ -1,4 +1,5 @@
 package acceso;
+import logicaDeNegocios.*;
 
 import java.awt.EventQueue;
 
@@ -135,7 +136,7 @@ public class VentanaAgregarLibro extends JInternalFrame {
 						textCalificacion.setText("");
 						panelImagen.removeAll();
 						
-						
+						JOptionPane.showMessageDialog(null, "Libro Agregado Correctamente.");
 					}else
 						JOptionPane.showConfirmDialog(null,"");
 						
@@ -153,6 +154,16 @@ public class VentanaAgregarLibro extends JInternalFrame {
 		getContentPane().add(btnAgregar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				textAutor.setText("");
+				textTitulo.setText("");
+				textCalificacion.setText("");
+				textEdicion.setText("");
+				textEditorial.setText("");
+			}
+		});
 		btnCancelar.setBounds(506, 286, 200, 50);
 		getContentPane().add(btnCancelar);
 		

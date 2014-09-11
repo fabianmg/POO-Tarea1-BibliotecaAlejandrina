@@ -19,6 +19,8 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class Password extends JFrame {
 
@@ -46,9 +48,10 @@ public class Password extends JFrame {
 	 */
 	public Password() {
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 363, 386);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -63,15 +66,18 @@ public class Password extends JFrame {
 		contentPane.add(lblContrasea);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(127, 147, 97, 23);
+		passwordField.setBackground(SystemColor.textHighlight);
+		passwordField.setBounds(127, 147, 98, 23);
 		contentPane.add(passwordField);
 		
 		JTextPane textUsuario = new JTextPane();
+		textUsuario.setBackground(SystemColor.textHighlight);
 		textUsuario.setBounds(126, 98, 98, 23);
 		contentPane.add(textUsuario);
 		
 		
 		JButton btnIngresar = new JButton("Ingresar");
+		btnIngresar.setBackground(SystemColor.textHighlight);
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String pass = "";
@@ -86,6 +92,7 @@ public class Password extends JFrame {
 					
 					AccesoBiblioteca AB = new AccesoBiblioteca();
 					AB.setVisible(true);
+				
 					
 					textUsuario.setText("");
 					passwordField.setText("");

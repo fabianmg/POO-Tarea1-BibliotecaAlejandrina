@@ -449,6 +449,34 @@ public class Biblioteca {
 			return arrayLibros;
     }
     
+    
+    public ArrayList<Libros> getLibrosDisponible()
+    {
+        	try
+        	{		    			
+        		leerLibro();
+        		ArrayList<Libros> librosDisponibles = new ArrayList<Libros>(1);
+        		ArrayList<Libros> librosArrayTemp = arrayLibros;
+        		
+        		
+        		for(Libros obj: librosArrayTemp)
+        		{	
+        			if(obj.getDisponibilidad().equals(0))
+        			{
+        				
+        				librosDisponibles.add(obj);
+        			}			
+    			}
+        		librosArrayTemp.clear();
+        		return librosDisponibles;
+        	} catch (Exception e) {
+        		e.printStackTrace();
+        	}
+			return arrayLibros;
+    }
+    
+    
+    
     private boolean EstaEnLista(String palabra, ArrayList<String> lista)
     {
     	if(lista!=null)
@@ -499,7 +527,7 @@ public class Biblioteca {
     		return autor;	
     }
 
-    
+
     
     public ArrayList<Personas> getTIpo(String tipo)   
     {
@@ -532,7 +560,7 @@ public class Biblioteca {
     		return libros4editorial;	
     }
     
-    public ArrayList<Libros> getPrsonas4Autor(String autor)  
+    public ArrayList<Libros> getLibros4Autor(String autor)  
     { 
     	ArrayList<Libros> libros4Autor = new ArrayList<Libros>(1);
     	String palabra ="";    	    		
