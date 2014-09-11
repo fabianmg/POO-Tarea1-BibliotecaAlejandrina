@@ -261,7 +261,7 @@ public class AccesoBiblioteca extends JFrame {
 		mnControl.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Control.png"));
 		menuPrincipal.add(mnControl);
 		
-		JMenuItem mntmDeLibrosPrestados = new JMenuItem("De Libros Prestados");
+		JMenuItem mntmDeLibrosPrestados = new JMenuItem("Prestar Libro");
 		mntmDeLibrosPrestados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaPrestarLibro VPL = new VentanaPrestarLibro();

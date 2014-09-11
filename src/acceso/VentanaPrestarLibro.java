@@ -15,6 +15,12 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class VentanaPrestarLibro extends JInternalFrame {
 
@@ -44,7 +50,8 @@ public class VentanaPrestarLibro extends JInternalFrame {
 		getContentPane().setLayout(null);
 		
 		JButton btnPrestarLibro = new JButton("Prestar Libro");
-		btnPrestarLibro.setBounds(440, 282, 140, 34);
+		btnPrestarLibro.setBackground(SystemColor.textHighlight);
+		btnPrestarLibro.setBounds(582, 167, 140, 34);
 		getContentPane().add(btnPrestarLibro);
 		
 		
@@ -52,7 +59,7 @@ public class VentanaPrestarLibro extends JInternalFrame {
 		
 		
 		JScrollPane scrollPersona = new JScrollPane();
-		scrollPersona.setBounds(26, 23, 193, 254);
+		scrollPersona.setBounds(27, 54, 193, 254);
 		getContentPane().add(scrollPersona);
 		
 		DefaultListModel<String> model1 = new DefaultListModel<String>();
@@ -68,16 +75,19 @@ public class VentanaPrestarLibro extends JInternalFrame {
 			
 		}
 		
+
+		
 		JList<String> listPersona = new JList<String>();
 		scrollPersona.setViewportView(listPersona);
 		listPersona.setModel(model1);
 		
+				
 		
 		
 		
 		
 		JScrollPane scrollLibro = new JScrollPane();
-		scrollLibro.setBounds(272, 23, 193, 254);
+		scrollLibro.setBounds(265, 54, 193, 254);
 		getContentPane().add(scrollLibro);
 		
 		
@@ -93,12 +103,54 @@ public class VentanaPrestarLibro extends JInternalFrame {
 			
 			
 		}
-			
+
+		
 		
 		JList<String> listLibro = new JList<String>();
 		scrollLibro.setViewportView(listLibro);
 		listLibro.setModel(model2);
+		
+		
+				
+		JLabel lblLibro = DefaultComponentFactory.getInstance().createLabel("Libro:");
+		lblLibro.setBounds(520, 64, 50, 21);
+		getContentPane().add(lblLibro);
+		
+		JLabel lblPrestarA = DefaultComponentFactory.getInstance().createLabel("Prestar a:");
+		lblPrestarA.setBounds(520, 116, 65, 21);
+		getContentPane().add(lblPrestarA);
+		
+		JTextPane textLibroAPrestar = new JTextPane();
+		textLibroAPrestar.setEditable(false);
+		textLibroAPrestar.setBounds(582, 58, 127, 27);
+		getContentPane().add(textLibroAPrestar);
+		
+		JTextPane textPrestarA = new JTextPane();
+		textPrestarA.setBounds(582, 110, 127, 27);
+		getContentPane().add(textPrestarA);
+		
+		JButton btnAgregar = new JButton(">>Agregar");
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String personaEscogida = listPersona.getSelectedValue();
+				String libroEscogido = listLibro.getSelectedValue();
+				
+				if(!personaEscogida.equals(null) && !libroEscogido.equals(null)){
+				textPrestarA.setText(personaEscogida);
+				textLibroAPrestar.setText(libroEscogido);
+				}
+			}
+		});
+		btnAgregar.setBounds(468, 274, 88, 34);
+		getContentPane().add(btnAgregar);
+		
+		JLabel lblPersonas = DefaultComponentFactory.getInstance().createLabel("Personas");
+		lblPersonas.setBounds(27, 28, 92, 14);
+		getContentPane().add(lblPersonas);
+		
+		JLabel lblLibros = DefaultComponentFactory.getInstance().createLabel("Libros");
+		lblLibros.setBounds(264, 29, 92, 14);
+		getContentPane().add(lblLibros);
 
 	}	
-	
 }
