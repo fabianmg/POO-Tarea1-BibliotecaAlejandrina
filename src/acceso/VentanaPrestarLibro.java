@@ -151,8 +151,6 @@ public class VentanaPrestarLibro extends JInternalFrame {
 				textLibroAPrestar.setText("");
 			}
 		});
-		btnPrestarLibro.setForeground(SystemColor.textHighlight);
-		btnPrestarLibro.setBackground(SystemColor.activeCaptionBorder);
 		btnPrestarLibro.setBounds(582, 167, 140, 34);
 		getContentPane().add(btnPrestarLibro);
 		

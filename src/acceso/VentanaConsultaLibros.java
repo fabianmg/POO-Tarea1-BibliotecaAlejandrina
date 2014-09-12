@@ -14,6 +14,11 @@ import logicaDeNegocios.Biblioteca;
 
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import java.awt.Choice;
+import javax.swing.JLabel;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.event.HierarchyListener;
+import java.awt.event.HierarchyEvent;
 
 public class VentanaConsultaLibros extends JInternalFrame {
 	private JTable table1;
@@ -45,7 +50,7 @@ public class VentanaConsultaLibros extends JInternalFrame {
 		getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane1 = new JScrollPane();
-		scrollPane1.setBounds(10, 11, 539, 261);
+		scrollPane1.setBounds(10, 55, 539, 261);
 		getContentPane().add(scrollPane1);
 		
 		table1 = new JTable(tableModel);
@@ -58,10 +63,25 @@ public class VentanaConsultaLibros extends JInternalFrame {
 		btnEliminarSeleccionado.setBounds(578, 238, 170, 41);
 		getContentPane().add(btnEliminarSeleccionado);
 		
-		JButton btnNewButton = new JButton("Eliminar Todo");
-		btnNewButton.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409916363_Cancel.png"));
-		btnNewButton.setBounds(578, 290, 170, 41);
-		getContentPane().add(btnNewButton);
+		JButton btnEliminarTodo = new JButton("Eliminar Todo");
+		btnEliminarTodo.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409916363_Cancel.png"));
+		btnEliminarTodo.setBounds(578, 290, 170, 41);
+		getContentPane().add(btnEliminarTodo);
+		
+		Choice choiceMostrarPor = new Choice();
+		
+		choiceMostrarPor.setBounds(588, 55, 146, 20);
+		choiceMostrarPor.addItem("Todos");
+		choiceMostrarPor.addItem("Prestados");
+		choiceMostrarPor.addItem("Disponibles");
+		choiceMostrarPor.addItem("Top "+" mas Prestados" );
+		choiceMostrarPor.addItem("Ultimos mas Prestados" );
+		getContentPane().add(choiceMostrarPor);
+		
+		
+		JLabel lblMostrarPor = DefaultComponentFactory.getInstance().createLabel("Mostrar Por:");
+		lblMostrarPor.setBounds(588, 35, 92, 14);
+		getContentPane().add(lblMostrarPor);
 		
 
 String datosLibro[]= new String[8];
@@ -74,9 +94,18 @@ String datosLibro[]= new String[8];
 		
 		ArrayList<Libros> Libros = new ArrayList<Libros>();
 		
-		Libros = biblio.getLibros();
+		String seleccionado = choiceMostrarPor.getSelectedItem();
 		
-		for (int i = 0; i < biblio.getLibros().size(); i++) {
+		
+		try{		
+		if ( seleccionado == ""){Libros = biblio.getLibros();}
+		if (seleccionado =="") {Libros = biblio.getLibrosPrestado();}
+	    if (seleccionado ==""){Libros = biblio.getLibrosDisponible();}
+		else {Libros = biblio.getLibrosPrestado();}
+		}
+		finally{}
+		System.out.println(seleccionado);
+		for (int i = 0; i < Libros.size(); i++) {
 		datosLibro[0] = Integer.toString(Libros.get(i).getContLibros());
 		datosLibro[1] = Libros.get(i).getTitulo();
 		datosLibro[2] = Libros.get(i).getAutor();

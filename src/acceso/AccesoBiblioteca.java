@@ -153,6 +153,46 @@ public class AccesoBiblioteca extends JFrame {
 		JMenuItem agregarLibro = new JMenuItem("Libro");
 		agregarLibro.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\newbook.png"));
 		menuAgregar.add(agregarLibro);
+		
+		JMenu mnOtro = new JMenu("Otro");
+		mnOtro.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Other-32.png"));
+		menuAgregar.add(mnOtro);
+		
+		JMenuItem mntmPelicula = new JMenuItem("Pelicula");
+		mntmPelicula.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Movie-32.png"));
+		mntmPelicula.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				VentanaAgregarPelicula VAPeli = new VentanaAgregarPelicula();
+				escritorio.add(VAPeli);
+				VAPeli.setVisible(true);
+				try {
+					VAPeli.setMaximum(true);
+				} catch (PropertyVetoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		mnOtro.add(mntmPelicula);
+		
+		JMenuItem mntmRevista = new JMenuItem("Revista");
+		mntmRevista.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1410524012_magazine.png"));
+		mntmRevista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaAgregarRevista VAR = new VentanaAgregarRevista();
+				escritorio.add (VAR);
+				VAR.setVisible(true);
+				try {
+					VAR.setMaximum(true);
+				} catch (PropertyVetoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		});
+		mnOtro.add(mntmRevista);
 		agregarLibro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -193,69 +233,63 @@ public class AccesoBiblioteca extends JFrame {
 				}
 		});
 		
-		JMenu mnLibro = new JMenu("Libro");
-		mnLibro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		mnLibro.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913899_book-32.png"));
-		menuEdicion.add(mnLibro);
-		
-		JMenuItem mntmTodosLosLibros = new JMenuItem("Todos Los Libros");
-		mntmTodosLosLibros.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				VentanaConsultaLibros VEL= new VentanaConsultaLibros();
-				escritorio.add(VEL);
-				VEL.setVisible(true);
-				try {
-					VEL.setMaximum(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		mnLibro.add(mntmTodosLosLibros);
-		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Libros Prestados");
-		mntmNewMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				VentanaConsultarLibrosPrestados VCLP = new VentanaConsultarLibrosPrestados();
-				escritorio.add(VCLP);
-				VCLP.setVisible(true);
-				try {
-					VCLP.setMaximum(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		mnLibro.add(mntmNewMenuItem);
-		
-		JMenuItem mntmLibrosDisponibles = new JMenuItem("Libros Disponibles");
-		mntmLibrosDisponibles.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				VentanaConsultarLibrosDisponibles VCLD = new VentanaConsultarLibrosDisponibles();
-				escritorio.add(VCLD);
-				VCLD.setVisible(true);
-				try {
-					VCLD.setMaximum(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		mnLibro.add(mntmLibrosDisponibles);
-		
-		JMenuItem mntmTopMasPrestados = new JMenuItem("Top Mas Prestados");
-		mnLibro.add(mntmTopMasPrestados);
-		
 		edicionPersona.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913839_icon-person-32.png"));
 		menuEdicion.add(edicionPersona);
+		
+		JMenuItem mntmLibro = new JMenuItem("Libro");
+		mntmLibro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaConsultaLibros VCL = new VentanaConsultaLibros();
+				escritorio.add(VCL);
+				VCL.show();
+				try {
+					VCL.setMaximum(true);
+				} catch (PropertyVetoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		mntmLibro.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913899_book-32.png"));
+		menuEdicion.add(mntmLibro);
+		
+		JMenu mnOtro_1 = new JMenu("Otro");
+		mnOtro_1.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Other-32.png"));
+		menuEdicion.add(mnOtro_1);
+		
+		JMenuItem mntmPelicula_1 = new JMenuItem("Pelicula");
+		mntmPelicula_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaConsultarPeliculas VCPelis = new VentanaConsultarPeliculas();
+				escritorio.add(VCPelis);
+				VCPelis.setVisible(true);
+				try {
+					VCPelis.setMaximum(true);
+				} catch (PropertyVetoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		mntmPelicula_1.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Movie-32.png"));
+		mnOtro_1.add(mntmPelicula_1);
+		
+		JMenuItem mntmRevista_1 = new JMenuItem("Revista");
+		mntmRevista_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaConsultaRevista VCR = new VentanaConsultaRevista();
+				escritorio.add(VCR);
+				VCR.setVisible(true);
+				try {
+					VCR.setMaximum(true);
+				} catch (PropertyVetoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		mntmRevista_1.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1410524012_magazine.png"));
+		mnOtro_1.add(mntmRevista_1);
 		
 		JMenu mnControl = new JMenu("Control");
 		mnControl.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Control.png"));
@@ -278,6 +312,44 @@ public class AccesoBiblioteca extends JFrame {
 		});
 		mntmDeLibrosPrestados.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\LibrosPrestados.png"));
 		mnControl.add(mntmDeLibrosPrestados);
+		
+		JMenu mnOtro_2 = new JMenu("Otro");
+		mnOtro_2.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Other-32.png"));
+		mnControl.add(mnOtro_2);
+		
+		JMenuItem mntmPrestarPelicula = new JMenuItem("Prestar Pelicula");
+		mntmPrestarPelicula.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaPrestarPelicula VPP =new VentanaPrestarPelicula();
+				escritorio.add(VPP);
+				VPP.show();
+				try {
+					VPP.setMaximum(true);
+				} catch (PropertyVetoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		mntmPrestarPelicula.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Movie-32.png"));
+		mnOtro_2.add(mntmPrestarPelicula);
+		
+		JMenuItem mntmPrestarRevista = new JMenuItem("Prestar Revista");
+		mntmPrestarRevista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaPrestarRevista VPR = new VentanaPrestarRevista();
+				escritorio.add(VPR);
+				VPR.show();
+				try {
+					VPR.setMaximum(true);
+				} catch (PropertyVetoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		mntmPrestarRevista.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1410524012_magazine.png"));
+		mnOtro_2.add(mntmPrestarRevista);
 		
 		JMenu menuParametros = new JMenu("Parametros");
 		menuParametros.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913507_params-32.png"));
