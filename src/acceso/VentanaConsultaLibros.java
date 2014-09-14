@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import logicaDeNegocios.*;
 
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +21,7 @@ import java.awt.Choice;
 import javax.swing.JLabel;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import com.sun.javafx.scene.paint.GradientUtils.Parser;
 
 import java.awt.event.HierarchyListener;
 import java.awt.event.HierarchyEvent;
@@ -31,6 +33,7 @@ import java.awt.event.ActionEvent;
 import java.awt.ScrollPane;
 import java.awt.TextField;
 import java.awt.Button;
+import java.io.IOException;
 
 public class VentanaConsultaLibros extends JInternalFrame {
 	private JTable table1;
@@ -134,6 +137,18 @@ public class VentanaConsultaLibros extends JInternalFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
+		
+	/*	public void jtabla(Libro ArrayList<Libros>(1))
+		{
+			tableModel.setRowCount(0);
+			table1 = new JTable(tableModel);
+			DefaultTableModel tableModel = new DefaultTableModel(col, 0);
+			table1 = new JTable(tableModel);
+			scrollPane1.setViewportView(table1);
+			table1.setCellSelectionEnabled(true);
+			
+		}*/
+		
 		btnMostrar.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e)
 			{
@@ -218,13 +233,16 @@ public class VentanaConsultaLibros extends JInternalFrame {
 		getContentPane().add(label);
 		
 		Label label_2 = new Label("Editar selecci\u00F3n");
-		label_2.setBounds(566, 275, 122, 14);
+		label_2.setBounds(565, 279, 122, 14);
 		getContentPane().add(label_2);
 		
 		TextField txtCambio = new TextField();
 		txtCambio.setText("Nuevo dato..");
 		txtCambio.setBounds(566, 299, 109, 20);
 		getContentPane().add(txtCambio);
+		
+		
+
 		
 		Button btnEditar = new Button("Editar");
 		btnEditar.addActionListener(new ActionListener() {
@@ -234,15 +252,71 @@ public class VentanaConsultaLibros extends JInternalFrame {
 			int id = 0;
 			
 			public void actionPerformed(ActionEvent arg0) {
-			
-				x = table1.getSelectedColumn();				
-				y = table1.getSelectedRow();
+				try {
+					String titulo = "";
+					String autor = "";
+					String edicion = "";
+					String editorial = "";
+					String imagen = "";
+					
+					int dias = 0;
+					String calificacion= "";
+					//private String rutaImagen = "";
 				
-				dato = table1.getValueAt(y, x).toString();
-				
-				String ho = dato.toString();
-				System.out.println(ho);
-				
+					x = table1.getSelectedColumn();				
+					y = table1.getSelectedRow();
+					//    public void EditarLibros(String titulo, String autor, String editorial, String imagen, String calificacion, int id) throws IOException
+					
+					dato = table1.getValueAt(y, x).toString();
+					
+					if(x!=1)
+					{
+						titulo = table1.getValueAt(y, 1).toString();
+					}else
+						titulo = txtCambio.getText();
+					
+					if(x!=2)
+					{
+						autor = table1.getValueAt(y, 2).toString();
+					}else
+						autor = txtCambio.getText();
+					
+					if(x!=3)
+					{
+						editorial = table1.getValueAt(y, 3).toString();
+					}else
+						editorial = txtCambio.getText();
+
+					if(x!=4)
+					{
+						edicion = table1.getValueAt(y, 4).toString();
+					}else
+						edicion = txtCambio.getText();
+					if(x!=5)
+					{
+						calificacion = table1.getValueAt(y, 4).toString();
+					}else
+						calificacion = txtCambio.getText();
+						//}else 
+							//JOptionPane.showMessageDialog(null, "Eliga un rango de 1 a 5.");
+					if(x== 6 || x == 7)
+						JOptionPane.showMessageDialog(null, "No puede editar este parametro");
+					
+					//dias = Integer.parseInt(table1.getValueAt(y, 4).toString());
+					
+					id = Integer.parseInt(table1.getValueAt(y, 0).toString());
+					
+					String ho = dato.toString();
+					System.out.println(ho);
+					System.out.println(id);
+					
+					biblio.EditarLibros(titulo, autor, editorial, edicion, imagen, calificacion,id);
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				 
 				
 				
 			}

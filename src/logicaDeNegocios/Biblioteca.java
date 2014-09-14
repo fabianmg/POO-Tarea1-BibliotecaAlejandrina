@@ -605,8 +605,8 @@ public class Biblioteca {
     		e.printStackTrace();
     	}
     }
-    
-    public void EditarLibros(String titulo, String autor, String editorial, String imagen, String calificacion,int dias, int id) throws IOException
+    //    public void EditarLibros(String titulo, String autor, String editorial, String imagen, String calificacion,int dias, int id) throws IOException
+    public void EditarLibros(String titulo, String autor, String editorial, String edicion ,String imagen, String calificacion, int id) throws IOException
     {
     	try
     	{		    			
@@ -619,9 +619,10 @@ public class Biblioteca {
     				obj.setTitulo(titulo);
     		    	obj.setAutor(autor);
     		    	obj.setEditorial(editorial);
+    		    	obj.setEdicion(edicion);
     		    	obj.setCalificacion(calificacion);
     		    	obj.setImangen(imagen);
-    		    	obj.setDiasPrestado(dias);
+    		    	//obj.setDiasPrestado(dias);
     		    	arrayTempLibros.add(obj);
     			}else
     				arrayTempLibros.add(obj);		
