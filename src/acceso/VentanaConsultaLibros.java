@@ -294,7 +294,7 @@ public class VentanaConsultaLibros extends JInternalFrame {
 						edicion = txtCambio.getText();
 					if(x!=5)
 					{
-						calificacion = table1.getValueAt(y, 4).toString();
+						calificacion = table1.getValueAt(y, 5).toString();
 					}else
 						calificacion = txtCambio.getText();
 						//}else 

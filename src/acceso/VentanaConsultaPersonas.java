@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.util.ArrayList;
 
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JScrollBar;
 import javax.swing.table.DefaultTableModel;
@@ -19,6 +20,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
+
+import java.awt.Button;
+import java.awt.TextField;
+import java.awt.Label;
 
 public class VentanaConsultaPersonas extends JInternalFrame {
 	private JTable table;
@@ -43,6 +48,9 @@ public class VentanaConsultaPersonas extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public VentanaConsultaPersonas() {
+		
+		Biblioteca bilbio = new Biblioteca();
+		
 		setToolTipText("");
 		
 		
@@ -54,7 +62,7 @@ public class VentanaConsultaPersonas extends JInternalFrame {
 		getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 539, 261);
+		scrollPane.setBounds(22, 58, 539, 261);
 		getContentPane().add(scrollPane);
 		
 		table = new JTable(tableModel);
@@ -62,27 +70,82 @@ public class VentanaConsultaPersonas extends JInternalFrame {
 		//agregarDatos();
 		table.setCellSelectionEnabled(true);
 		
-		JButton btnEliminarSeleccionado = new JButton("Eliminar Seleccionado");
-		btnEliminarSeleccionado.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\DeleteSelected.png"));
-		btnEliminarSeleccionado.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnEliminarSeleccionado.setBounds(578, 238, 170, 41);
-		getContentPane().add(btnEliminarSeleccionado);
+		TextField txtCambio = new TextField();
+		txtCambio.setText("Nuevo dato..");
+		txtCambio.setBounds(577, 257, 109, 20);
+		getContentPane().add(txtCambio);
 		
-		JButton btnEditar = new JButton("Editar");
+		
+		Button btnEditar = new Button("Editar");
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int row=table.getSelectedRow();
-				String idPersona = "";
-					   idPersona = (String) table.getValueAt(row,0);
-					   System.out.println(idPersona);
 				
+				String nombre;
+				String apellido1;
+			    String apellido2;
+			    String email;
+			    String telefono;
+			    String tipo;
+				
+			    int x;
+			    int y;
+			    x = table.getSelectedColumn();				
+				y = table.getSelectedRow();
+			
+				//   EditarPersonas(String nombre, String apellido1, String apellido2, String telefono, String email,String  tipo, int id
+				
+				//dato = tatableble1.getValueAt(y, x).toString();
+				
+				if(x!=1)
+				{
+					nombre = table.getValueAt(y, 1).toString();
+				}else
+					nombre = txtCambio.getText();
+				
+				if(x!=2)
+				{
+					apellido1 = table.getValueAt(y, 2).toString();
+				}else
+					apellido1 = txtCambio.getText();
+				
+				if(x!=3)
+				{
+					apellido2 = table.getValueAt(y, 3).toString();
+				}else
+					apellido2 = txtCambio.getText();
+
+				if(x!=4)
+				{
+					email = table.getValueAt(y, 4).toString();
+				}else
+					email = txtCambio.getText();
+				if(x!=5)
+				{
+					telefono = table.getValueAt(y, 5).toString();
+				}else
+					telefono = txtCambio.getText();
+				if(x==6)
+				{
+					tipo = txtCambio.getText();
+					if(tipo.equals("Colega") || tipo.equals("Familiar") || tipo.equals("Estudiante"))
+						{tipo = txtCambio.getText();}else
+						{JOptionPane.showMessageDialog(null, "Datos no validos. Eliga:\nColega-Familiar-Estudiante");
+					tipo = table.getValueAt(y, 6).toString();}	
+				}else
+					tipo = table.getValueAt(y, 6).toString();
+				int id = Integer.parseInt(table.getValueAt(y, 0).toString());
+				
+				bilbio.EditarPersonas(nombre, apellido1, apellido2, telefono, email, tipo, id);
 			}
 		});
-		btnEditar.setBounds(578, 45, 170, 41);
+		btnEditar.setBounds(579, 283, 70, 22);
 		getContentPane().add(btnEditar);
+		
+		
+		
+		Label label = new Label("Editar selecci\u00F3n");
+		label.setBounds(576, 237, 122, 14);
+		getContentPane().add(label);
 	
 		//*DefaultTableModel modelo = (DefaultTableModel)table.getModel();
 
