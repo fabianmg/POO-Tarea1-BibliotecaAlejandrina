@@ -72,7 +72,7 @@ public class VentanaConsultarPeliculas extends JInternalFrame {
 		choiceMostrarPor.addItem("Todos");
 		choiceMostrarPor.addItem("Prestados");
 		choiceMostrarPor.addItem("Disponibles");
-		choiceMostrarPor.addItem("Top "+" mas Prestados" );
+		choiceMostrarPor.addItem("Top mas Prestados" );
 		choiceMostrarPor.addItem("Ultimos mas Prestados" );
 		
 		getContentPane().add(choiceMostrarPor);

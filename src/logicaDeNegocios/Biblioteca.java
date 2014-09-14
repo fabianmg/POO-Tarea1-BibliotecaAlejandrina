@@ -280,7 +280,6 @@ public class Biblioteca {
     }
 
     
-    
         
     public void AgregarPersona(String nombre, String apellido1, String apellido2, String telefono, String email,String  tipo ) throws IOException
     {
@@ -373,7 +372,7 @@ public class Biblioteca {
  	   
     }
     
-    public void AgregarRevistaPretada(int idRevista, int idPrsona)
+    public void AgregarRevistaPrestada(int idRevista, int idPrsona)
     {
  	   try
  	   {
@@ -389,7 +388,7 @@ public class Biblioteca {
  	   
     }
     
-    public void AgregarPeliculaPretada(int idPelicula, int idPrsona)
+    public void AgregarPeliculaPrestada(int idPelicula, int idPrsona)
     {
  	   try
  	   {
@@ -510,7 +509,6 @@ public class Biblioteca {
             {e2.printStackTrace();}
         }
     }
-  
     
     private void GuardarPelicula(ArrayList<Peliculas> arrayPeliculas1) throws IOException
     {
@@ -547,8 +545,6 @@ public class Biblioteca {
     		{e2.printStackTrace();}
     	}
     }
-  
-    
     
     /*public boolean BuscarLibro(String titulo, String autor, String editorial) throws IOException
     {
@@ -865,22 +861,22 @@ public class Biblioteca {
         }       
         return 0;
     }
-    
-    
+       
   
     public ArrayList<Libros> getLibrosPrestado()
     {
-        	try
+    	leerLibro();
+		ArrayList<Libros> librosPrestados = new ArrayList<Libros>(1);
+		ArrayList<Libros> librosArrayTemp = arrayLibros;	
+    	try
         	{		    			
-        		leerLibro();
-        		ArrayList<Libros> librosPrestados = new ArrayList<Libros>(1);
-        		ArrayList<Libros> librosArrayTemp = arrayLibros;
+        		
         		String nombre = "";
         		int idPersona = 0;
         		
         		for(Libros obj: librosArrayTemp)
         		{	
-        			if(!obj.getDisponibilidad().equals(0))
+        			if(!obj.getDisponibilidad().equals("0"))
         			{
         				idPersona = Integer.parseInt(obj.getDisponibilidad());
         				nombre = getNombrePersona(idPersona);
@@ -893,7 +889,7 @@ public class Biblioteca {
         	} catch (Exception e) {
         		e.printStackTrace();
         	}
-			return arrayLibros;
+    	return librosPrestados;
     }
     
     
@@ -953,17 +949,14 @@ public class Biblioteca {
             return arrayRevistas;
     }
     
-    
-    
     public ArrayList<Libros> getLibrosDisponible()
 	{
-	    	try
-	    	{		    			
-	    		leerLibro();
-	    		ArrayList<Libros> librosDisponibles = new ArrayList<Libros>(1);
-	    		ArrayList<Libros> librosArrayTemp = arrayLibros;
-	    		
-	    		
+
+    	leerLibro();
+		ArrayList<Libros> librosDisponibles = new ArrayList<Libros>(1);
+		ArrayList<Libros> librosArrayTemp = arrayLibros;
+    	try
+	    	{		    				    			    			    		
 	    		for(Libros obj: librosArrayTemp)
 	    		{	
 	    			if(obj.getDisponibilidad().equals("0"))
@@ -976,8 +969,7 @@ public class Biblioteca {
 	    		return librosDisponibles;
 	    	} catch (Exception e) {
 	    		e.printStackTrace();
-	    	}
-			return arrayLibros;
+	    	}return librosDisponibles;
 	}
     
     public ArrayList<Revistas> getRevistasDisponible()
@@ -1097,6 +1089,7 @@ public class Biblioteca {
     }
 
 
+   
     public ArrayList<Libros> getLibros4Editoriales(String editorial)  
     { 
     	ArrayList<Libros> libros4editorial = new ArrayList<Libros>(1);
@@ -1126,7 +1119,7 @@ public class Biblioteca {
     		return libros4Autor;	
     }
 
-    
+
     
      
 }
