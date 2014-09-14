@@ -203,7 +203,7 @@ public class Biblioteca {
 	    		{ 
 	    			Peliculas objP = new Peliculas();   
 	    			objP.setContPeliculas(Integer.parseInt(bufferLectura.readLine()));
-	    			contLibros ++;
+	    			contPeliculas ++;
 	    			objP.setTitulo(bufferLectura.readLine());
 	    			objP.setDireccion(bufferLectura.readLine());
 	    			objP.setGenero(bufferLectura.readLine());
@@ -340,6 +340,7 @@ public class Biblioteca {
     public void AgregarPelicula(String titulo, String direccion, String genero, String imagen, String calificacion) throws IOException
     {
     	leerPelicula();
+    	
     	Peliculas obj = new Peliculas();
     	obj.setContPeliculas(contPeliculas);
     	obj.setTitulo(titulo);
@@ -347,7 +348,7 @@ public class Biblioteca {
     	obj.setGenero(genero);
     	obj.setImagen(imagen);
     	obj.setCalificacion(calificacion);
-    	obj.setImagen(rutaImagenLibro+contLibros+".jpg");
+    	obj.setImagen(rutaImagenPelicula+contPeliculas+".jpg");
     	obj.setDiasPrestado(0);
     	obj.setDisponibilidad("0");
     	

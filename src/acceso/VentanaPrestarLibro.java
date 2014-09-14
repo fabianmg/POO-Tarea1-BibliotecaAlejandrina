@@ -26,6 +26,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 public class VentanaPrestarLibro extends JInternalFrame {
 
 	/**
@@ -48,140 +51,111 @@ public class VentanaPrestarLibro extends JInternalFrame {
 	 * Create the frame.
 	 */
 	Biblioteca biblio = new Biblioteca();
+	private JTable tablePersonas;
+	private JTable tableLibros;
 	public VentanaPrestarLibro() {
 		setTitle("Prestar Libro");
-		setBounds(10, 11, 774, 398);
+		setBounds(10, 11, 774, 398);	
 		getContentPane().setLayout(null);
 		
-		
-		
-		
-		
-		
-		JScrollPane scrollPersona = new JScrollPane();
-		scrollPersona.setBounds(27, 54, 193, 254);
-		getContentPane().add(scrollPersona);
-		
-		DefaultListModel<String> model1 = new DefaultListModel<String>();
-
-		ArrayList<Personas> personas = new ArrayList<Personas>();
-		
-		personas= biblio.getPersonas();
-		
-		for (int i = 0; i< personas.size(); i++){
-			
-			model1.addElement(personas.get(i).getNombre());
-			
-			
-		}
-		
-
-		
-		JList<String> listPersona = new JList<String>();
-		scrollPersona.setViewportView(listPersona);
-		listPersona.setModel(model1);
-		
-				
-		
-		
-		
-		
-		JScrollPane scrollLibro = new JScrollPane();
-		scrollLibro.setBounds(265, 54, 193, 254);
-		getContentPane().add(scrollLibro);
-		
-		
-		DefaultListModel<String> model2 = new DefaultListModel<String>();
-
-		ArrayList<Libros> libros = new ArrayList<Libros>();
-		
-		libros= biblio.getLibros();
-		
-		for (int i = 0; i< libros.size(); i++){
-			
-			model2.addElement(libros.get(i).getTitulo());
-			
-			
-		}
-
-		
-		
-		JList<String> listLibro = new JList<String>();
-		scrollLibro.setViewportView(listLibro);
-		listLibro.setModel(model2);
-		
-		
-				
-		JLabel lblLibro = DefaultComponentFactory.getInstance().createLabel("Libro:");
-		lblLibro.setBounds(520, 64, 50, 21);
-		getContentPane().add(lblLibro);
-		
-		JLabel lblPrestarA = DefaultComponentFactory.getInstance().createLabel("Prestar a:");
-		lblPrestarA.setBounds(520, 116, 65, 21);
-		getContentPane().add(lblPrestarA);
-		
-		JTextPane textLibroAPrestar = new JTextPane();
-		textLibroAPrestar.setEditable(false);
-		textLibroAPrestar.setBounds(582, 58, 127, 27);
-		getContentPane().add(textLibroAPrestar);
-		
-		JTextPane textPrestarA = new JTextPane();
-		textPrestarA.setBounds(582, 110, 127, 27);
-		getContentPane().add(textPrestarA);
-		
-		
-		JButton btnPrestarLibro = new JButton("Prestar Libro");
-		btnPrestarLibro.setEnabled(false);
-		btnPrestarLibro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			
-				String personaEscogida = listPersona.getSelectedValue();
-				String libroEscogido = listLibro.getSelectedValue();
-				
-				System.out.println(personaEscogida);
-				System.out.println(libroEscogido);
-				
-				int iDLibro = biblio.getIDLibro(libroEscogido);
-				
-				System.out.println(iDLibro);
-				
-				
-				JOptionPane.showMessageDialog(null, "Libro Prestado Correctamente");
-				textPrestarA.setText("");
-				textLibroAPrestar.setText("");
-			}
-		});
-		btnPrestarLibro.setBounds(582, 167, 140, 34);
-		getContentPane().add(btnPrestarLibro);
-		
-		
-		JButton btnAgregar = new JButton(">>Agregar");
-		btnAgregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnPrestarLibro.setEnabled(true);
-				String personaEscogida = listPersona.getSelectedValue();
-				String libroEscogido = listLibro.getSelectedValue();
-				
-				if(personaEscogida.equals(null) && libroEscogido.equals(null)){
-				JOptionPane.showMessageDialog(null, "Seleccione el libro y la persona a quien desea agregar primero");
-				}
-				textPrestarA.setText(personaEscogida);
-				textLibroAPrestar.setText(libroEscogido);
-				
-				
-				
-			}
-		});
-		btnAgregar.setBounds(468, 274, 102, 34);
-		getContentPane().add(btnAgregar);
-		
 		JLabel lblPersonas = DefaultComponentFactory.getInstance().createLabel("Personas");
-		lblPersonas.setBounds(27, 28, 92, 14);
+		lblPersonas.setBounds(10, 29, 92, 14);
 		getContentPane().add(lblPersonas);
 		
 		JLabel lblLibros = DefaultComponentFactory.getInstance().createLabel("Libros");
-		lblLibros.setBounds(264, 29, 92, 14);
+		lblLibros.setBounds(323, 29, 92, 14);
 		getContentPane().add(lblLibros);
+		
+		String colL[] = {"ID","Titulo","Autor", "Editorial", "Edicion"};
+		DefaultTableModel tableModelL = new DefaultTableModel(colL, 0);
+		
+		String colP[] = {"ID","Nombre","Primer Apellido", "Segundo Apellido"};
+		DefaultTableModel tableModelP = new DefaultTableModel(colP, 0);
+		
+		String datos[] = new String[7];//ARRAY DE 6
+
+		//LE PASO AL ARRAY LOS DATOS DEL ARRAYLIST 
+
+		Biblioteca biblio = new Biblioteca();
+		
+		ArrayList<Libros> Libros= new ArrayList<Libros>(1);
+		Libros = biblio.getLibrosDisponible();
+		
+		for (int i = 0; i < biblio.getLibrosDisponible().size(); i++) {
+
+
+
+		datos[0] = Integer.toString(biblio.getLibrosDisponible().get(i).getContLibros());
+		datos[1] = Libros.get(i).getTitulo();
+		datos[2] = Libros.get(i).getAutor();
+		datos[3] = Libros.get(i).getEdicion();
+		datos[4] = Libros.get(i).getEditorial();
+		tableModelL.addRow(datos);
+		}
+		
+		String datosP[] = new String[4];//ARRAY DE 6
+
+		//LE PASO AL ARRAY LOS DATOS DEL ARRAYLIST 
+
+		//Biblioteca biblio = new Biblioteca();
+		
+		ArrayList<Personas> Personas= new ArrayList<Personas>(1);
+		Personas = biblio.getPersonas();
+		
+		for (int i = 0; i < biblio.getPersonas().size(); i++) {
+
+
+
+		datosP[0] = Integer.toString(biblio.getPersonas().get(i).getContPersonas());
+		datosP[1] = Personas.get(i).getNombre();
+		datosP[2] = Personas.get(i).getApellidoUno();
+		datosP[3] = Personas.get(i).getApellidoDos();
+		tableModelP.addRow(datosP);
+		}
+		
+		
+		JScrollPane scrollPersona = new JScrollPane();
+		scrollPersona.setBounds(10, 53, 302, 197);
+		getContentPane().add(scrollPersona);
+		
+		
+		tablePersonas = new JTable(tableModelP);
+		scrollPersona.setViewportView(tablePersonas);
+		
+		JScrollPane scrollLibro = new JScrollPane();
+		scrollLibro.setBounds(323, 53, 302, 197);
+		getContentPane().add(scrollLibro);
+		
+		tableLibros = new JTable(tableModelL);
+		scrollLibro.setViewportView(tableLibros);
+		
+		JButton btnPrestar = new JButton("Prestar");
+		btnPrestar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int x;
+			    int y;
+			    
+			    int xR;
+			    int yR;
+			    
+				   x = tablePersonas.getSelectedColumn();				
+				   y = tablePersonas.getSelectedRow();
+				   
+				   xR= tableLibros.getSelectedColumn();
+				   yR = tableLibros.getSelectedRow();
+				   
+				   
+				   String idPersona= (String) tablePersonas.getValueAt(y,0);
+				   System.out.println(idPersona);
+				   String idLibro= (String) tableLibros.getValueAt(yR,0);
+				   System.out.println("Id Libro: "+idLibro);
+			
+				   JOptionPane.showMessageDialog(null, "Libro Prestado Correctamente!");
+	
+			}
+		});
+		btnPrestar.setBounds(548, 288, 200, 50);
+		getContentPane().add(btnPrestar);
 
 	}	
 }

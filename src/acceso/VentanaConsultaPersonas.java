@@ -91,6 +91,9 @@ public class VentanaConsultaPersonas extends JInternalFrame {
 			    int y;
 			    x = table.getSelectedColumn();				
 				y = table.getSelectedRow();
+				
+				System.out.println(x);
+				System.out.println(y);
 			
 				//   EditarPersonas(String nombre, String apellido1, String apellido2, String telefono, String email,String  tipo, int id
 				

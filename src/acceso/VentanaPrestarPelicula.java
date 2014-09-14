@@ -29,6 +29,8 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class VentanaPrestarPelicula extends JInternalFrame {
 
@@ -52,8 +54,8 @@ public class VentanaPrestarPelicula extends JInternalFrame {
 	 * Create the frame.
 	 */
 	Biblioteca biblio = new Biblioteca();
-	private JTextField textPeliculaAPrestar;
-	private JTextField textPrestarA;
+	private JTable tablePersona;
+	private JTable tablePelis;
 	
 	
 	public VentanaPrestarPelicula() {
@@ -61,120 +63,109 @@ public class VentanaPrestarPelicula extends JInternalFrame {
 		setBounds(10, 11, 774, 398);
 		getContentPane().setLayout(null);
 		
-		JScrollPane scrollPerson = new JScrollPane();
-		scrollPerson.setBounds(27, 54, 193, 254);
-		getContentPane().add(scrollPerson);
-		
-		DefaultListModel<String> model1 = new DefaultListModel<String>();
 
-		ArrayList<Personas> personas = new ArrayList<Personas>();
-		
-		personas= biblio.getPersonas();
-		
-		for (int i = 0; i< personas.size(); i++){
-			
-			model1.addElement(personas.get(i).getNombre());
-			
-			
-		}
-		
-		JList <String> listPersona = new JList<String>();
-		scrollPerson.setViewportView(listPersona);
-		listPersona.setModel(model1);
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(265, 54, 193, 254);
-		getContentPane().add(scrollPane_1);
-		
-		DefaultListModel<String> model2 = new DefaultListModel<String>();
-
-		ArrayList<Peliculas> peliculas = new ArrayList<Peliculas>();
-		
-		peliculas= biblio.getPeliculas();
-		
-		for (int i = 0; i< peliculas.size(); i++){
-			
-			model2.addElement(peliculas.get(i).getTitulo());
-			
-			
-		}
-
-		
-		JList<String> listPelicula = new JList<String>(model2);
-		scrollPane_1.setViewportView(listPelicula);
-		
-		JLabel lblPeliAPrestar = DefaultComponentFactory.getInstance().createLabel("Pelicula:");
-		lblPeliAPrestar.setBounds(520, 64, 50, 21);
-		getContentPane().add(lblPeliAPrestar);
-		
-		JLabel lblPrestarA = DefaultComponentFactory.getInstance().createLabel("Prestar a:");
-		lblPrestarA.setBounds(520, 116, 65, 21);
-		getContentPane().add(lblPrestarA);
-		
-		textPeliculaAPrestar = new JTextField();
-		textPeliculaAPrestar.setEditable(false);
-		textPeliculaAPrestar.setBounds(582, 58, 127, 27);
-		getContentPane().add(textPeliculaAPrestar);
-		textPeliculaAPrestar.setColumns(10);
-		
-		textPrestarA = new JTextField();
-		textPrestarA.setEditable(false);
-		textPrestarA.setBounds(582, 110, 127, 27);
-		getContentPane().add(textPrestarA);
-		textPrestarA.setColumns(10);
-		
-		JButton btnPrestarPelicula = new JButton("Prestar Pelicula");
-		btnPrestarPelicula.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String personaEscogida = listPersona.getSelectedValue();
-				String libroEscogido = listPelicula.getSelectedValue();
-				
-				System.out.println(personaEscogida);
-				System.out.println(libroEscogido);
-				
-				int iDLibro = biblio.getIDLibro(libroEscogido);
-				
-				System.out.println(iDLibro);
-				
-				
-				JOptionPane.showMessageDialog(null, "Pelicula Prestada Correctamente");
-				textPrestarA.setText("");
-				textPeliculaAPrestar.setText("");
-			
-				
-				
-			}
-		});
-		btnPrestarPelicula.setBounds(582, 167, 140, 34);
-		getContentPane().add(btnPrestarPelicula);
-		
-		JButton btnagregar = new JButton(">>Agregar");
-		btnagregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				btnPrestarPelicula.setEnabled(true);
-				String personaEscogida = listPersona.getSelectedValue();
-				String libroEscogido = listPelicula.getSelectedValue();
-				
-				if(personaEscogida.equals(null) && libroEscogido.equals(null)){
-				JOptionPane.showMessageDialog(null, "Seleccione la Pelicula y la persona a quien desea agregar primero");
-				}
-				textPrestarA.setText(personaEscogida);
-				textPeliculaAPrestar.setText(libroEscogido);
-				
-				
-			}
-		});
-		btnagregar.setBounds(468, 274, 102, 34);
-		getContentPane().add(btnagregar);
 		
 		JLabel lblPersonas = DefaultComponentFactory.getInstance().createLabel("Personas");
-		lblPersonas.setBounds(27, 28, 92, 14);
+		lblPersonas.setBounds(10, 29, 92, 14);
 		getContentPane().add(lblPersonas);
 		
 		JLabel lblPelicula = DefaultComponentFactory.getInstance().createLabel("Pelicula");
-		lblPelicula.setBounds(264, 29, 92, 14);
+		lblPelicula.setBounds(323, 29, 92, 14);
 		getContentPane().add(lblPelicula);
+		
+		String colPelis[] = {"ID","Titulo","Direccion", "Genero", "Calificacion"};
+		DefaultTableModel tableModelPelis = new DefaultTableModel(colPelis, 0);
+		
+		String colPer[] = {"ID","Nombre","Primer Apellido", "Segundo Apellido"};
+		DefaultTableModel tableModelPer = new DefaultTableModel(colPer, 0);
+		
+		String datos[] = new String[5];//ARRAY DE 6
+
+		//LE PASO AL ARRAY LOS DATOS DEL ARRAYLIST 
+
+		
+		
+		ArrayList<Peliculas> Peliculas= new ArrayList<Peliculas>(1);
+		Peliculas = biblio.getPeliculas();
+		
+		for (int i = 0; i < Peliculas.size(); i++) {
+
+
+
+		datos[0] = Integer.toString(Peliculas.get(i).getContPeliculas());
+		datos[1] = Peliculas.get(i).getTitulo();
+		datos[2] = Peliculas.get(i).getDireccion();
+		datos[3] = Peliculas.get(i).getGenero();
+		datos[4] = Peliculas.get(i).getImagen();
+		tableModelPelis.addRow(datos);
+		}
+		
+		String datosP[] = new String[4];//ARRAY DE 6
+
+		//LE PASO AL ARRAY LOS DATOS DEL ARRAYLIST 
+
+		//Biblioteca biblio = new Biblioteca();
+		
+		ArrayList<Personas> Personas= new ArrayList<Personas>(1);
+		Personas = biblio.getPersonas();
+		
+		for (int i = 0; i < biblio.getPersonas().size(); i++) {
+
+
+
+		datosP[0] = Integer.toString(biblio.getPersonas().get(i).getContPersonas());
+		datosP[1] = Personas.get(i).getNombre();
+		datosP[2] = Personas.get(i).getApellidoUno();
+		datosP[3] = Personas.get(i).getApellidoDos();
+		tableModelPer .addRow(datosP);
+		}
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 53, 302, 197);
+		getContentPane().add(scrollPane);
+		
+		
+		tablePersona = new JTable(tableModelPer );
+		scrollPane.setViewportView(tablePersona);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(323, 53, 302, 197);
+		getContentPane().add(scrollPane_1);
+		
+		tablePelis = new JTable(tableModelPelis);
+		scrollPane_1.setViewportView(tablePelis);
+		
+		JButton btnPrestar = new JButton("Prestar");
+		btnPrestar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+
+			    int x;
+			    int y;
+			              
+			    int xL;
+			    int yL;
+			                
+			    x = tablePersona.getSelectedColumn();               
+			    y = tablePersona.getSelectedRow();
+			                   
+			    xL= tablePelis.getSelectedColumn();
+			    yL = tablePelis.getSelectedRow();
+			                   
+			                   
+			    String idPersona= (String) tablePersona.getValueAt(y,0);
+			    System.out.println(idPersona);
+			    String idPelicula= (String) tablePelis.getValueAt(yL,0);
+			    System.out.println("Id Pelicula: "+idPelicula);
+			            
+			    JOptionPane.showMessageDialog(null, "Pelicula Prestado Correctamente!");
+			            
+				
+				
+			}
+		});
+		btnPrestar.setBounds(548, 288, 200, 50);
+		getContentPane().add(btnPrestar);
 		
 	}
 }
