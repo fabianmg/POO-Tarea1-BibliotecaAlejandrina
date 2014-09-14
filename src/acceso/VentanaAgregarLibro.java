@@ -2,6 +2,7 @@ package acceso;
 import logicaDeNegocios.*;
 
 import java.awt.EventQueue;
+import java.awt.SystemColor;
 
 import logicaDeNegocios.*;
 
@@ -23,7 +24,9 @@ import java.io.IOException;
 
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
+
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+
 import java.awt.Component;
 
 public class VentanaAgregarLibro extends JInternalFrame {
@@ -61,6 +64,7 @@ public class VentanaAgregarLibro extends JInternalFrame {
 		setTitle("Nuevo Libro");
 		setBounds(10, 11, 774, 398);
 		getContentPane().setLayout(null);
+		getContentPane().setBackground(SystemColor.textHighlight);
 		
 		JLabel lblTitulo = DefaultComponentFactory.getInstance().createLabel("Titulo:");
 		lblTitulo.setBounds(53, 87, 92, 14);

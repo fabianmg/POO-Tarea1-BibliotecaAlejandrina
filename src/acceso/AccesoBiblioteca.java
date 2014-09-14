@@ -49,22 +49,10 @@ public class AccesoBiblioteca extends JFrame {
 
 	DefaultTableModel modelo = new DefaultTableModel();;
 
-	JDesktopPane escritorio;
+	static JDesktopPane escritorio;
 	String [] Datos ;
 	
-	private JTextField textTitulo;
-	private JTextField textAutor;
-	private JTextField textEditorial;
-	private JTextField textEdicion;
-	private JTextField textCalificacion;
-	private JTextField txtNombre;
-	private JTextField textPrimerApellido;
-	private JTextField textSegundoApellido;
-	private JTextField textCorreoElectronico;
-	private JTextField textNumeroDeTelefono;
-	private JTextField textColumna;
-	private JTextField textAgregarDatoNuevo;
-	private JTextField textFila;
+
 
 	
 	
@@ -93,6 +81,8 @@ public class AccesoBiblioteca extends JFrame {
 				try {
 					AccesoBiblioteca frame = new AccesoBiblioteca();
 					frame.setVisible(true);
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -121,6 +111,17 @@ public class AccesoBiblioteca extends JFrame {
 		JDesktopPane escritorio = new JDesktopPane();
 		escritorio.setBounds(10, 11, 774, 398);
 		contentPane.add(escritorio);
+		VentanaPrincipal VP = new VentanaPrincipal();
+		escritorio.add(VP);
+		VP.setVisible(true);
+		try {
+			VP.setMaximum(true);
+		} catch (PropertyVetoException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
+		
 		
 		JMenuBar menuPrincipal = new JMenuBar();
 		setJMenuBar(menuPrincipal);
