@@ -37,6 +37,7 @@ import java.io.IOException;
 
 public class VentanaConsultaLibros extends JInternalFrame {
 	private JTable table1;
+	private JButton btnLibroEntregado;
 	
 	
 	public static void main(String[] args) {
@@ -176,6 +177,7 @@ public class VentanaConsultaLibros extends JInternalFrame {
 					String seleccionado = chDisp.getSelectedItem();
 					System.out.println(seleccionado);
 					
+					
 				    if (seleccionado =="Autor"){
 				    	
 				    	seleccionado = chAutor.getSelectedItem();
@@ -187,11 +189,15 @@ public class VentanaConsultaLibros extends JInternalFrame {
 						Libros = biblio.getLibros4Editoriales(seleccionado);
 					}else
 					if ( seleccionado == "Todos"){Libros = biblio.getLibros();}else
-					if (seleccionado =="Prestados") {Libros = biblio.getLibrosPrestado();}else
+					if (seleccionado =="Prestados")
+					{
+						Libros = biblio.getLibrosPrestado();
+						btnLibroEntregado.setVisible(true);
+					}else
 				    if (seleccionado =="Disponibles"){Libros = biblio.getLibrosDisponible();}else
 				    if (seleccionado =="Top mas Prestados"){Libros = biblio.getLibrosDisponible();}else
 				    if (seleccionado =="Ultimos mas prestados"){Libros = biblio.getLibrosDisponible();}
-					else {Libros = biblio.getLibrosPrestado();}
+					//else {Libros = biblio.getLibrosPrestado();}
 					
 					
 					for (int i = 0; i < Libros.size(); i++)
@@ -324,6 +330,32 @@ public class VentanaConsultaLibros extends JInternalFrame {
 		btnEditar.setBounds(568, 325, 70, 22);
 		getContentPane().add(btnEditar);
 		
+		btnLibroEntregado = new JButton("Libro entregado");
+		btnLibroEntregado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try 
+				{
+					int y;
+					int idL = 0;				
+					y = table1.getSelectedRow();
+					idL = Integer.parseInt(table1.getValueAt(y, 0).toString());
+					String libro = table1.getValueAt(y, 2).toString();
+					biblio.EditarLibros(0, idL, 0);
+					JOptionPane.showMessageDialog(null, "El libro "+libro+" se encuentra disponible." );
+					btnLibroEntregado.setVisible(false);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		});
+		btnLibroEntregado.setVisible(false);
+		btnLibroEntregado.setBounds(567, 29, 120, 20);
+		getContentPane().add(btnLibroEntregado);
+		//btnLibroEntregado.
+		
+		
 
 		
 
@@ -332,3 +364,4 @@ public class VentanaConsultaLibros extends JInternalFrame {
 
 	}
 }
+

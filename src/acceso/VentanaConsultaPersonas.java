@@ -99,6 +99,9 @@ public class VentanaConsultaPersonas extends JInternalFrame {
 				
 				//dato = tatableble1.getValueAt(y, x).toString();
 				
+
+				if(x==0)
+					JOptionPane.showMessageDialog(null, "No puede editare el id -.-");
 				if(x!=1)
 				{
 					nombre = table.getValueAt(y, 1).toString();

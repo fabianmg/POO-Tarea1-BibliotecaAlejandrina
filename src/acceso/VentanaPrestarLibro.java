@@ -25,6 +25,7 @@ import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import java.io.IOException;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -132,25 +133,34 @@ public class VentanaPrestarLibro extends JInternalFrame {
 		JButton btnPrestar = new JButton("Prestar");
 		btnPrestar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int x;
-			    int y;
-			    
-			    int xR;
-			    int yR;
-			    
-				   x = tablePersonas.getSelectedColumn();				
-				   y = tablePersonas.getSelectedRow();
-				   
-				   xR= tableLibros.getSelectedColumn();
-				   yR = tableLibros.getSelectedRow();
-				   
-				   
-				   String idPersona= (String) tablePersonas.getValueAt(y,0);
-				   System.out.println(idPersona);
-				   String idLibro= (String) tableLibros.getValueAt(yR,0);
-				   System.out.println("Id Libro: "+idLibro);
+				try
+				{
+					int x;
+				    int y;
+				    
+				    int xR;
+				    int yR;
+				    
+					x = tablePersonas.getSelectedColumn(); //Personas			
+					y = tablePersonas.getSelectedRow();
+					   
+					xR= tableLibros.getSelectedColumn();
+					yR = tableLibros.getSelectedRow();
+					   
+					   
+					int idPersona= Integer.parseInt((String) tablePersonas.getValueAt(y,0));
+					System.out.println(idPersona);
+					int idLibro= Integer.parseInt((String) tableLibros.getValueAt(yR,0));
+					System.out.println("Id Libro: "+idLibro);
+					 
+					biblio.EditarLibros(0, idLibro, idPersona);
+					
+					JOptionPane.showMessageDialog(null, "Libro Prestado Correctamente!");
+
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			
-				   JOptionPane.showMessageDialog(null, "Libro Prestado Correctamente!");
 	
 			}
 		});

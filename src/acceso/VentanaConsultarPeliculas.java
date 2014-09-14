@@ -64,11 +64,11 @@ public class VentanaConsultarPeliculas extends JInternalFrame {
 		getContentPane().add(btnEliminarTodo);
 		
 		JLabel lblMostrarPor = DefaultComponentFactory.getInstance().createLabel("Mostrar Por:");
-		lblMostrarPor.setBounds(588, 35, 92, 14);
+		lblMostrarPor.setBounds(240, 50, 60, 14);
 		getContentPane().add(lblMostrarPor);
 		
 		Choice choiceMostrarPor = new Choice();
-		choiceMostrarPor.setBounds(588, 55, 146, 20);
+		choiceMostrarPor.setBounds(306, 44, 146, 20);
 		choiceMostrarPor.addItem("Todos");
 		choiceMostrarPor.addItem("Prestados");
 		choiceMostrarPor.addItem("Disponibles");
@@ -78,11 +78,15 @@ public class VentanaConsultarPeliculas extends JInternalFrame {
 		getContentPane().add(choiceMostrarPor);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 55, 539, 261);
+		scrollPane.setBounds(10, 70, 539, 261);
 		getContentPane().add(scrollPane);
 		
 		table1 = new JTable(tableModel);
 		scrollPane.setViewportView(table1);
+		
+		JButton btnMostrar = new JButton("Mostrar");
+		btnMostrar.setBounds(458, 44, 91, 23);
+		getContentPane().add(btnMostrar);
 		
 String datosPelicula[]= new String[7];
 		

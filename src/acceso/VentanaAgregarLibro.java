@@ -28,6 +28,7 @@ import javax.swing.ImageIcon;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import java.awt.Component;
+import java.awt.Color;
 
 public class VentanaAgregarLibro extends JInternalFrame {
 	private JTextField textTitulo;
@@ -64,7 +65,7 @@ public class VentanaAgregarLibro extends JInternalFrame {
 		setTitle("Nuevo Libro");
 		setBounds(10, 11, 774, 398);
 		getContentPane().setLayout(null);
-		getContentPane().setBackground(SystemColor.textHighlight);
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		
 		JLabel lblTitulo = DefaultComponentFactory.getInstance().createLabel("Titulo:");
 		lblTitulo.setBounds(53, 87, 92, 14);

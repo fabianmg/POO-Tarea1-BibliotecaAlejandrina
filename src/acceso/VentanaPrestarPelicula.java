@@ -26,6 +26,7 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
@@ -86,7 +87,7 @@ public class VentanaPrestarPelicula extends JInternalFrame {
 		
 		
 		ArrayList<Peliculas> Peliculas= new ArrayList<Peliculas>(1);
-		Peliculas = biblio.getPeliculas();
+		Peliculas = biblio.getPeliculasDisponible();
 		
 		for (int i = 0; i < Peliculas.size(); i++) {
 
@@ -139,29 +140,24 @@ public class VentanaPrestarPelicula extends JInternalFrame {
 		btnPrestar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				try
+				{
+				    int y;
+				    int yR;			
+					y = tablePersona.getSelectedRow();
+					   
+					yR = tablePelis.getSelectedRow();
+					   
+					   
+					int idPersona= Integer.parseInt((String) tablePersona.getValueAt(y,0));
+					System.out.println(idPersona);
+					int idPelicula= Integer.parseInt((String) tablePelis.getValueAt(yR,0));					 
+					biblio.EditarPeliculas(0, idPelicula, idPersona);
+					JOptionPane.showMessageDialog(null, "Peli prestada correctamente!");
 
-			    int x;
-			    int y;
-			              
-			    int xL;
-			    int yL;
-			                
-			    x = tablePersona.getSelectedColumn();               
-			    y = tablePersona.getSelectedRow();
-			                   
-			    xL= tablePelis.getSelectedColumn();
-			    yL = tablePelis.getSelectedRow();
-			                   
-			                   
-			    String idPersona= (String) tablePersona.getValueAt(y,0);
-			    System.out.println(idPersona);
-			    String idPelicula= (String) tablePelis.getValueAt(yL,0);
-			    System.out.println("Id Pelicula: "+idPelicula);
-			            
-			    JOptionPane.showMessageDialog(null, "Pelicula Prestado Correctamente!");
-			            
-				
-				
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnPrestar.setBounds(548, 288, 200, 50);

@@ -41,6 +41,7 @@ import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JRadioButton;
+import java.awt.Color;
 
 public class AccesoBiblioteca extends JFrame {
 
@@ -112,6 +113,7 @@ public class AccesoBiblioteca extends JFrame {
 		escritorio.setBounds(10, 11, 774, 398);
 		contentPane.add(escritorio);
 		VentanaPrincipal VP = new VentanaPrincipal();
+		VP.getContentPane().setBackground(Color.LIGHT_GRAY);
 		escritorio.add(VP);
 		VP.setVisible(true);
 		try {

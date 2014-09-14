@@ -81,13 +81,13 @@ public class VentanaPrincipal extends JInternalFrame {
 		
 		DefaultListModel<String> model2 = new DefaultListModel<String>();
 
-		ArrayList<Libros> PPrestados = new ArrayList<Libros>();
+		ArrayList<Revistas> PPrestados = new ArrayList<Revistas>();  //revistas
 		
-		PPrestados= biblio.getLibrosPrestado();
+		PPrestados= biblio.getRevistasPrestado();
 		
 		for (int i = 0; i< PPrestados.size(); i++){
 			
-			model1.addElement(PPrestados.get(i).getTitulo());
+			model2.addElement(PPrestados.get(i).getTitulo());
 			
 			
 		}
@@ -102,13 +102,13 @@ public class VentanaPrincipal extends JInternalFrame {
 		
 		DefaultListModel<String> model3 = new DefaultListModel<String>();
 
-		ArrayList<Libros> RPrestados = new ArrayList<Libros>();
+		ArrayList<Peliculas> RPrestados = new ArrayList<Peliculas>(); //pelis
 		
-		RPrestados= biblio.getLibrosPrestado();
+		RPrestados= biblio.getPeliculasPrestado();
 		
 		for (int i = 0; i< RPrestados.size(); i++){
 			
-			model1.addElement(RPrestados.get(i).getTitulo());
+			model3.addElement(RPrestados.get(i).getTitulo());
 			
 			
 		}
