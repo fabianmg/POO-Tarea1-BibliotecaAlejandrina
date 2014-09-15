@@ -41,6 +41,45 @@ public class Biblioteca {
     private int contLibros;
     private int contPeliculas;
     private int contRevistas;
+    private int parametroTopMasPrestado;
+    private int parametroDiasDePrestamo;
+    private int parametroDiasDeTolerancia;
+    private int parametroDiasDeAlerta;
+    
+    
+    public int getParametroTopMasPrestado() {
+		return parametroTopMasPrestado;
+	}
+
+	public void setParametroTopMasPrestado(int parametroTopMasPrestado) {
+		this.parametroTopMasPrestado = parametroTopMasPrestado;
+	}
+
+	public int getParametroDiasDePrestamo() {
+		return parametroDiasDePrestamo;
+	}
+
+	public void setParametroDiasDePrestamo(int parametroDiasDePrestamo) {
+		this.parametroDiasDePrestamo = parametroDiasDePrestamo;
+	}
+
+	public int getParametroDiasDeTolerancia() {
+		return parametroDiasDeTolerancia;
+	}
+
+	public void setParametroDiasDeTolerancia(int parametroDiasDeTolerancia) {
+		this.parametroDiasDeTolerancia = parametroDiasDeTolerancia;
+	}
+
+	public int getParametroDiasDeAlerta() {
+		return parametroDiasDeAlerta;
+	}
+
+	public void setParametroDiasDeAlerta(int parametroDiasDeAlerta) {
+		this.parametroDiasDeAlerta = parametroDiasDeAlerta;
+	}
+
+
     
     private ArrayList<Personas> arrayPersonas = new ArrayList<Personas>(1);
     private ArrayList<Libros> arrayLibros = new ArrayList<Libros>(1);
