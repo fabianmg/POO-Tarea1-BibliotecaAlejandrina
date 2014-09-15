@@ -83,6 +83,11 @@ public class VentanaConsultarPeliculas extends JInternalFrame {
 		
 		table1 = new JTable(tableModel);
 		scrollPane.setViewportView(table1);
+		table1.setAutoCreateRowSorter(true);	
+
+			
+
+
 		
 		JButton btnMostrar = new JButton("Mostrar");
 		btnMostrar.addActionListener(new ActionListener() {
@@ -95,6 +100,8 @@ public class VentanaConsultarPeliculas extends JInternalFrame {
 				table1 = new JTable(tableModel);
 				scrollPane.setViewportView(table1);
 				table1.setCellSelectionEnabled(true);
+				table1.setAutoCreateRowSorter(true);
+				
 				
 				
 				String datosPelicula[]= new String[7];
@@ -168,7 +175,9 @@ public class VentanaConsultarPeliculas extends JInternalFrame {
 		    int y;
 		    x = table1.getSelectedColumn();				
 			y = table1.getSelectedRow();
-			
+			table1.setAutoCreateRowSorter(true);
+
+
 			System.out.println(x);
 			System.out.println(y);
 			//EditarPeliculas(String titulo, String direccion, String genero, String imagen, String calificacion,int dias, int id)

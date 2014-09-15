@@ -92,8 +92,11 @@ public class VentanaConsultaRevista extends JInternalFrame {
 		scrollPane.setBounds(13, 71, 539, 261);
 		getContentPane().add(scrollPane);
 		
+
 		table = new JTable(tableModel);
 		scrollPane.setViewportView(table);
+		table.setAutoCreateRowSorter(true);	
+
 		
 		JLabel lblMostrarPor = DefaultComponentFactory.getInstance().createLabel("Mostrar Por:");
 		lblMostrarPor.setBounds(13, 45, 60, 20);
@@ -140,7 +143,8 @@ public class VentanaConsultaRevista extends JInternalFrame {
 					
 					System.out.println(x);
 					System.out.println(y);
-				
+					table.setAutoCreateRowSorter(true);	
+
 					
 					//dato = tatableble1.getValueAt(y, x).toString();
 					
@@ -206,7 +210,7 @@ public class VentanaConsultaRevista extends JInternalFrame {
 					table = new JTable(tableModel);
 					scrollPane.setViewportView(table);
 					table.setCellSelectionEnabled(true);
-					
+					table.setAutoCreateRowSorter(true);
 
 					//scrollPane1.setViewportView(table1);
 					//table1.setCellSelectionEnabled(true);

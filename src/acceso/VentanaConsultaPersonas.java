@@ -62,18 +62,22 @@ public class VentanaConsultaPersonas extends JInternalFrame {
 		getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(22, 58, 539, 261);
+		scrollPane.setEnabled(false);
+		scrollPane.setBounds(20, 59, 539, 261);
 		getContentPane().add(scrollPane);
+
 		
 		table = new JTable(tableModel);
 		scrollPane.setViewportView(table);
 		//agregarDatos();
 		table.setCellSelectionEnabled(true);
 		
+		
 		TextField txtCambio = new TextField();
 		txtCambio.setText("Nuevo dato..");
 		txtCambio.setBounds(577, 257, 109, 20);
 		getContentPane().add(txtCambio);
+		
 		
 		
 		Button btnEditar = new Button("Editar");
@@ -86,6 +90,7 @@ public class VentanaConsultaPersonas extends JInternalFrame {
 			    String email;
 			    String telefono;
 			    String tipo;
+			    table.setCellSelectionEnabled(true);
 				
 			    int x;
 			    int y;
@@ -142,6 +147,7 @@ public class VentanaConsultaPersonas extends JInternalFrame {
 				int id = Integer.parseInt(table.getValueAt(y, 0).toString());
 				
 				bilbio.EditarPersonas(nombre, apellido1, apellido2, telefono, email, tipo, id);
+				
 			}
 		});
 		btnEditar.setBounds(579, 283, 70, 22);
@@ -152,34 +158,58 @@ public class VentanaConsultaPersonas extends JInternalFrame {
 		Label label = new Label("Editar selecci\u00F3n");
 		label.setBounds(576, 237, 122, 14);
 		getContentPane().add(label);
+		
+		JButton btnMostrar = new JButton("Mostrar");
+		btnMostrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				/////////////////
+				//*DefaultTableModel modelo = (DefaultTableModel)table.getModel();
+
+
+				
+				//JTable table = new JTable(tableModel);
+
+				String datos[] = new String[7];//ARRAY DE 6
+
+				//LE PASO AL ARRAY LOS DATOS DEL ARRAYLIST 
+
+				Biblioteca biblio = new Biblioteca();
+				
+				ArrayList<Personas> Personas= new ArrayList<Personas>(1);
+				Personas = biblio.getPersonas();
+				
+
+				tableModel.setRowCount(0);
+				table = new JTable(tableModel);
+				DefaultTableModel tableModel = new DefaultTableModel(col, 0);
+				table = new JTable(tableModel);
+				scrollPane.setViewportView(table);
+				table.setCellSelectionEnabled(true);
+				table.setAutoCreateRowSorter(true);
+				
+				
+				for (int i = 0; i < biblio.getPersonas().size(); i++) {
+
+
+
+				datos[0] = Integer.toString(biblio.getPersonas().get(i).getContPersonas());
+				datos[1] = Personas.get(i).getNombre();
+				datos[2] = Personas.get(i).getApellidoUno();
+				datos[3] = Personas.get(i).getApellidoDos();
+				datos[4] = Personas.get(i).getEmail();
+				datos[5] = Personas.get(i).getTelefono();
+				datos[6] = Personas.get(i).getTipo();
+				tableModel.addRow(datos);
+				}
+				
+				
+				////////////////
+			}
+		});
+		btnMostrar.setBounds(423, 37, 136, 20);
+		getContentPane().add(btnMostrar);
 	
-		//*DefaultTableModel modelo = (DefaultTableModel)table.getModel();
-
-
 		
-		//JTable table = new JTable(tableModel);
-
-		String datos[] = new String[7];//ARRAY DE 6
-
-		//LE PASO AL ARRAY LOS DATOS DEL ARRAYLIST 
-
-		Biblioteca biblio = new Biblioteca();
-		
-		ArrayList<Personas> Personas= new ArrayList<Personas>(1);
-		Personas = biblio.getPersonas();
-		
-		for (int i = 0; i < biblio.getPersonas().size(); i++) {
-
-
-
-		datos[0] = Integer.toString(biblio.getPersonas().get(i).getContPersonas());
-		datos[1] = Personas.get(i).getNombre();
-		datos[2] = Personas.get(i).getApellidoUno();
-		datos[3] = Personas.get(i).getApellidoDos();
-		datos[4] = Personas.get(i).getEmail();
-		datos[5] = Personas.get(i).getTelefono();
-		datos[6] = Personas.get(i).getTipo();
-		tableModel.addRow(datos);
-		}
 		}
 	}

@@ -74,7 +74,7 @@ public class VentanaConsultaLibros extends JInternalFrame {
 		
 		table1 = new JTable(tableModel);
 		scrollPane1.setViewportView(table1);
-	
+		table1.setAutoCreateRowSorter(true);	
 		table1.setCellSelectionEnabled(true);
 		
 		Choice chDisp = new Choice();
@@ -161,7 +161,8 @@ public class VentanaConsultaLibros extends JInternalFrame {
 					table1 = new JTable(tableModel);
 					scrollPane1.setViewportView(table1);
 					table1.setCellSelectionEnabled(true);
-			
+					table1.setAutoCreateRowSorter(true);	
+
 					String datosLibro[]= new String[8];
 					
 					//LE PASO AL ARRAY LOS DATOS DEL ARRAYLIST
@@ -263,7 +264,9 @@ public class VentanaConsultaLibros extends JInternalFrame {
 					int dias = 0;
 					String calificacion= "";
 					//private String rutaImagen = "";
-				
+					//table1.setCellSelectionEnabled(true);
+					table1.setAutoCreateRowSorter(true);	
+
 					x = table1.getSelectedColumn();				
 					y = table1.getSelectedRow();
 					//    public void EditarLibros(String titulo, String autor, String editorial, String imagen, String calificacion, int id) throws IOException
@@ -306,7 +309,7 @@ public class VentanaConsultaLibros extends JInternalFrame {
 					//dias = Integer.parseInt(table1.getValueAt(y, 4).toString());
 					
 					id = Integer.parseInt(table1.getValueAt(y, 0).toString());
-					
+					table1.setCellSelectionEnabled(true);
 					String ho = dato.toString();
 					System.out.println(ho);
 					System.out.println(id);
