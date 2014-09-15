@@ -1,3 +1,8 @@
+/*Descripcion: Esta es la clase que Agrergar libros
+ * Autores: Fabian Monge Garcia & Ariel Montero Monestel
+ * Fecha de creacion:20/08/2014
+*/
+
 package acceso;
 import logicaDeNegocios.*;
 
@@ -44,10 +49,9 @@ public class VentanaAgregarLibro extends JInternalFrame {
 	private String Editorial = "";
 	private String Calificacion= "";
 	private String DireccionImagen = "";
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
+
+
+public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

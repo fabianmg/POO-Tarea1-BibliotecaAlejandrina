@@ -1,3 +1,7 @@
+/*Descripcion: Esta es la clase principal de la intefaz Grafica
+ * Autores: Fabian Monge Garcia & Ariel Montero Monestel
+ * Fecha de creacion:20/08/2014
+*/
 package acceso;
 import logicaDeNegocios.*;  
 
@@ -58,24 +62,7 @@ public class AccesoBiblioteca extends JFrame {
 	
 	
 	public static void main(String[] args) throws IOException {
-		/*
-		///code temnp////////////
-			//  public void GuardarPersona(String nombre, String apellido1, String apellido2, String telefono, String email,String  tipo ) throws IOException
 
-		Biblioteca biblio = new Biblioteca();
-		
-		
-		
-		biblio.AgregarPersona("Fabian","Monge","Garcia","2222-2222","fmonge@fabian.com","familia");
-		//biblio.AgregarLibro ("titulo", "autor", "editorial","3d", "imagen", "***");
-		//biblio.AgregarLibro ("1titulo1", "1autor1", "1editorial1","13d1", "1imagen1", "1***1");
-		//biblio.AgregarPersona("Naibaf","Gamon","Garge","8888-8888","otro@email.es","estudiante");
-		biblio.AgregarPersona("hFabiahn","hMonge","Garcia","2222-2222","fmonge@fabian.com","familia");
-		//biblio.leerPersona();
-		//biblio.getEditoriales();
-		 biblio.EditarLibros(0,3 , 4);
-		*/
-		////////////////////////
 		EventQueue.invokeLater(new Runnable() 
 		{
 			public void run() {
@@ -91,9 +78,6 @@ public class AccesoBiblioteca extends JFrame {
 		});
 	} 
 
-	/**
-	 * Create the frame.
-	 */
 	public AccesoBiblioteca() {
 		setResizable(false);
 		setTitle("Biblioteca Alejandrina");
@@ -119,13 +103,13 @@ public class AccesoBiblioteca extends JFrame {
 		try {
 			VP.setMaximum(true);
 		} catch (PropertyVetoException e2) {
-			// TODO Auto-generated catch block
+			
 			e2.printStackTrace();
 		}
 		
+		//Creacion del menu principal con todos sus items
 		
-		
-		JMenuBar menuPrincipal = new JMenuBar();
+		JMenuBar menuPrincipal = new JMenuBar(); 
 		setJMenuBar(menuPrincipal);
 		
 		
@@ -133,19 +117,19 @@ public class AccesoBiblioteca extends JFrame {
 		menuAgregar.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\add2.png"));//O.o'
 		menuPrincipal.add(menuAgregar);
 		
-		JMenuItem agregarPersona = new JMenuItem("Persona");
+		JMenuItem agregarPersona = new JMenuItem("Persona"); 
 		agregarPersona.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Persona2.png"));
 		agregarPersona.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
 				
-				
+				//Evento que llama a la ventana Agregar Persona
 				VentanaAgregarPersonas VAP = new VentanaAgregarPersonas(); //Crea la ventana de agregar personas dentro del escritorio
 				escritorio.add(VAP);
 				VAP.setVisible(true);
 				try {
 					VAP.setMaximum(true);
 				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
+					
 					e1.printStackTrace();
 				}
 							
@@ -165,14 +149,14 @@ public class AccesoBiblioteca extends JFrame {
 		mntmPelicula.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Movie-32.png"));
 		mntmPelicula.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				// Evento que llama a la ventana Agregar Persona
 				VentanaAgregarPelicula VAPeli = new VentanaAgregarPelicula();
 				escritorio.add(VAPeli);
 				VAPeli.setVisible(true);
 				try {
 					VAPeli.setMaximum(true);
 				} catch (PropertyVetoException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 			}
@@ -183,13 +167,14 @@ public class AccesoBiblioteca extends JFrame {
 		mntmRevista.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1410524012_magazine.png"));
 		mntmRevista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				// Evento que llama a la ventana Agregar Revista
 				VentanaAgregarRevista VAR = new VentanaAgregarRevista();
 				escritorio.add (VAR);
 				VAR.setVisible(true);
 				try {
 					VAR.setMaximum(true);
 				} catch (PropertyVetoException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 				
@@ -198,14 +183,14 @@ public class AccesoBiblioteca extends JFrame {
 		mnOtro.add(mntmRevista);
 		agregarLibro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				// Evento que llama a la ventana Agregar Libro
 				VentanaAgregarLibro VAL = new VentanaAgregarLibro();
 				escritorio.add(VAL);
 				VAL.setVisible(true);
 				try {
 					VAL.setMaximum(true);
 				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
+				
 					e1.printStackTrace();
 				}
 				
@@ -222,14 +207,14 @@ public class AccesoBiblioteca extends JFrame {
 		JMenuItem edicionPersona = new JMenuItem(" Persona");
 		edicionPersona.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				// Evento que llama a la ventana Consultar Personas
 				VentanaConsultaPersonas VEP = new VentanaConsultaPersonas();
 				escritorio.add(VEP);
 				VEP.setVisible(true);
 				try {
 					VEP.setMaximum(true);
 				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
+					
 					e1.printStackTrace();
 				}
 				
@@ -242,13 +227,14 @@ public class AccesoBiblioteca extends JFrame {
 		JMenuItem mntmLibro = new JMenuItem("Libro");
 		mntmLibro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				// Evento que llama a la ventana Consultar Libros
 				VentanaConsultaLibros VCL = new VentanaConsultaLibros();
 				escritorio.add(VCL);
 				VCL.show();
 				try {
 					VCL.setMaximum(true);
 				} catch (PropertyVetoException e) {
-					// TODO Auto-generated catch block
+				
 					e.printStackTrace();
 				}
 			}
@@ -262,6 +248,7 @@ public class AccesoBiblioteca extends JFrame {
 		
 		JMenuItem mntmPelicula_1 = new JMenuItem("Pelicula");
 		mntmPelicula_1.addActionListener(new ActionListener() {
+			// Evento que llama a la ventana Consultar Peliculas
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaConsultarPeliculas VCPelis = new VentanaConsultarPeliculas();
 				escritorio.add(VCPelis);
@@ -269,7 +256,7 @@ public class AccesoBiblioteca extends JFrame {
 				try {
 					VCPelis.setMaximum(true);
 				} catch (PropertyVetoException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 			}
@@ -279,6 +266,8 @@ public class AccesoBiblioteca extends JFrame {
 		
 		JMenuItem mntmRevista_1 = new JMenuItem("Revista");
 		mntmRevista_1.addActionListener(new ActionListener() {
+			// Evento que llama a la ventana Consultar Revistas
+			
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaConsultaRevista VCR = new VentanaConsultaRevista();
 				escritorio.add(VCR);
@@ -286,7 +275,7 @@ public class AccesoBiblioteca extends JFrame {
 				try {
 					VCR.setMaximum(true);
 				} catch (PropertyVetoException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 			}
@@ -300,6 +289,8 @@ public class AccesoBiblioteca extends JFrame {
 		
 		JMenuItem mntmDeLibrosPrestados = new JMenuItem("Prestar Libro");
 		mntmDeLibrosPrestados.addActionListener(new ActionListener() {
+			// Evento que llama a la ventana Prestar Libro
+			
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaPrestarLibro VPL = new VentanaPrestarLibro();
 				escritorio.add(VPL);
@@ -307,7 +298,7 @@ public class AccesoBiblioteca extends JFrame {
 				try {
 					VPL.setMaximum(true);
 				} catch (PropertyVetoException e) {
-					// TODO Auto-generated catch block
+			
 					e.printStackTrace();
 				}
 				
@@ -322,6 +313,8 @@ public class AccesoBiblioteca extends JFrame {
 		
 		JMenuItem mntmPrestarPelicula = new JMenuItem("Prestar Pelicula");
 		mntmPrestarPelicula.addActionListener(new ActionListener() {
+			
+			//Evento que llama a la ventana Prestar Pelicula
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaPrestarPelicula VPP =new VentanaPrestarPelicula();
 				escritorio.add(VPP);
@@ -329,7 +322,7 @@ public class AccesoBiblioteca extends JFrame {
 				try {
 					VPP.setMaximum(true);
 				} catch (PropertyVetoException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 			}
@@ -339,6 +332,8 @@ public class AccesoBiblioteca extends JFrame {
 		
 		JMenuItem mntmPrestarRevista = new JMenuItem("Prestar Revista");
 		mntmPrestarRevista.addActionListener(new ActionListener() {
+			//Evento que llama a la ventana Prestar Revista
+			
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaPrestarRevista VPR = new VentanaPrestarRevista();
 				escritorio.add(VPR);
@@ -346,7 +341,7 @@ public class AccesoBiblioteca extends JFrame {
 				try {
 					VPR.setMaximum(true);
 				} catch (PropertyVetoException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 			}
@@ -360,6 +355,7 @@ public class AccesoBiblioteca extends JFrame {
 		
 		JMenuItem mntmEditarParametros = new JMenuItem("Editar Parametros");
 		mntmEditarParametros.addActionListener(new ActionListener() {
+			//Evento que llama a la ventana Parametros
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaParametros VP = new VentanaParametros();
 				escritorio.add(VP);
@@ -367,14 +363,14 @@ public class AccesoBiblioteca extends JFrame {
 				try {
 					VP.setMaximum(true);
 				} catch (PropertyVetoException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 				
 			}
 		});
 		menuParametros.add(mntmEditarParametros);
-		/***/
+		
 			
 		
 

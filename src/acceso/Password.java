@@ -1,3 +1,9 @@
+/*Descripcion: Esta es la clase que contiene la ventana password
+ * Autores: Fabian Monge Garcia & Ariel Montero Monestel
+ * Fecha de creacion:20/08/2014
+*/
+
+
 package acceso;
 
 import java.awt.BorderLayout;
@@ -15,11 +21,16 @@ import javax.swing.JTextPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+
 import java.awt.Font;
+
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+
 import java.awt.Component;
 import java.awt.Color;
+import java.awt.Frame;
 import java.awt.SystemColor;
 
 public class Password extends JFrame {
@@ -81,7 +92,7 @@ public class Password extends JFrame {
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String pass = "";
-				
+				//Se Guarda cada caracter de la contrasena
 				char[]contrasenia= passwordField.getPassword();
 				for (int x = 0; x<contrasenia.length; x++){
 					pass+= contrasenia[x];
@@ -89,17 +100,17 @@ public class Password extends JFrame {
 				}
 				String nombreUsuario = "Admin";
 				if ( textUsuario.getText().equals(nombreUsuario) && pass.equals(pass) ){
-					
+					//Si se cumple la condicion, se accede a la biblioteca
 					AccesoBiblioteca AB = new AccesoBiblioteca();
 					AB.setVisible(true);
 				
 					
 					textUsuario.setText("");
 					passwordField.setText("");
-					
+			
 					
 				}
-				else{
+				else{// si no lanza un mensaje y vuelve a pedir usario y contrasena
 					
 						JOptionPane.showMessageDialog(null, "Contrasena y Usuario Incorrectos");
 						textUsuario.setText("");
@@ -107,20 +118,7 @@ public class Password extends JFrame {
 						
 					}
 				}
-				
-				
-				
-				
-				/*
-				String pass = "";
-				char[] password = passwordField.getPassword();
-				for (int x = 0; x<password.length; x++){
-					pass+= password[x];
-					
-				}
-				JOptionPane.showMessageDialog(null, pass);
-				*/
-			
+						
 		});
 		btnIngresar.setBounds(82, 225, 170, 41);
 		contentPane.add(btnIngresar);
