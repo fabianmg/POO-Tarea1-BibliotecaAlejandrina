@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.6" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="acceso.Password" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/acceso/Password.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="904" y="-39"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="acceso.VentanaPrestarRevista" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/acceso/VentanaPrestarRevista.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1112" y="-50"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="acceso.VentanaConsultaPersonas" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/acceso/VentanaConsultaPersonas.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1317" y="-68"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="acceso.VentanaParametros" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/acceso/VentanaParametros.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1536" y="-32"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="acceso.VentanaPrestarPelicula" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/acceso/VentanaPrestarPelicula.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1747" y="-50"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="acceso.AccesoBiblioteca" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/acceso/AccesoBiblioteca.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1942" y="-32"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="acceso.VentanaConsultaRevista" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/acceso/VentanaConsultaRevista.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2140" y="-68"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="acceso.VentanaPrestarLibro" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/acceso/VentanaPrestarLibro.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2332" y="-50"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="acceso.VentanaPrincipal" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/acceso/VentanaPrincipal.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2503" y="-68"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="acceso.VentanaAgregarLibro" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/acceso/VentanaAgregarLibro.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2679" y="40"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="acceso.VentanaConsultarPeliculas" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/acceso/VentanaConsultarPeliculas.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2883" y="-59"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="acceso.VentanaAgregarRevista" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/acceso/VentanaAgregarRevista.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3091" y="40"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="acceso.VentanaConsultaLibros" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/acceso/VentanaConsultaLibros.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3288" y="-59"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="acceso.VentanaAgregarPersonas" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/acceso/VentanaAgregarPersonas.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3497" y="22"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="acceso.VentanaAgregarPelicula" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/acceso/VentanaAgregarPelicula.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3709" y="4"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="logicaDeNegocios.Peliculas" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/logicaDeNegocios/Peliculas.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="688" y="1673"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="logicaDeNegocios.EnviarMail" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/logicaDeNegocios/EnviarMail.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="694" y="-47"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="logicaDeNegocios.Revistas" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/logicaDeNegocios/Revistas.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1183" y="986"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="logicaDeNegocios.Libros" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/logicaDeNegocios/Libros.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1577" y="1809"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="logicaDeNegocios.Personas" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/logicaDeNegocios/Personas.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2069" y="1913"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="logicaDeNegocios.Biblioteca" project="POO-Tarea1-BibliotecaAlejandrina" 
+    file="/POO-Tarea1-BibliotecaAlejandrina/src/logicaDeNegocios/Biblioteca.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2842" y="1128"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="22">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="23" name="biblio"/>      
+      <multiplicity id="24" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="25">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="26" name="arrayLibros"/>      
+      <multiplicity id="27" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="28">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="29" name="arrayPeliculasDisponibles"/>      
+      <multiplicity id="30" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="31">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="32" name="arrayLibrosDisponibles"/>      
+      <multiplicity id="33" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="34">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="35" name="arrayPersonas"/>      
+      <multiplicity id="36" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="37">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="38" name="arrayLibrosPrestados"/>      
+      <multiplicity id="39" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="40">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="41" name="arrayPeliculas"/>      
+      <multiplicity id="42" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="43">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="44" name="arrayRevistasPrestadas"/>      
+      <multiplicity id="45" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="46">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="47" name="biblio"/>      
+      <multiplicity id="48" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="49">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="50" name="biblio"/>      
+      <multiplicity id="51" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="52">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="53" name="arrayPeliculasPrestadas"/>      
+      <multiplicity id="54" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="55">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="56" name="arrayRevistasDisponibles"/>      
+      <multiplicity id="57" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="58">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="59" name="biblio"/>      
+      <multiplicity id="60" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="61">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="62" name="arrayRevistas"/>      
+      <multiplicity id="63" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="64">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="65" name="biblio"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="67">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="68" name="biblio"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
