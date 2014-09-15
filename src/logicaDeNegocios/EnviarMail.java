@@ -15,8 +15,7 @@ import javax.mail.internet.MimeMessage;
 
 public class EnviarMail
 {
-    public static void main(String[] args)
-    {
+	public static void enviarMail(String destinatario){
         try
        { 
             // Propiedades de la conexión
@@ -35,7 +34,7 @@ public class EnviarMail
             message.setFrom(new InternetAddress("alejandrinabiblioteca172@gmail.com"));
             message.addRecipient(
                 Message.RecipientType.TO,
-                new InternetAddress("arielmmonestel@gmail.com")); //Sitio de destino del msj
+                new InternetAddress(destinatario)); //Sitio de destino del msj
             Biblioteca biblio2= new Biblioteca();
             message.setSubject("Recordatorio de la devolucion del libro"); //"Subject o motivo del correo"
             message.setText(
@@ -54,4 +53,20 @@ public class EnviarMail
             e.printStackTrace();
         }
     }
+		
+
+	
+	
+	
+    public static void main(String[] args)
+    {
+
+    	enviarMail("arielmmonestel@gmail.com");
 }
+
+
+
+
+
+	
+    }
