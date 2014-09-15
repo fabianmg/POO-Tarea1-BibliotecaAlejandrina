@@ -279,9 +279,7 @@ public class Biblioteca {
                 {e2.printStackTrace();}
         }
     }
-
     
-        
     public void AgregarPersona(String nombre, String apellido1, String apellido2, String telefono, String email,String  tipo ) throws IOException
     {
     	   leerPersona();
@@ -406,7 +404,6 @@ public class Biblioteca {
  	   
     }
     
-    
   
   private void GuardarPersona(ArrayList<Personas> arrayPersonas1) throws IOException
     {
@@ -523,16 +520,17 @@ public class Biblioteca {
     	{		
     		escribir = new FileWriter(rutaPeliculas,false);
     		pw = new PrintWriter(escribir);
+    		contPeliculas = 0;     		
     		
     		for(Peliculas obj: arrayPeliculas1)
     		{	
     			pw.println("===>nueva pelicula<===");
-    			pw.println(obj.getContPeliculas());
+    			pw.println(contPeliculas++);
 				pw.println(obj.getTitulo());
 				pw.println(obj.getDireccion());
 				pw.println(obj.getGenero());
-				pw.println(obj.getCalificacion());
 				pw.println(obj.getImagen());
+				pw.println(obj.getCalificacion());
 				pw.println(obj.getDiasPrestado());
 				pw.println(obj.getDisponibilidad());
 			}
@@ -648,7 +646,7 @@ public class Biblioteca {
     {
         try
         {                       
-            leerLibro();
+            leerRevista();
             ArrayList<Revistas> arrayTempRevista = new ArrayList<Revistas>(1);
             for(Revistas obj: arrayRevistas)
             {   
@@ -673,7 +671,8 @@ public class Biblioteca {
         
     }
     
-    public void EditarPeliculas(String titulo, String direccion, String genero, String imagen, String calificacion,int dias, int id) throws IOException
+    //public void EditarPeliculas(String titulo, String direccion, String genero, String imagen, String calificacion,int id) throws IOException
+    public void EditarPeliculas(String titulo, String direccion, String genero, String calificacion,int id) throws IOException
     {
     	try
     	{		    			
@@ -686,9 +685,9 @@ public class Biblioteca {
     				obj.setTitulo(titulo);
     		    	obj.setDireccion(direccion);
     		    	obj.setGenero(genero);
-    		    	obj.setImagen(imagen);
+    		    	//obj.setImagen(imagen);
     		    	obj.setCalificacion(calificacion);
-    		    	obj.setDiasPrestado(dias);
+    		    	//obj.setDiasPrestado(dias);
     		    	arrayTempPeliculas.add(obj);
     			}else
     				arrayTempPeliculas.add(obj);		
@@ -812,7 +811,7 @@ public class Biblioteca {
 		return arrayRevistas;
     }
     
-    private String getNombrePersona(int idPersona)
+    public String getNombrePersona(int idPersona)
     {
 		String nombre = "";
 
@@ -877,7 +876,6 @@ public class Biblioteca {
         return 0;
     }
 
-  
     public ArrayList<Libros> getLibrosPrestado()
     {
     	leerLibro();
@@ -911,7 +909,7 @@ public class Biblioteca {
     {
             try
             {                       
-                leerLibro();
+                leerPelicula();
                 ArrayList<Peliculas> peliculasPrestados = new ArrayList<Peliculas>(1);
                 ArrayList<Peliculas> peliculasArrayTemp = arrayPeliculas;
                 String nombre = "";
@@ -919,7 +917,7 @@ public class Biblioteca {
                 
                 for(Peliculas obj: peliculasArrayTemp)
                 {   
-                    if(!obj.getDisponibilidad().equals(0))
+                    if(!obj.getDisponibilidad().equals("0"))
                     {
                         idPersona = Integer.parseInt(obj.getDisponibilidad());
                         nombre = getNombrePersona(idPersona);
@@ -1013,19 +1011,19 @@ public class Biblioteca {
     
     public ArrayList<Peliculas> getPeliculasDisponible()
     {
-            try
+    	   leerPelicula();
+           ArrayList<Peliculas> peliculasDisponibles = new ArrayList<Peliculas>(1);
+           ArrayList<Peliculas> peliculasArrayTemp = arrayPeliculas;    
+    	try
             {                       
-                leerLibro();
-                ArrayList<Peliculas> peliculasDisponibles = new ArrayList<Peliculas>(1);
-                ArrayList<Peliculas> peliculasArrayTemp = arrayPeliculas;
+             
                 
                 
                 for(Peliculas obj: peliculasArrayTemp)
                 {   
                     if(obj.getDisponibilidad().equals("0"))
+                    	peliculasDisponibles.add(obj);
                     {
-                        
-                        peliculasDisponibles.add(obj);
                     }           
                 }
                 peliculasArrayTemp.clear();
@@ -1033,7 +1031,7 @@ public class Biblioteca {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return arrayPeliculas;
+            return peliculasDisponibles;
     }
     
     private boolean EstaEnLista(String palabra, ArrayList<String> lista)

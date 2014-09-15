@@ -89,16 +89,14 @@ public class VentanaPrestarPelicula extends JInternalFrame {
 		ArrayList<Peliculas> Peliculas= new ArrayList<Peliculas>(1);
 		Peliculas = biblio.getPeliculasDisponible();
 		
-		for (int i = 0; i < Peliculas.size(); i++) {
-
-
-
-		datos[0] = Integer.toString(Peliculas.get(i).getContPeliculas());
-		datos[1] = Peliculas.get(i).getTitulo();
-		datos[2] = Peliculas.get(i).getDireccion();
-		datos[3] = Peliculas.get(i).getGenero();
-		datos[4] = Peliculas.get(i).getImagen();
-		tableModelPelis.addRow(datos);
+		for (int i = 0; i < Peliculas.size(); i++) 
+		{
+			datos[0] = Integer.toString(Peliculas.get(i).getContPeliculas());
+			datos[1] = Peliculas.get(i).getTitulo();
+			datos[2] = Peliculas.get(i).getDireccion();
+			datos[3] = Peliculas.get(i).getGenero();
+			datos[4] = Peliculas.get(i).getImagen();
+			tableModelPelis.addRow(datos);
 		}
 		
 		String datosP[] = new String[4];//ARRAY DE 6
@@ -110,15 +108,13 @@ public class VentanaPrestarPelicula extends JInternalFrame {
 		ArrayList<Personas> Personas= new ArrayList<Personas>(1);
 		Personas = biblio.getPersonas();
 		
-		for (int i = 0; i < biblio.getPersonas().size(); i++) {
-
-
-
-		datosP[0] = Integer.toString(biblio.getPersonas().get(i).getContPersonas());
-		datosP[1] = Personas.get(i).getNombre();
-		datosP[2] = Personas.get(i).getApellidoUno();
-		datosP[3] = Personas.get(i).getApellidoDos();
-		tableModelPer .addRow(datosP);
+		for (int i = 0; i < biblio.getPersonas().size(); i++) 
+		{
+			datosP[0] = Integer.toString(biblio.getPersonas().get(i).getContPersonas());
+			datosP[1] = Personas.get(i).getNombre();
+			datosP[2] = Personas.get(i).getApellidoUno();
+			datosP[3] = Personas.get(i).getApellidoDos();
+			tableModelPer .addRow(datosP);
 		}
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -152,7 +148,9 @@ public class VentanaPrestarPelicula extends JInternalFrame {
 					int idPersona= Integer.parseInt((String) tablePersona.getValueAt(y,0));
 					System.out.println(idPersona);
 					int idPelicula= Integer.parseInt((String) tablePelis.getValueAt(yR,0));					 
+					
 					biblio.EditarPeliculas(0, idPelicula, idPersona);
+					
 					JOptionPane.showMessageDialog(null, "Peli prestada correctamente!");
 
 				} catch (IOException e1) {

@@ -155,18 +155,13 @@ public class VentanaConsultaLibros extends JInternalFrame {
 			{
 				try
 				{	
-					
 					tableModel.setRowCount(0);
 					table1 = new JTable(tableModel);
 					DefaultTableModel tableModel = new DefaultTableModel(col, 0);
 					table1 = new JTable(tableModel);
 					scrollPane1.setViewportView(table1);
 					table1.setCellSelectionEnabled(true);
-					
-
-					//scrollPane1.setViewportView(table1);
-					//table1.setCellSelectionEnabled(true);
-					
+			
 					String datosLibro[]= new String[8];
 					
 					//LE PASO AL ARRAY LOS DATOS DEL ARRAYLIST

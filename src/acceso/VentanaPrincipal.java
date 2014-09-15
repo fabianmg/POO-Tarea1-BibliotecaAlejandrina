@@ -85,12 +85,8 @@ public class VentanaPrincipal extends JInternalFrame {
 		
 		PPrestados= biblio.getRevistasPrestado();
 		
-		for (int i = 0; i< PPrestados.size(); i++){
-			
+		for (int i = 0; i< PPrestados.size(); i++)
 			model2.addElement(PPrestados.get(i).getTitulo());
-			
-			
-		}
 		
 		JList listPelisPrestadas = new JList(model2);
 		scrollPane_1.setViewportView(listPelisPrestadas);
@@ -106,12 +102,9 @@ public class VentanaPrincipal extends JInternalFrame {
 		
 		RPrestados= biblio.getPeliculasPrestado();
 		
-		for (int i = 0; i< RPrestados.size(); i++){
-			
+		for (int i = 0; i< RPrestados.size(); i++)
 			model3.addElement(RPrestados.get(i).getTitulo());
-			
-			
-		}
+		
 		
 		JList listRevistasPrestadas = new JList(model3);
 		scrollPane_2.setViewportView(listRevistasPrestadas);
