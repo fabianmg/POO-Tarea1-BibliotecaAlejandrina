@@ -88,15 +88,15 @@ public class VentanaParametros extends JInternalFrame {
 		getContentPane().add(panel_1);
 		
 		JLabel lblDiasDePrestamo = DefaultComponentFactory.getInstance().createLabel("Dias De Prestamo:");
-		lblDiasDePrestamo.setBounds(20, 141, 92, 14);
+		lblDiasDePrestamo.setBounds(20, 141, 112, 14);
 		getContentPane().add(lblDiasDePrestamo);
 		
 		JLabel lblDiasDeTolerancia = new JLabel("Dias De Tolerancia:");
-		lblDiasDeTolerancia.setBounds(20, 196, 92, 17);
+		lblDiasDeTolerancia.setBounds(20, 196, 112, 17);
 		getContentPane().add(lblDiasDeTolerancia);
 		
 		JLabel lblDiasDeAlerta = DefaultComponentFactory.getInstance().createLabel("Dias De Alerta:");
-		lblDiasDeAlerta.setBounds(20, 258, 92, 14);
+		lblDiasDeAlerta.setBounds(20, 258, 112, 14);
 		getContentPane().add(lblDiasDeAlerta);
 		
 		textTopMasPrestados = new JTextField();
@@ -105,7 +105,7 @@ public class VentanaParametros extends JInternalFrame {
 		textTopMasPrestados.setColumns(10);
 		
 		JLabel lblTopMasPrestados = DefaultComponentFactory.getInstance().createLabel("Top Mas Prestados:");
-		lblTopMasPrestados.setBounds(20, 306, 112, 14);
+		lblTopMasPrestados.setBounds(10, 306, 112, 14);
 		getContentPane().add(lblTopMasPrestados);
 		
 		JButton btnAjustar = new JButton("");
@@ -121,7 +121,7 @@ public class VentanaParametros extends JInternalFrame {
 				biblio.parametroDiasDeAlerta =diasAlerta;
 				biblio.parametroTopMasPrestado=topMasPrestados;
 				
-				JOptionPane.showConfirmDialog(null,"Parametros Guardados correctamente");
+				JOptionPane.showMessageDialog(null,"Parametros Guardados correctamente");
 				textDiasAlerta.setEditable(false);
 				textDiasPrestamo.setEditable(false);
 				textDiasTolerancia.setEditable(false);
@@ -138,6 +138,15 @@ public class VentanaParametros extends JInternalFrame {
 		getContentPane().add(lblAjusteDeParametros);
 		
 		JButton btnAjustarParametros = new JButton("");
+		btnAjustarParametros.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				textDiasAlerta.setEditable(true);
+				textDiasPrestamo.setEditable(true);
+				textDiasTolerancia.setEditable(true);
+				textTopMasPrestados.setEditable(true);
+				
+			}
+		});
 		btnAjustarParametros.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\tools32.png"));
 		btnAjustarParametros.setBounds(588, 193, 89, 55);
 		getContentPane().add(btnAjustarParametros);
