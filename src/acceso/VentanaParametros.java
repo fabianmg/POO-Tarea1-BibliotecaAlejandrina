@@ -116,10 +116,10 @@ public class VentanaParametros extends JInternalFrame {
 				int diasTolerancia = Integer.parseInt(textDiasTolerancia.getText());
 				int diasAlerta = diasPrestamo + diasTolerancia;
 				
-				biblio.setParametroDiasDePrestamo(diasPrestamo);
-				biblio.setParametroDiasDeTolerancia(diasTolerancia);
-				biblio.setParametroDiasDeAlerta(diasAlerta);
-				biblio.setParametroTopMasPrestado(topMasPrestados);
+				biblio.parametroDiasDePrestamo=diasPrestamo;
+				biblio.parametroDiasDeTolerancia=diasTolerancia;
+				biblio.parametroDiasDeAlerta =diasAlerta;
+				biblio.parametroTopMasPrestado=topMasPrestados;
 				
 				JOptionPane.showConfirmDialog(null,"Parametros Guardados correctamente");
 				textDiasAlerta.setEditable(false);

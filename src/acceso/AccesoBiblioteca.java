@@ -357,6 +357,23 @@ public class AccesoBiblioteca extends JFrame {
 		JMenu menuParametros = new JMenu("Parametros");
 		menuParametros.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913507_params-32.png"));
 		menuPrincipal.add(menuParametros);
+		
+		JMenuItem mntmEditarParametros = new JMenuItem("Editar Parametros");
+		mntmEditarParametros.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaParametros VP = new VentanaParametros();
+				escritorio.add(VP);
+				VP.setVisible(true);
+				try {
+					VP.setMaximum(true);
+				} catch (PropertyVetoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		});
+		menuParametros.add(mntmEditarParametros);
 		/***/
 			
 		

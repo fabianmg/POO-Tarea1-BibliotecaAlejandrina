@@ -12,10 +12,12 @@ import java.util.ArrayList;
 
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.xml.bind.ParseConversionEvent;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 import com.sun.xml.internal.ws.api.ha.StickyFeature;
 
 import sun.dc.path.PathError;
@@ -36,50 +38,18 @@ public class Biblioteca {
     private static String rutaImagenLibro = "./fotosLibro/";
     private static String rutaImagenPelicula = "./fotosPelicula/";
     private static String rutaImagenRevista = "./fotosRevista/";
+    private static String rutaParametros = "./Parametros.poo"; 
     private int contPersonas = 1; // inicia en 1. 
     								// si es != de 0, en numero que tenga correspode a la persona que lo tenga
     private int contLibros;
     private int contPeliculas;
     private int contRevistas;
-    private int parametroTopMasPrestado;
-    private int parametroDiasDePrestamo;
-    private int parametroDiasDeTolerancia;
-    private int parametroDiasDeAlerta;
+    public int parametroTopMasPrestado;
+    public int parametroDiasDePrestamo;
+    public int parametroDiasDeTolerancia;
+    public int parametroDiasDeAlerta;
+
     
-    
-    public int getParametroTopMasPrestado() {
-		return parametroTopMasPrestado;
-	}
-
-	public void setParametroTopMasPrestado(int parametroTopMasPrestado) {
-		this.parametroTopMasPrestado = parametroTopMasPrestado;
-	}
-
-	public int getParametroDiasDePrestamo() {
-		return parametroDiasDePrestamo;
-	}
-
-	public void setParametroDiasDePrestamo(int parametroDiasDePrestamo) {
-		this.parametroDiasDePrestamo = parametroDiasDePrestamo;
-	}
-
-	public int getParametroDiasDeTolerancia() {
-		return parametroDiasDeTolerancia;
-	}
-
-	public void setParametroDiasDeTolerancia(int parametroDiasDeTolerancia) {
-		this.parametroDiasDeTolerancia = parametroDiasDeTolerancia;
-	}
-
-	public int getParametroDiasDeAlerta() {
-		return parametroDiasDeAlerta;
-	}
-
-	public void setParametroDiasDeAlerta(int parametroDiasDeAlerta) {
-		this.parametroDiasDeAlerta = parametroDiasDeAlerta;
-	}
-
-
     
     private ArrayList<Personas> arrayPersonas = new ArrayList<Personas>(1);
     private ArrayList<Libros> arrayLibros = new ArrayList<Libros>(1);
@@ -91,7 +61,7 @@ public class Biblioteca {
     private ArrayList<Revistas> arrayRevistas = new ArrayList<Revistas>(1);
     private ArrayList<Revistas> arrayRevistasPrestadas = new ArrayList<Revistas>(1);
     private ArrayList<Revistas> arrayRevistasDisponibles = new ArrayList<Revistas>(1);
-    
+    private Array arrayParametros = new Array(null);
     
     
 	public Biblioteca() {
@@ -444,7 +414,36 @@ public class Biblioteca {
     }
     
   
-  private void GuardarPersona(ArrayList<Personas> arrayPersonas1) throws IOException
+    private void GuardarParametro(int diasPrestados,int tolerancia, int alerta, int masPrestados) throws IOException
+    {
+        FileWriter escribir = null;
+        PrintWriter pw = null;
+        try
+        {       
+            escribir = new FileWriter(rutaParametros,false);
+            pw = new PrintWriter(escribir);
+           
+           
+            
+                pw.println("===>nuevos Parametros<===");
+                pw.println(diasPrestados);
+                pw.println(tolerancia);
+                pw.println(alerta);
+                pw.println(masPrestados);
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally 
+        {
+            try 
+            { 
+                    escribir.close();
+            } catch (Exception e2) 
+            {e2.printStackTrace();}
+        }
+    }
+    
+    private void GuardarPersona(ArrayList<Personas> arrayPersonas1) throws IOException
     {
     	FileWriter escribir = null;
     	PrintWriter pw = null;
