@@ -80,7 +80,7 @@ public class AccesoBiblioteca extends JFrame {
 		{
 			public void run() {
 				try {
-					AccesoBiblioteca frame = new AccesoBiblioteca();
+					Password frame = new Password();
 					frame.setVisible(true);
 					
 					
