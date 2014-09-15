@@ -77,6 +77,8 @@ public class Biblioteca {
     JFrame frame = new JFrame();
   
     
+    
+    // Crea las carpetas en donde se guardaran las imágenes
     private void crearCarpetaImagenesLibro()
     {
 		File archivo = new File (rutaImagenLibro);
@@ -107,19 +109,26 @@ public class Biblioteca {
     	}
     }
     
+    
+    
+    //Lectura de los "txt" , para cargarlos en los ArrayList
     public void  leerPersona()
     {
-		File archivo = new File (rutaPersonas);
+		
     	try
     	{
-    		arrayPersonas.clear();
+    		File archivo = new File (rutaPersonas);//inicializa el construsctor
+    					//de flujo de entrada y salida para procesar un fichero 
+    		arrayPersonas.clear();// limpia el arrayPersonas
     		contPersonas = 1 ;
-    		if (archivo.exists())
-    		{			
-	    		lectura = new FileReader (archivo);
-	    		bufferLectura = new BufferedReader(lectura);
-	    		
-	    		while((bufferLectura.readLine())!=null)    			
+    		
+    		if (archivo.exists()) // Si el archivo en donde se guardan
+    		{						// las Personsa existen
+	    		lectura = new FileReader (archivo);  // carga el txt en Lectuta 
+	    		bufferLectura = new BufferedReader(lectura); 
+	    		//bufferLectura.readLine() lee una linea de txt cargando en 
+	    		// Lectura y pasa a la siguiente
+	    		while((bufferLectura.readLine())!=null)    	 		
 	    		{	
 	    			Personas obj = new Personas();
 	    			obj.setContPersonas(Integer.parseInt(bufferLectura.readLine()));
@@ -289,8 +298,10 @@ public class Biblioteca {
         }
     }
     
+    // Agregar los datos que recibe al arrayList correspondiente
     public void AgregarPersona(String nombre, String apellido1, String apellido2, String telefono, String email,String  tipo ) throws IOException
     {
+    		// Agrega los datos recibidos al arrayList de Personas
     	   leerPersona();
     	   Personas obj = new Personas(); 
     	   obj.setContPersonas(contPersonas++);
@@ -301,9 +312,9 @@ public class Biblioteca {
            obj.setTelefono(telefono);
            obj.setTipo(tipo);
            arrayPersonas.add(obj); 
-           GuardarPersona(arrayPersonas); // no hace falta pasarle arrayPersonas. Es global!
-    }
-    
+           GuardarPersona(arrayPersonas);//Guarda los datos que recibio 
+           // no hace falta pasarle arrayPersonas. Es global!
+    }    
     public void AgregarLibro(String titulo, String autor, String editorial, String edicion, String imagen, String calificacion) throws IOException
     {
     	leerLibro();
@@ -414,6 +425,9 @@ public class Biblioteca {
     }
     
   
+    
+    // Guarda  los arrayList en texto plano.
+    
     private void GuardarParametro(int diasPrestados,int tolerancia, int alerta, int masPrestados) throws IOException
     {
         FileWriter escribir = null;
@@ -422,9 +436,7 @@ public class Biblioteca {
         {       
             escribir = new FileWriter(rutaParametros,false);
             pw = new PrintWriter(escribir);
-           
-           
-            
+
                 pw.println("===>nuevos Parametros<===");
                 pw.println(diasPrestados);
                 pw.println(tolerancia);
@@ -587,50 +599,23 @@ public class Biblioteca {
     	}
     }
     
-    /*public boolean BuscarLibro(String titulo, String autor, String editorial) throws IOException
-    {
-    	try
-    	{		
-    		for(Libros obj: arrayLibros)
-    		{	
-				
-    			if(obj.getTitulo().equals(titulo)) 
-    			{
-    				if(obj.getAutor().equals(autor))
-    				{
-    						if(obj.getEditorial().equals(editorial))
-    						{
-    							JOptionPane.showMessageDialog(frame, "Libro ya existe.");
-    							return true;
-    						}
-    				}else
-    					{
-    						JOptionPane.showMessageDialog(frame, "Libro ya existe, con diferente editorial.");
-    						return true;
-    					}
-    					
-    			}else
-    				return false;	 
-			}                		
-    	} catch (Exception e) {
-    		e.printStackTrace();
-    	} 
-		return false;
-    }*/
     
+    //Edita los arrayList con los valores recibidos y luego los guarda
+       
     
-    
+   
     public void EditarPersonas(String nombre, String apellido1, String apellido2, String telefono, String email,String  tipo, int id)
-    { 
+    {
+    	// Edita la info de la persona segun el id recibido
     	try
     	{		    			
     		leerPersona();
-    		// algo feo :/
+    
     		ArrayList<Personas> arrayTempPersonas = new ArrayList<Personas>(1);
     		for(Personas obj: arrayPersonas)
     		{	
-    			if(obj.getContPersonas() == id)
-    			{
+    			if(obj.getContPersonas() == id) 
+    			{	
     				obj.setNombre(nombre);
     				obj.setApellidoUno(apellido1);
     				obj.setApellidoDos(apellido2);
@@ -638,9 +623,9 @@ public class Biblioteca {
     				obj.setEmail(email);
     				obj.setTipo(tipo);
     				
-    				arrayTempPersonas.add(obj);
+    				arrayTempPersonas.add(obj);//se agregan los datos actualizados
     			}else
-    				arrayTempPersonas.add(obj);		
+    				arrayTempPersonas.add(obj);	// ceteris paribus 	
 			}
     		arrayPersonas = arrayTempPersonas;
     		GuardarPersona(arrayPersonas);
@@ -667,9 +652,9 @@ public class Biblioteca {
     		    	obj.setCalificacion(calificacion);
     		    	obj.setImangen(imagen);
     		    	//obj.setDiasPrestado(dias);
-    		    	arrayTempLibros.add(obj);
+    		    	arrayTempLibros.add(obj);// agregan nuevos datos
     			}else
-    				arrayTempLibros.add(obj);		
+    				arrayTempLibros.add(obj);//	ceteris paribus	
 			}
     		arrayLibros = arrayTempLibros;
     		GuardarLibro(arrayLibros); 
@@ -736,9 +721,7 @@ public class Biblioteca {
     		e.printStackTrace();
     	}
     	
-	}
-    
-    
+	}     
     public void EditarLibros(int dias, int idLibro, int idPersona) throws IOException
     {
     	// Para aparta o prestar un libro editar idPersona.
@@ -810,7 +793,7 @@ public class Biblioteca {
     		    	obj.setDisponibilidad(Integer.toString(idPersona));
     		    	arrayTempPeliculas.add(obj);
     			}else
-    				arrayTempPeliculas.add(obj);		
+    				arrayTempPeliculas.add(obj);//ceteris paribus		
 			}
     		arrayPeliculas = arrayTempPeliculas;
     		GuardarPelicula(arrayPeliculas);
@@ -821,18 +804,19 @@ public class Biblioteca {
     	}
     	
 	}
-
-
     
+   
 
     public ArrayList<Personas> getPersonas()
     {
+    	// retoran el arrayPersonas
     	leerPersona();
 		return arrayPersonas;
     }
   
     public ArrayList<Libros> getLibros()
     {
+    	// retorna arrayLibros;
     	leerLibro();
 		return arrayLibros;
     }
@@ -849,10 +833,11 @@ public class Biblioteca {
 		return arrayRevistas;
     }
     
+  
     public String getNombrePersona(int idPersona)
     {
-		String nombre = "";
-
+		// Optener el nombre de una persona por el id
+    	String nombre = "";
       	try
     	{		    			
       		leerPersona();
@@ -873,7 +858,8 @@ public class Biblioteca {
     }
     
     public int getIDLibro(String Titulo)
-    {		    			
+    {		    
+		// Optener el id de un  por el titulo// borrar
 		leerLibro();
 		for(Libros obj: arrayLibros)
 		{	
@@ -887,7 +873,8 @@ public class Biblioteca {
     }
     
     public int getIDPelicula(String Titulo)
-    {                       
+    {             
+    	// retorna el id de una pelicula
         leerPelicula();
         for(Peliculas obj: arrayPeliculas)
         {   
@@ -901,7 +888,8 @@ public class Biblioteca {
     }
     
     public int getIDRevista(String Titulo)
-    {                       
+    {            
+    	//retorna el id de una revista
         leerRevista();
         for(Revistas obj: arrayRevistas)
         {   
@@ -916,6 +904,7 @@ public class Biblioteca {
 
     public ArrayList<Libros> getLibrosPrestado()
     {
+    	// Retorna un ArrayList con los libros prestados  
     	leerLibro();
 		ArrayList<Libros> librosPrestados = new ArrayList<Libros>(1);
 		ArrayList<Libros> librosArrayTemp = arrayLibros;	
@@ -927,7 +916,8 @@ public class Biblioteca {
         		
         		for(Libros obj: librosArrayTemp)
         		{	
-        			if(!obj.getDisponibilidad().equals("0"))
+        			//si es 0, esta disponible
+        			if(!obj.getDisponibilidad().equals("0")) 
         			{
         				idPersona = Integer.parseInt(obj.getDisponibilidad());
         				nombre = getNombrePersona(idPersona);
@@ -941,21 +931,23 @@ public class Biblioteca {
         		e.printStackTrace();
         	}
     	return librosPrestados;
-    }    
-    
+    }       
     public ArrayList<Peliculas> getPeliculasPrestado()
     {
+    	// retorna una arrayList con las pelicuas prestadas
+    	 ArrayList<Peliculas> peliculasPrestados = new ArrayList<Peliculas>(1);
+         ArrayList<Peliculas> peliculasArrayTemp = arrayPeliculas;
+    	
             try
             {                       
                 leerPelicula();
-                ArrayList<Peliculas> peliculasPrestados = new ArrayList<Peliculas>(1);
-                ArrayList<Peliculas> peliculasArrayTemp = arrayPeliculas;
+               
                 String nombre = "";
                 int idPersona = 0;
                 
                 for(Peliculas obj: peliculasArrayTemp)
                 {   
-                    if(!obj.getDisponibilidad().equals("0"))
+                    if(!(obj.getDisponibilidad().equals("0")))
                     {
                         idPersona = Integer.parseInt(obj.getDisponibilidad());
                         nombre = getNombrePersona(idPersona);
@@ -968,11 +960,13 @@ public class Biblioteca {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return arrayPeliculas;
-    }
-    
+            return peliculasPrestados;
+    }   
     public ArrayList<Revistas> getRevistasPrestado()
     {
+    	
+    	// retorna una arrayList con las revistas prestadas
+
             try
             {                       
                 leerLibro();
@@ -997,10 +991,10 @@ public class Biblioteca {
                 e.printStackTrace();
             }
             return arrayRevistas;
-    }
-    
+    }   
     public ArrayList<Libros> getLibrosDisponible()
 	{
+    	// retorna una arrayList con los libros disponibles
 
     	leerLibro();
 		ArrayList<Libros> librosDisponibles = new ArrayList<Libros>(1);
@@ -1021,7 +1015,6 @@ public class Biblioteca {
 	    		e.printStackTrace();
 	    	}return librosDisponibles;
 	}
-    
     public ArrayList<Revistas> getRevistasDisponible()
     {
             try
@@ -1045,10 +1038,10 @@ public class Biblioteca {
                 e.printStackTrace();
             }
             return arrayRevistas;
-    }
-    
+    }   
     public ArrayList<Peliculas> getPeliculasDisponible()
     {
+    	// retorna una arrayList con las pelicuas disponibles 
     	   leerPelicula();
            ArrayList<Peliculas> peliculasDisponibles = new ArrayList<Peliculas>(1);
            ArrayList<Peliculas> peliculasArrayTemp = arrayPeliculas;    
@@ -1074,6 +1067,8 @@ public class Biblioteca {
     
     private boolean EstaEnLista(String palabra, ArrayList<String> lista)
     {
+    	// recibe un string, una lista y dice si el 
+    	// string esta en la lista
     	if(lista!=null)
     	{
     		for(String dato: lista)
@@ -1090,6 +1085,7 @@ public class Biblioteca {
     
     public ArrayList<String> getEditoriales()  
     { 
+    	// Retorna un arrayList con todas las editoriales 
     	ArrayList<String> editorial = new ArrayList<String>(1);///////////!
     	String palabra ="";    	    		
     		leerLibro();   
@@ -1106,6 +1102,7 @@ public class Biblioteca {
     
     public ArrayList<String> getAutores()  
     {
+    	// Retorna un arrayList con todos los autores  de los libros
     	ArrayList<String> autor =  new ArrayList<String>(1);				///////////!
     	String palabra ="";    	    		
     		leerLibro();   
@@ -1124,6 +1121,7 @@ public class Biblioteca {
     
     public ArrayList<String> getAutoresDeRevista()
         {
+    	// Retorna un arrayList con todos los autores  de las Revistas
     	ArrayList<String> autor =  new ArrayList<String>(1);				///////////!
     	String palabra ="";    	    		
     		leerRevista();   
@@ -1140,6 +1138,7 @@ public class Biblioteca {
 
     public ArrayList<String>  getEditorialesDeRevistas()
     {
+    	// Retorna un arrayList con todas las editoriales de las revitas
     	ArrayList<String> editorial = new ArrayList<String>(1);
     	String palabra ="";    	    		
     		leerRevista();   
@@ -1171,6 +1170,7 @@ public class Biblioteca {
  
     public ArrayList<Libros> getLibros4Editoriales(String editorial)  
     { 
+    	//retorna todos los libros de una misma editorial
     	ArrayList<Libros> libros4editorial = new ArrayList<Libros>(1);
     	String palabra ="";    	    		
     		leerLibro();   
@@ -1186,6 +1186,8 @@ public class Biblioteca {
     
     public ArrayList<Libros> getLibros4Autor(String autor)  
     { 
+    	//retorna todos los libros de un mismo autor
+
     	ArrayList<Libros> libros4Autor = new ArrayList<Libros>(1);
     	String palabra ="";    	    		
     		leerLibro();   
@@ -1200,6 +1202,8 @@ public class Biblioteca {
 
     public ArrayList<Revistas> getRevistas4Editoriales(String editorial)  
     { 
+    	//retorna todos los revistas de una misma editorial
+
     	ArrayList<Revistas> libros4editorial = new ArrayList<Revistas>(1);
     	String palabra ="";    	    		
     		leerLibro();   
@@ -1215,6 +1219,8 @@ public class Biblioteca {
     
     public ArrayList<Revistas> getRevistas4Autor(String autor)  
     { 
+    	//retorna todos las revistas de un mismo a autor
+
     	ArrayList<Revistas> libros4Autor = new ArrayList<Revistas>(1);
     	String palabra ="";    	    		
     		leerLibro();   

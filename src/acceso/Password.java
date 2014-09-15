@@ -1,9 +1,3 @@
-/*Descripcion: Esta es la clase que contiene la ventana password
- * Autores: Fabian Monge Garcia & Ariel Montero Monestel
- * Fecha de creacion:20/08/2014
-*/
-
-
 package acceso;
 
 import java.awt.BorderLayout;
@@ -21,16 +15,11 @@ import javax.swing.JTextPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 import com.jgoodies.forms.factories.DefaultComponentFactory;
-
 import java.awt.Font;
-
 import org.eclipse.wb.swing.FocusTraversalOnArray;
-
 import java.awt.Component;
 import java.awt.Color;
-import java.awt.Frame;
 import java.awt.SystemColor;
 
 public class Password extends JFrame {
@@ -62,7 +51,7 @@ public class Password extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 363, 386);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -77,40 +66,43 @@ public class Password extends JFrame {
 		contentPane.add(lblContrasea);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBackground(SystemColor.textHighlight);
+		passwordField.setForeground(Color.LIGHT_GRAY);
+		passwordField.setBackground(Color.GRAY);
 		passwordField.setBounds(127, 147, 98, 23);
 		contentPane.add(passwordField);
 		
 		JTextPane textUsuario = new JTextPane();
-		textUsuario.setBackground(SystemColor.textHighlight);
+		textUsuario.setForeground(Color.LIGHT_GRAY);
+		textUsuario.setBackground(Color.GRAY);
 		textUsuario.setBounds(126, 98, 98, 23);
 		contentPane.add(textUsuario);
 		
 		
 		JButton btnIngresar = new JButton("Ingresar");
-		btnIngresar.setBackground(SystemColor.textHighlight);
+		btnIngresar.setForeground(Color.LIGHT_GRAY);
+		btnIngresar.setBackground(Color.GRAY);
 		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String pass = "";
-				//Se Guarda cada caracter de la contrasena
+				String pass = "admin";
+				
 				char[]contrasenia= passwordField.getPassword();
 				for (int x = 0; x<contrasenia.length; x++){
 					pass+= contrasenia[x];
 					
 				}
-				String nombreUsuario = "Admin";
+				String nombreUsuario = "admin";
 				if ( textUsuario.getText().equals(nombreUsuario) && pass.equals(pass) ){
-					//Si se cumple la condicion, se accede a la biblioteca
+					
 					AccesoBiblioteca AB = new AccesoBiblioteca();
 					AB.setVisible(true);
 				
 					
 					textUsuario.setText("");
 					passwordField.setText("");
-			
+					
 					
 				}
-				else{// si no lanza un mensaje y vuelve a pedir usario y contrasena
+				else{
 					
 						JOptionPane.showMessageDialog(null, "Contrasena y Usuario Incorrectos");
 						textUsuario.setText("");
@@ -118,7 +110,20 @@ public class Password extends JFrame {
 						
 					}
 				}
-						
+				
+				
+				
+				
+				/*
+				String pass = "";
+				char[] password = passwordField.getPassword();
+				for (int x = 0; x<password.length; x++){
+					pass+= password[x];
+					
+				}
+				JOptionPane.showMessageDialog(null, pass);
+				*/
+			
 		});
 		btnIngresar.setBounds(82, 225, 170, 41);
 		contentPane.add(btnIngresar);

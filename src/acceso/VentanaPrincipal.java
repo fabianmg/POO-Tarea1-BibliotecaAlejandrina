@@ -43,7 +43,7 @@ public class VentanaPrincipal extends JInternalFrame {
 	Biblioteca biblio = new Biblioteca();
 	
 	public VentanaPrincipal() {
-		setBorder(null);
+	/*	setBorder(null);
 		getContentPane().setBackground(SystemColor.textHighlight);
 		setBounds(10, 11, 774, 398);
 		getContentPane().setLayout(null);
@@ -120,6 +120,6 @@ public class VentanaPrincipal extends JInternalFrame {
 		JLabel lblRevistasPrestadas = new JLabel("Revistas Prestadas:");
 		lblRevistasPrestadas.setBounds(412, 56, 136, 14);
 		getContentPane().add(lblRevistasPrestadas);
-
+*/
 	}
 }

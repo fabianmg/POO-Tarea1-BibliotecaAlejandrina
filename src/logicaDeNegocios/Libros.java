@@ -2,6 +2,7 @@ package logicaDeNegocios;
 
 public class Libros {
 	
+	//Atributos
 	private String titulo;
 	private String autor;
 	private String editorial;
@@ -16,7 +17,7 @@ public class Libros {
     
 	
 
-
+    //Constructores
 	public Libros() {
 	}
 
@@ -38,6 +39,7 @@ public class Libros {
 	}
 
 
+	//getters and setters
 	public String getDisponibilidad() {
 		return disponibilidad;
 	}

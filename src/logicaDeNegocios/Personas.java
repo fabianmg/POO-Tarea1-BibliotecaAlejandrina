@@ -14,7 +14,7 @@ public class Personas {
     private String tipo; // estudiante, colega, familiar
     private int contPersonas = 0;
     
- 
+    //Constructores
     public Personas() {
            
     }

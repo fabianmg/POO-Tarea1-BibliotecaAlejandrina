@@ -29,6 +29,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import com.sun.imageio.stream.CloseableDisposerRecord;
 import com.sun.media.sound.ModelOscillator;
 
 import java.awt.Font;
@@ -45,9 +46,11 @@ import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JRadioButton;
+
 import java.awt.Color;
 
 public class AccesoBiblioteca extends JFrame {
+	
 
 	private JPanel contentPane;
 	private JTable table;
@@ -83,9 +86,9 @@ public class AccesoBiblioteca extends JFrame {
 		setTitle("Biblioteca Alejandrina");
 
 /**/
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Book.png"));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(AccesoBiblioteca.class.getResource("/imgs/1409913899_book-32.png")));
 
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Book.png"));// -.-
+		setIconImage(Toolkit.getDefaultToolkit().getImage("./src/imgs/Book.png"));// -.-
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 810, 482);
 		
@@ -114,11 +117,11 @@ public class AccesoBiblioteca extends JFrame {
 		
 		
 		JMenu menuAgregar = new JMenu("Agregar");
-		menuAgregar.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\add2.png"));//O.o'
+		menuAgregar.setIcon(new ImageIcon("./src/imgs/add2.png"));//O.o'
 		menuPrincipal.add(menuAgregar);
 		
 		JMenuItem agregarPersona = new JMenuItem("Persona"); 
-		agregarPersona.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Persona2.png"));
+		agregarPersona.setIcon(new ImageIcon("./src/imgs/Persona2.png"));
 		agregarPersona.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
 				
@@ -138,15 +141,15 @@ public class AccesoBiblioteca extends JFrame {
 		menuAgregar.add(agregarPersona);
 		
 		JMenuItem agregarLibro = new JMenuItem("Libro");
-		agregarLibro.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\newbook.png"));
+		agregarLibro.setIcon(new ImageIcon("./src/imgs/newbook.png"));
 		menuAgregar.add(agregarLibro);
 		
 		JMenu mnOtro = new JMenu("Otro");
-		mnOtro.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Other-32.png"));
+		mnOtro.setIcon(new ImageIcon("./src/imgs/Other-32.png"));
 		menuAgregar.add(mnOtro);
 		
 		JMenuItem mntmPelicula = new JMenuItem("Pelicula");
-		mntmPelicula.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Movie-32.png"));
+		mntmPelicula.setIcon(new ImageIcon("./src/imgs/Movie-32.png"));
 		mntmPelicula.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// Evento que llama a la ventana Agregar Persona
@@ -164,7 +167,7 @@ public class AccesoBiblioteca extends JFrame {
 		mnOtro.add(mntmPelicula);
 		
 		JMenuItem mntmRevista = new JMenuItem("Revista");
-		mntmRevista.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1410524012_magazine.png"));
+		mntmRevista.setIcon(new ImageIcon("./src/imgs/1410524012_magazine.png"));
 		mntmRevista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// Evento que llama a la ventana Agregar Revista
@@ -201,7 +204,7 @@ public class AccesoBiblioteca extends JFrame {
 			});
 		
 		JMenu menuEdicion = new JMenu("Consulta");
-		menuEdicion.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Edicion.png"));
+		menuEdicion.setIcon(new ImageIcon("./src/imgs/Edicion.png"));
 		menuPrincipal.add(menuEdicion);
 		
 		JMenuItem edicionPersona = new JMenuItem(" Persona");
@@ -221,7 +224,7 @@ public class AccesoBiblioteca extends JFrame {
 				}
 		});
 		
-		edicionPersona.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913839_icon-person-32.png"));
+		edicionPersona.setIcon(new ImageIcon("./src/imgs/1409913839_icon-person-32.png"));
 		menuEdicion.add(edicionPersona);
 		
 		JMenuItem mntmLibro = new JMenuItem("Libro");
@@ -239,11 +242,11 @@ public class AccesoBiblioteca extends JFrame {
 				}
 			}
 		});
-		mntmLibro.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913899_book-32.png"));
+		mntmLibro.setIcon(new ImageIcon("./src/imgs/1409913899_book-32.png"));
 		menuEdicion.add(mntmLibro);
 		
 		JMenu mnOtro_1 = new JMenu("Otro");
-		mnOtro_1.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Other-32.png"));
+		mnOtro_1.setIcon(new ImageIcon("./src/imgs/Other-32.png"));
 		menuEdicion.add(mnOtro_1);
 		
 		JMenuItem mntmPelicula_1 = new JMenuItem("Pelicula");
@@ -261,7 +264,7 @@ public class AccesoBiblioteca extends JFrame {
 				}
 			}
 		});
-		mntmPelicula_1.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Movie-32.png"));
+		mntmPelicula_1.setIcon(new ImageIcon("./src/imgs/Movie-32.png"));
 		mnOtro_1.add(mntmPelicula_1);
 		
 		JMenuItem mntmRevista_1 = new JMenuItem("Revista");
@@ -280,11 +283,11 @@ public class AccesoBiblioteca extends JFrame {
 				}
 			}
 		});
-		mntmRevista_1.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1410524012_magazine.png"));
+		mntmRevista_1.setIcon(new ImageIcon("./src/imgs/1410524012_magazine.png"));
 		mnOtro_1.add(mntmRevista_1);
 		
 		JMenu mnControl = new JMenu("Control");
-		mnControl.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Control.png"));
+		mnControl.setIcon(new ImageIcon("./src/imgs/Control.png"));
 		menuPrincipal.add(mnControl);
 		
 		JMenuItem mntmDeLibrosPrestados = new JMenuItem("Prestar Libro");
@@ -304,11 +307,11 @@ public class AccesoBiblioteca extends JFrame {
 				
 			}
 		});
-		mntmDeLibrosPrestados.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\LibrosPrestados.png"));
+		mntmDeLibrosPrestados.setIcon(new ImageIcon("./src/imgs/LibrosPrestados.png"));
 		mnControl.add(mntmDeLibrosPrestados);
 		
 		JMenu mnOtro_2 = new JMenu("Otro");
-		mnOtro_2.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Other-32.png"));
+		mnOtro_2.setIcon(new ImageIcon("./src/imgs/Other-32.png"));
 		mnControl.add(mnOtro_2);
 		
 		JMenuItem mntmPrestarPelicula = new JMenuItem("Prestar Pelicula");
@@ -327,7 +330,7 @@ public class AccesoBiblioteca extends JFrame {
 				}
 			}
 		});
-		mntmPrestarPelicula.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\Movie-32.png"));
+		mntmPrestarPelicula.setIcon(new ImageIcon("./src/imgs/Movie-32.png"));
 		mnOtro_2.add(mntmPrestarPelicula);
 		
 		JMenuItem mntmPrestarRevista = new JMenuItem("Prestar Revista");
@@ -346,11 +349,11 @@ public class AccesoBiblioteca extends JFrame {
 				}
 			}
 		});
-		mntmPrestarRevista.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1410524012_magazine.png"));
+		mntmPrestarRevista.setIcon(new ImageIcon("./src/imgs/1410524012_magazine.png"));
 		mnOtro_2.add(mntmPrestarRevista);
 		
 		JMenu menuParametros = new JMenu("Parametros");
-		menuParametros.setIcon(new ImageIcon("C:\\Users\\Ariel\\Documents\\GitHub\\POO-Tarea1-BibliotecaAlejandrina\\src\\imgs\\1409913507_params-32.png"));
+		menuParametros.setIcon(new ImageIcon("./src/imgs/1409913507_params-32.png"));
 		menuPrincipal.add(menuParametros);
 		
 		JMenuItem mntmEditarParametros = new JMenuItem("Editar Parametros");
